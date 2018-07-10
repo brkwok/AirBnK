@@ -48,6 +48,7 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (9.0.0)
+    bcrypt (3.1.12)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -55,6 +56,8 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bootsnap (1.3.0)
+      msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -107,6 +110,7 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    msgpack (1.2.4)
     multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.8.4)
@@ -201,8 +205,10 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
+  bootsnap
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
