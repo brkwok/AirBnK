@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -18,11 +18,12 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.login(user).then(() => {
-      this.props.history.push('/');
+    const user = this.state;
+    const promise = this.props.login(user);
+    console.log(promise);
+    promise.then(() => {
+      return this.props.history.push('/');
     });
   }
 

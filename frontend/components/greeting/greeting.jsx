@@ -9,15 +9,23 @@ class Greeting extends React.Component {
     this.state = {
       showMenu: false
     };
+
     this.handleLogout = this.handleLogout.bind(this);
     this.showMenu = this.showMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
 
   showMenu(e) {
     e.preventDefault();
 
-    this.setState({
-      showMenu: true
+    this.setState({ showMenu: true }, () => {
+      document.addEventListener('click', this.closeMenu);
+    });
+  }
+
+  closeMenu() {
+    this.setState({ showMenu: false }, () => {
+      document.removeEventListener('click', this.closeMenu);
     });
   }
 
@@ -26,6 +34,7 @@ class Greeting extends React.Component {
   }
 
   render() {
+    debugger
     const sessionLinks = () => (
       <div className="login-signup">
         <Link to='/signup'>Sign up</Link>
@@ -43,7 +52,7 @@ class Greeting extends React.Component {
           this.state.showMenu
           ? (
             <div className="dropdown">
-              <button className="dropdown-comp" onClick={this.handleLogout}> Log Out </button>
+              <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
             </div>
           )
           : (

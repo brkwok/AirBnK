@@ -37,10 +37,9 @@ export const signup = user => {
 export const login = user => {
   return dispatch => {
     return SessionApiUtil.login(user).then(
-      user => dispatch(receiveCurrentUser(user))
-    ), err => {
+      user => dispatch(receiveCurrentUser(user)), err => {
       return dispatch(receiveErrors(err.responseJSON));
-    };
+    });
   };
 };
 
