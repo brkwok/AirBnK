@@ -8,12 +8,12 @@ import Modal from './modal/modal';
 
 const App = () => {
   return (
-    <section className="background">
+    <div className="background">
       <Modal />
         <GreetingContainer />
 
 
-    </section>
+    </div>
   );
 };
 

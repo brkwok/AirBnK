@@ -1,0 +1,19 @@
+.dropdown {
+  color: #6a6d72;
+  position: absolute;
+  right: 5px;
+  background: lightblue;
+  top: 75px;
+  width: 280px;
+  background: white;
+  box-shadow: 1px 1px 1em #6a6d72;
+}
+
+.dropdown-comp {
+  margin: 2px 15px;
+  padding: 18px 0;
+}
+
+.dropdown-comp:hover {
+  border-bottom: 1px solid black;
+}
