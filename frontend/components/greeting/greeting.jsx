@@ -34,17 +34,16 @@ class Greeting extends React.Component {
   }
 
   render() {
-    debugger
     const sessionLinks = () => (
       <div className="login-signup">
-        <Link to='/signup'>Sign up</Link>
-        <Link to='/login'>Log in</Link>
+        <div className="login-signup-button" onClick={() => this.props.openModal('signup')}>Sign up</div>
+        <div className="login-signup-button" onClick={() => this.props.openModal('login')}>Log in</div>
       </div>
     );
 
     const greetingLink = () => (
-      <section>
-        <div onClick={this.showMenu}>
+      <section className="login-signup">
+        <div className="login-signup-button" onClick={this.showMenu}>
           Show Menu
         </div>
 

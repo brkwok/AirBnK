@@ -27,10 +27,9 @@ const receiveErrors = errors => {
 export const signup = user => {
   return dispatch => {
     return SessionApiUtil.signup(user).then(
-      user => dispatch(receiveCurrentUser(user))
-    ), err => {
+      user => dispatch(receiveCurrentUser(user)), err => {
       return dispatch(receiveErrors(err.responseJSON));
-    };
+    });
   };
 };
 

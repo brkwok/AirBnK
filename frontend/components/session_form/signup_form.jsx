@@ -21,9 +21,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.signup(user).then(() => {
-      this.props.history.push('/');
-    });
+    this.props.signup(user).then(this.props.closeModal);
   }
 
   renderErrors() {
@@ -42,7 +40,7 @@ class SignupForm extends React.Component {
     return (
       <div className="login-signup">
         <form onSubmit={this.handleSubmit} className="login-signup-formbox">
-        Log In
+        Sign Up
         {this.renderErrors()}
           <div className="login-signup-box">
             <label>Email

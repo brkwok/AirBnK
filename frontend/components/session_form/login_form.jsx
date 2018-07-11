@@ -22,9 +22,7 @@ class LoginForm extends React.Component {
     const user = this.state;
     const promise = this.props.login(user);
     console.log(promise);
-    promise.then(() => {
-      return this.props.history.push('/');
-    });
+    promise.then(this.props.closeModal);
   }
 
   renderErrors() {
@@ -43,7 +41,6 @@ class LoginForm extends React.Component {
     return (
       <div className="login-signup">
         <form onSubmit={this.handleSubmit} className="login-signup-formbox">
-        Log In
         {this.renderErrors()}
           <div className="login-signup-box">
             <label>Email
