@@ -1,0 +1,38 @@
+.close-x {
+  color: lightgrey;
+  font-family: sans-serif;
+  font-weight: 50;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.login-signup-formbox {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  padding: 15px;
+  font-size: 17pt;
+  font-weight: 700;
+}
+
+.login-signup-box {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.login-signup-contentbox {
+  width: 350px;
+  height: 25px;
+  margin: 10px 0;
+
+}
+
+.login-signup-submit-button {
+  color: white;
+  background: #ff5961;
+  padding: 12px 0;
+  border-radius: 5px;
+  margin-top: 15px;
+}

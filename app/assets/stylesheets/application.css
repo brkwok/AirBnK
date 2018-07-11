@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .background {
+   background: url('house1.jpeg');
+   font-family: 'Dosis', sans-serif;
+   font-weight: 700;
+   height: 100vh;
+   background-size: cover;
+ }

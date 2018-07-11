@@ -35,30 +35,40 @@ class Greeting extends React.Component {
 
   render() {
     const sessionLinks = () => (
-      <div className="login-signup">
-        <div className="login-signup-button" onClick={() => this.props.openModal('signup')}>Sign up</div>
-        <div className="login-signup-button" onClick={() => this.props.openModal('login')}>Log in</div>
-      </div>
+      <nav className="header-nav">
+        <Link className="header-logo" to='/' >
+          <img src={window.logoURL} />
+        </Link>
+        <div className="login-signup">
+          <div className="login-signup-button" onClick={() => this.props.openModal('signup')}>Sign up</div>
+          <div className="login-signup-button" onClick={() => this.props.openModal('login')}>Log in</div>
+        </div>
+      </nav>
     );
 
     const greetingLink = () => (
-      <section className="login-signup">
-        <div className="login-signup-button" onClick={this.showMenu}>
-          Show Menu
-        </div>
+      <nav className="header-nav">
+        <Link className="header-logo" to='/' >
+          <img src={window.logoURL} />
+        </Link>
+        <section className="login-signup">
+          <div className="login-signup-button" onClick={this.showMenu}>
+            Show Menu
+          </div>
 
-        {
-          this.state.showMenu
-          ? (
-            <div className="dropdown">
-              <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
-            </div>
-          )
-          : (
-            null
-          )
-        }
-      </section>
+          {
+            this.state.showMenu
+            ? (
+              <div className="dropdown">
+                <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
+              </div>
+            )
+            : (
+              null
+            )
+          }
+        </section>
+      </nav>
     );
     return this.props.currentUser ? greetingLink() : sessionLinks();
   }

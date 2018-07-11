@@ -41,22 +41,26 @@ class LoginForm extends React.Component {
     return (
       <div className="login-signup">
         <form onSubmit={this.handleSubmit} className="login-signup-formbox">
+        <div onClick={this.props.closeModal} className="close-x">X</div>
+        Log in to continue
         {this.renderErrors()}
           <div className="login-signup-box">
-            <label>Email
-              <input type="text"
+
+              <input className="login-signup-contentbox" type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
+                placeholder="Email Address"
                 />
-            </label>
-            <label>Password
-              <input type="password"
+
+
+              <input className="login-signup-contentbox" type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
+                placeholder="Password"
                 />
-            </label>
 
-            <input type="submit" value="Log in" />
+
+              <input className="login-signup-submit-button" type="submit" value="Log in" />
           </div>
         </form>
       </div>

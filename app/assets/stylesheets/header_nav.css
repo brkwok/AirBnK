@@ -1,18 +1,15 @@
-main {
-  font-family: 'Dosis', sans-serif;
-  font-weight: 700;
-}
+
+
 .header-nav {
-  border: 1px solid black;
   display: flex;
   justify-content: space-between;
-  background-color: lightblue;
   align-content: center;
 }
 
 .login-signup {
   display: flex;
   color: white;
+  align-items: center;
 }
 
 .login-signup:hover {
@@ -30,8 +27,11 @@ main {
 .header-logo {
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 7px;
+  margin-left: 15px;
+}
+
+.header-logo > img {
+  width: 50%;
 }
 
 .login-signup-button:hover {

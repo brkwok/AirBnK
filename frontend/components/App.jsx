@@ -8,14 +8,10 @@ import Modal from './modal/modal';
 
 const App = () => {
   return (
-    <section>
+    <section className="background">
       <Modal />
-      <nav className="header-nav">
-        <Link className="header-logo" to='/' >
-          AirBnK
-        </Link>
         <GreetingContainer />
-      </nav>
+
 
     </section>
   );
