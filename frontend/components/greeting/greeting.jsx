@@ -9,6 +9,8 @@ class Greeting extends React.Component {
     this.state = {
       showMenu: false
     };
+    this.handleLogout = this.handleLogout.bind(this);
+    this.showMenu = this.showMenu.bind(this);
   }
 
   showMenu(e) {
@@ -17,6 +19,10 @@ class Greeting extends React.Component {
     this.setState({
       showMenu: true
     });
+  }
+
+  handleLogout() {
+    this.props.logout();
   }
 
   render() {
@@ -37,7 +43,7 @@ class Greeting extends React.Component {
           this.state.showMenu
           ? (
             <div className="dropdown">
-              <div className="dropdown-comp"> Log Out </div>
+              <button className="dropdown-comp" onClick={this.handleLogout}> Log Out </button>
             </div>
           )
           : (
