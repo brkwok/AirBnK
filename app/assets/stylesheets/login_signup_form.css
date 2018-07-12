@@ -54,6 +54,19 @@
   height: 30px;
 }
 
+.to-signup {
+  font-size: 11pt;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 0.5px solid lightgrey;
+}
+
+.to-login-signup-modal {
+  color: teal;
+}
+
 #demo {
   font-size: 9pt;
   text-align: center;

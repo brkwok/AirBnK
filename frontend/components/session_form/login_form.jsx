@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
   update(field) {
@@ -42,6 +43,10 @@ class LoginForm extends React.Component {
     return this.props.demoLogin().then(this.props.closeModal);
   }
 
+  openModal() {
+    return this.props.openModal();
+  }
+
   render() {
     return (
       <div className="login-signup">
@@ -67,6 +72,7 @@ class LoginForm extends React.Component {
 
               <input className="login-signup-submit-button" type="submit" value="Log in" />
               <div className="login-signup-submit-button" id="demo" onClick={this.demoLogin}>Demo</div>
+              <div className="to-signup">Don't have and account? <strong className="to-login-signup-modal" onClick={this.openModal}>Sign up</strong></div>
           </div>
         </form>
       </div>

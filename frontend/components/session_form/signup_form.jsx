@@ -10,6 +10,11 @@ class SignupForm extends React.Component {
       name: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal() {
+    return this.props.openModal();
   }
 
   update(field) {
@@ -67,6 +72,7 @@ class SignupForm extends React.Component {
 
 
             <input className="login-signup-submit-button" type="submit" value="Sign in" />
+            <div className="to-signup">Already have an Airbnb account? <strong className="to-login-signup-modal" onClick={this.openModal}>Log in</strong></div>
           </div>
         </form>
       </div>
