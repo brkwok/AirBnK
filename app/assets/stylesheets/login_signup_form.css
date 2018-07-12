@@ -22,6 +22,10 @@
   margin: 15px 0;
 }
 
+.login-errors {
+  font-size: 12pt;
+}
+
 .login-signup-contentbox {
   width: 350px;
   height: 25px;
@@ -36,4 +40,16 @@
   padding: 12px 0;
   border-radius: 5px;
   margin-top: 15px;
+  align-content: center;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  height: 30px;
+}
+
+#demo {
+  font-size: 9pt;
+  text-align: center;
 }

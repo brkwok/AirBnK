@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   update(field) {
@@ -37,13 +38,17 @@ class LoginForm extends React.Component {
     );
   }
 
+  demoLogin() {
+    return this.props.demoLogin().then(this.props.closeModal);
+  }
+
   render() {
     return (
       <div className="login-signup">
         <form onSubmit={this.handleSubmit} className="login-signup-formbox">
         <div onClick={this.props.closeModal} className="close-x">X</div>
-        Log in to continue
-        {this.renderErrors()}
+          <div className="login-signup-box">Log in to continue</div>
+          <div className="login-errors">{this.renderErrors()}</div>
           <div className="login-signup-box">
 
               <input className="login-signup-contentbox" type="text"
@@ -61,6 +66,7 @@ class LoginForm extends React.Component {
 
 
               <input className="login-signup-submit-button" type="submit" value="Log in" />
+              <div className="login-signup-submit-button" id="demo" onClick={this.demoLogin}>Demo</div>
           </div>
         </form>
       </div>

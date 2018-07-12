@@ -12,9 +12,11 @@ const mapStateToProps = ({ errors }) => {
 };
 
 const mapDispatchToProps = dispatch => {
+  const demoUser = { email: 'demo', password: '123456' };
   return {
     login: (user) => dispatch(login(user)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    demoLogin: () => dispatch(login(demoUser))
   };
 };
 

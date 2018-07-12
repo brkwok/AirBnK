@@ -35,25 +35,28 @@ class Greeting extends React.Component {
 
   render() {
     const sessionLinks = () => (
-      <nav className="header-nav">
-        <Link className="header-logo" to='/' >
-          <img src={window.logoURL} />
-        </Link>
-        <div className="login-signup">
-          <div className="login-signup-button" onClick={() => this.props.openModal('signup')}>Sign up</div>
-          <div className="login-signup-button" onClick={() => this.props.openModal('login')}>Log in</div>
+      <nav>
+        <div className="header-nav">
+          <Link className="header-logo" to='/' >
+            <img src={window.logoURL} />
+          </Link>
+          <div className="login-signup">
+            <div className="login-signup-button" onClick={() => this.props.openModal('signup')}>Sign up</div>
+            <div className="login-signup-button" onClick={() => this.props.openModal('login')}>Log in</div>
+          </div>
         </div>
       </nav>
     );
 
     const greetingLink = () => (
-      <nav className="header-nav">
+      <nav className="header-wrap">
+        <div className="header-nav">
         <Link className="header-logo" to='/' >
           <img src={window.logoURL} />
         </Link>
         <section className="login-signup">
           <div className="login-signup-button" onClick={this.showMenu}>
-            Show Menu
+            <img className='profile-picture' src={this.props.currentUser.img_url} />
           </div>
 
           {
@@ -68,11 +71,11 @@ class Greeting extends React.Component {
             )
           }
         </section>
+        </div>
       </nav>
     );
     return this.props.currentUser ? greetingLink() : sessionLinks();
   }
-
 }
 
 export default Greeting;
