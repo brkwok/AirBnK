@@ -15,7 +15,7 @@
  */
 
  .background {
-   background-image: image_url('house3.jpg') no-repeat fixed;
+   background: image_url('house3.jpg') no-repeat fixed;
    object-fit: cover;
    -webkit-background-size: cover;
    -moz-background-size: cover;
