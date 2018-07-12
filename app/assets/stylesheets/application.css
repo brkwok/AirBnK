@@ -15,7 +15,7 @@
  */
 
  .background {
-   background: url('house3.jpeg') no-repeat fixed;
+   background: url('house3.jpg') no-repeat fixed;
    -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
@@ -29,14 +29,14 @@
 
 @keyframes images {
   0% {
-    background: url('house2.jpeg');
+    background: url('house2.jpg');
   }
 
   50% {
-    background: url('house3.jpeg');
+    background: url('house3.jpg');
   }
 
   100% {
-    background: url('house4.jpeg');
+    background: url('house4.jpg');
   }
 }
