@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import * as sessions from './util/session_api_util';
+import { fetchSpots } from './util/spot_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -22,9 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
 
   window.getState = store.getState;
-  window.dispatch = store.getState;
-  window.signup = sessions.signup;
-  window.login = sessions.login;
-  window.logout = sessions.logout;
+  window.dispatch = store.dispatch;
+  window.fetchSpots = fetchSpots;
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -14,30 +14,35 @@
  *= require_self
  */
 
- .background {
-   background: image_url('house3.jpg') no-repeat fixed;
-   object-fit: cover;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
+main {
    font-family: 'Dosis', sans-serif;
    font-weight: 700;
-   height: 100vh;
-   animation: images 1s linear 5s ease-in-out infinite;
- }
-
-
-@keyframes images {
-  0% {
-    background: url('house2.jpg');
-  }
-
-  50% {
-    background: url('house3.jpg');
-  }
-
-  100% {
-    background: url('house4.jpg');
-  }
 }
+
+//  .background {
+//    background: image_url('house3.jpg') no-repeat fixed;
+//    object-fit: cover;
+//    -webkit-background-size: cover;
+//    -moz-background-size: cover;
+//    -o-background-size: cover;
+//    background-size: cover;
+//    font-family: 'Dosis', sans-serif;
+//    font-weight: 700;
+//    height: 100vh;
+//    animation: images 1s linear 5s ease-in-out infinite;
+//  }
+//
+//
+// @keyframes images {
+//   0% {
+//     background: url('house2.jpg');
+//   }
+//
+//   50% {
+//     background: url('house3.jpg');
+//   }
+//
+//   100% {
+//     background: url('house4.jpg');
+//   }
+// }

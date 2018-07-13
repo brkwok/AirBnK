@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-class Greeting extends React.Component {
+class SearchNav extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,28 +36,34 @@ class Greeting extends React.Component {
   render() {
     const sessionLinks = () => (
       <nav className="header-wrap">
-        <img className="root-background" src={window.house3} />
-        <div className="header-nav">
+        <div className="header-nav-other">
           <Link className="header-logo" to='/' >
             <img src={window.logoURL} />
           </Link>
           <div className="login-signup">
-            <div className="login-signup-button" onClick={() => this.props.openModal('signup')}>Sign up</div>
-            <div className="login-signup-button" onClick={() => this.props.openModal('login')}>Log in</div>
+            <div className="login-signup-button-other" onClick={() => this.props.openModal('signup')}>Sign up</div>
+            <div className="login-signup-button-other" onClick={() => this.props.openModal('login')}>Log in</div>
           </div>
+        </div>
+        <div className="search-header-nav">
+          <button className="filter-button">
+            <span>Dates</span>
+          </button>
+          <button className="filter-button">
+            <span>Guests</span>
+          </button>
         </div>
       </nav>
     );
 
     const greetingLink = () => (
       <nav className="header-wrap">
-        <img className="root-background" src={window.house3} />
-        <div className="header-nav">
+        <div className="header-nav-other">
         <Link className="header-logo" to='/' >
           <img src={window.logoURL} />
         </Link>
         <section className="login-signup">
-          <div className="login-signup-button" onClick={this.showMenu}>
+          <div className="login-signup-button-other" onClick={this.showMenu}>
             <img className='profile-picture' src={this.props.currentUser.img_url} />
           </div>
 
@@ -74,10 +80,21 @@ class Greeting extends React.Component {
           }
         </section>
         </div>
+        <section className="search-header-nav">
+          <div className="filter-button-container">
+            <button className="filter-button">
+              <span>Dates</span>
+            </button>
+            <button className="filter-button">
+              <span>Guests</span>
+            </button>
+
+          </div>
+        </section>
       </nav>
     );
     return this.props.currentUser ? greetingLink() : sessionLinks();
   }
 }
 
-export default Greeting;
+export default SearchNav;
