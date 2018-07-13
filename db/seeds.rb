@@ -13,5 +13,5 @@ User.create!(id: 0, email: "demo", password: "123456", name: "demo", img_url: Ac
 Spot.destroy_all
 typeof = ['Entire house', 'Private room', 'Entire apartment']
 30.times do
-  Spot.create!(lat: Faker::Address.latitude, lng: Faker::Address.longitude, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(100), guests: rand(8), host_id: 0, details: Faker::ChuckNorris.fact, title: Faker::Address.city, img_url: ActionController::Base.helpers.asset_path('airbnk.png'))
+  Spot.create!(lat: Faker::Address.latitude, lng: Faker::Address.longitude, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(100), guests: rand(8), host_id: 0, details: Faker::ChuckNorris.fact, title: Faker::Address.city, img_url: ActionController::Base.helpers.asset_path('house4.jpg'))
 end

@@ -57,7 +57,7 @@ class Greeting extends React.Component {
           <img src={window.logoURL} />
         </Link>
         <section className="login-signup">
-          <div className="login-signup-button" onClick={this.showMenu}>
+          <div className="login-signup-button-prof" onClick={this.showMenu}>
             <img className='profile-picture' src={this.props.currentUser.img_url} />
           </div>
 

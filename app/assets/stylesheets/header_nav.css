@@ -18,18 +18,9 @@
 
 .search-header-nav {
   position: ;
-  width: 100%;
+  width: auto;
   padding: 16px 72px;
   border-bottom: 1px solid lightgrey;
-}
-
-.login-signup-button-other {
-  margin-left: 15px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-left: 7px;
-  margin-right: 15px;
-  color: #47494f;
 }
 
 .filter-button {
@@ -43,24 +34,6 @@
 
 .filter-button:hover {
   background: lightgrey;
-}
-
-.login-signup {
-  display: flex;
-  color: white;
-  align-items: center;
-}
-
-.login-signup:hover {
-  cursor: pointer;
-}
-
-.login-signup-button {
-  margin-left: 15px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-left: 7px;
-  margin-right: 15px;
 }
 
 .header-logo {

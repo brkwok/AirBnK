@@ -1,0 +1,59 @@
+.spots-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.spot-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+  width: 65%;
+}
+
+.each-spot-container {
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+
+.each-spot-container > img {
+  height: 66%;
+  width: 100%;
+  background-size: auto;
+  object-fit: contain;
+}
+
+.spot-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.spot-details > span {
+  margin-top: 5px;
+}
+
+.spot-type-location {
+  font-size: 11pt;
+  font-weight: bold;
+  color: #59342b;
+}
+
+.spot-title {
+  font-size: 13pt;
+  font-weight: bold;
+  color: #444040;
+}
+
+.spot-cost {
+  font-size: 11pt;
+  color: #756e6e;
+}
