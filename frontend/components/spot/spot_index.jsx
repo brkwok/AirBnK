@@ -1,6 +1,7 @@
 import React from 'react';
 import SpotIndexItem from './spot_index_item';
 
+
 export default ({ spots, fetchSpots }) => {
   if (!spots) {
     spots = [];
