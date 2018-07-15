@@ -35,7 +35,7 @@ class SearchNav extends React.Component {
 
   render() {
     const sessionLinks = () => (
-      <nav className="header-wrap">
+      <nav className="header-wrap-other">
         <div className="header-nav-other">
           <Link className="header-logo" to='/' >
             <img src={window.logoURL} />
@@ -60,7 +60,7 @@ class SearchNav extends React.Component {
     );
 
     const greetingLink = () => (
-      <nav className="header-wrap">
+      <nav className="header-wrap-other">
         <div className="header-nav-other">
         <Link className="header-logo" to='/' >
           <img src={window.logoURL} />
