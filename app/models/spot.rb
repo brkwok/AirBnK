@@ -23,4 +23,11 @@ class Spot < ApplicationRecord
   belongs_to :host,
   foreign_key: :host_id,
   class_name: :User
+
+  def self.in_bounds(bounds)
+    self.where("lat < ?", bounds[:northEast][:lat])
+      .where("lat > ?", bounds[:southWest][:lat])
+      .where("lng < ?", bounds[:northEast][:lng])
+      .where("lng > ?", bounds[:southWest][:lng])
+  end
 end

@@ -19,10 +19,16 @@ main {
    font-weight: 700;
 }
 
-.map-container {
+a {
+  text-decoration: none;
+}
+
+div.spots-container > div.map-container {
+  position: fixed !important;
   margin: 24px 0;
-  margin-right: 13px;
-  position: fixed;
+  margin-right: 8px;
   width: 35%;
   height: calc(100vh - 214px);
+  margin-top: 190px;
+  right: 0;
 }

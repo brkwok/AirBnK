@@ -1,3 +1,10 @@
+.header-wrap {
+  position: fixed;
+  background: white;
+  width: 100%;
+  z-index: 5;
+}
+
 .header-nav {
   position: sticky;
   display: flex;
@@ -33,6 +40,11 @@
 
 .filter-button:hover {
   background: lightgrey;
+}
+
+.filter-button:active {
+  background: teal;
+  color: white;
 }
 
 .header-logo {

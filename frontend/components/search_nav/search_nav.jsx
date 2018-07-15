@@ -52,6 +52,9 @@ class SearchNav extends React.Component {
           <button className="filter-button">
             <span>Guests</span>
           </button>
+          <button className="filter-button">
+            <span>Price</span>
+          </button>
         </div>
       </nav>
     );
@@ -88,7 +91,9 @@ class SearchNav extends React.Component {
             <button className="filter-button">
               <span>Guests</span>
             </button>
-
+            <button className="filter-button">
+              <span>Price</span>
+            </button>
           </div>
         </section>
       </nav>

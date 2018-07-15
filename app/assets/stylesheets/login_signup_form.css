@@ -4,7 +4,7 @@
   padding-bottom: 42px;
   margin-left: 7px;
   margin-right: 15px;
-  color: #47494f;
+  color: #4286f4;
 }
 
 .login-signup-button-prof-other {
@@ -13,11 +13,13 @@
   padding-bottom: 32px;
   margin-left: 7px;
   margin-right: 15px;
-  color: #47494f;
+  color: #4286f4;
 }
 
+/* #47494f */
+
 .login-signup-button-prof-other:hover {
-  border-bottom: 2px solid #47494f;
+  border-bottom: 2px solid #4286f4;
 }
 
 .login-signup-button-prof {
@@ -34,7 +36,7 @@
 }
 
 .login-signup-button-other:hover {
-  border-bottom: 2px solid #47494f;
+  border-bottom: 2px solid #4286f4;
 }
 
 .close-x {
@@ -76,7 +78,7 @@
 
 .login-signup-submit-button {
   color: white;
-  background: #ff5961;
+  background: #4286f4;
   padding: 12px 0;
   border-radius: 5px;
   margin-top: 15px;

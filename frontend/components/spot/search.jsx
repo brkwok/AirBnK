@@ -151,7 +151,7 @@ class Search extends React.Component{
       <div>
         <div className="spots-container">
           <SpotIndex spots={spots} fetchSpots={this.props.fetchSpots} />
-          <SpotMap />
+          <SpotMap spots={spots} />
         </div>
 
         <ul className="pages-buttons">

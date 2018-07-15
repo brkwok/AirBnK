@@ -11,6 +11,7 @@
   align-items: center;
   vertical-align: top;
   width: 65%;
+  margin-top: 166px;
 }
 
 .each-spot-container {
@@ -56,6 +57,11 @@
 .spot-cost {
   font-size: 11pt;
   color: #756e6e;
+}
+
+.spot-rating {
+  font-size: 14px;
+  color: #444040;
 }
 
 .pages-buttons {
