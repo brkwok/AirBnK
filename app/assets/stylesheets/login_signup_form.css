@@ -5,15 +5,17 @@
   margin-left: 7px;
   margin-right: 15px;
   color: #4286f4;
+  border-bottom: 2px solid white;
 }
 
 .login-signup-button-prof-other {
   margin-left: 15px;
   padding-top: 32px;
-  padding-bottom: 32px;
+  padding-bottom: 30px;
   margin-left: 7px;
   margin-right: 15px;
   color: #4286f4;
+  border-bottom: 2px solid white;
 }
 
 /* #47494f */
@@ -37,6 +39,10 @@
 
 .login-signup-button-other:hover {
   border-bottom: 2px solid #4286f4;
+}
+
+.login-signup-button:hover {
+  border-bottom: 2px solid white;
 }
 
 .close-x {
@@ -120,10 +126,11 @@
 
 .login-signup-button {
   margin-left: 15px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 42px;
+  padding-bottom: 42px;
   margin-left: 7px;
   margin-right: 15px;
+  border-bottom: 2px solid transparent;
 }
 
 #demo {
