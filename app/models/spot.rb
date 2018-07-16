@@ -25,9 +25,10 @@ class Spot < ApplicationRecord
   class_name: :User
 
   def self.in_bounds(bounds)
-    self.where("lat < ?", bounds[:northEast][:lat])
-      .where("lat > ?", bounds[:southWest][:lat])
-      .where("lng < ?", bounds[:northEast][:lng])
-      .where("lng > ?", bounds[:southWest][:lng])
+    lat_range = (bounds[:southWest][:lat].to_f..bounds[:northEast][:lat].to_f)
+    lng_range = (bounds[:southWest][:lng].to_f..bounds[:northEast][:lng].to_f)
+    north_south_match = Spot.where({lat: lat_range})
+    matches = north_south_match.where({lng: lng_range})
+    matches
   end
 end

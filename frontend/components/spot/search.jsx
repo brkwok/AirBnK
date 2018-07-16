@@ -16,15 +16,15 @@ class Search extends React.Component{
     this.handleClickPage = this.handleClickPage.bind(this);
   }
 
-  handleClickNextButton() {
-    const nextPage = this.state.activePage + 1;
+  handleClickNextButton(page) {
+    const nextPage = page + 1;
     return (e) => {
       this.setState({ activePage: nextPage});
     };
   }
 
-  handleClickPrevButton() {
-    const prevPage = this.state.activePage - 1;
+  handleClickPrevButton(page) {
+    const prevPage = page - 1;
 
     return (e) => {
       this.setState({ activePage: prevPage});
@@ -64,9 +64,10 @@ class Search extends React.Component{
     let lastIdx;
 
     if (numPages <= 5) {
-      [ firstPage, lastPage ] = [ [], [] ];
+      firstPage = [];
+      lastPage = [];
       startIdx = 1;
-      lastIdx = numPages;
+      lastIdx = numPages + 1;
     } else if ( activePage >= 4 && activePage <= numPages - 3) {
       startIdx = activePage - 1;
       lastIdx = activePage + 2;
@@ -107,26 +108,26 @@ class Search extends React.Component{
     if ( numPages > 1 && activePage < numPages && activePage > 1) {
       next = [
         <li key={ numPages + 1}>
-          <button className='next-prev' onClick={this.handleClickNextButton}>&gt;</button>
+          <button className='next-prev' onClick={this.handleClickNextButton(activePage)}>&gt;</button>
         </li>
       ];
 
       prev = [
         <li key="0" >
-          <button className='next-prev' onClick={this.handleClickPrevButton}>&lt;</button>
+          <button className='next-prev' onClick={this.handleClickPrevButton(activePage)}>&lt;</button>
         </li>
       ];
     } else if ( numPages > 1 && activePage === 1) {
       next = [
         <li key={ numPages + 1}>
-          <button className='next-prev' onClick={this.handleClickNextButton}>&gt;</button>
+          <button className='next-prev' onClick={this.handleClickNextButton(activePage)}>&gt;</button>
         </li>
       ];
       prev = [];
     } else if ( numPages > 1 && activePage === numPages) {
       prev = [
         <li key="0" >
-          <button className='next-prev' onClick={this.handleClickPrevButton}>&lt;</button>
+          <button className='next-prev' onClick={this.handleClickPrevButton(activePage)}>&lt;</button>
         </li>
       ];
 
@@ -137,7 +138,13 @@ class Search extends React.Component{
   }
 
   componentDidMount() {
-    this.props.fetchSpots();
+    this.props.updateBounds(this.props.bounds);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.bounds !== prevProps.bounds) {
+      this.props.fetchSpots(this.props.bounds);
+    }
   }
 
   render () {
@@ -150,8 +157,15 @@ class Search extends React.Component{
     return(
       <div>
         <div className="spots-container">
-          <SpotIndex spots={spots} fetchSpots={this.props.fetchSpots} />
-          <SpotMap spots={spots} />
+          <SpotIndex spots={spots}
+            updateBounds={this.props.updateBounds}
+            bounds={this.props.bounds}
+            />
+          <SpotMap
+            spots={spots}
+            updateBounds={this.props.updateBounds}
+            bounds={this.props.bounds}
+            />
         </div>
 
         <ul className="pages-buttons">

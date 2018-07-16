@@ -1,17 +1,11 @@
 import { fetchSpots } from './spot_actions';
 
 export const UPDATE_FILTER = 'UPDATE_FILTER';
+export const UPDATE_BOUNDS = 'UPDATE_BOUNDS';
 
-export const updateFilter = (filter, value) => {
-  return (dispatch, getState) => {
-    return fetchSpots(getState().ui.filters)(dispatch);
-  };
-};
-
-export const changeFilter = (filter, value) => {
+export const updateBounds = bounds => {
   return {
-    type: UPDATE_FILTER,
-    filter,
-    value
+    type: UPDATE_BOUNDS,
+    bounds
   };
 };
