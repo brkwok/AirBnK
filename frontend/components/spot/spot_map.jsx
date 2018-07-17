@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
 import MarkerManager from '../../util/marker_manager';
-import { fetchSpots } from '../../actions/spot_actions';
+// import { fetchSpots } from '../../actions/spot_actions';
 import { connect } from 'react-redux';
 
 class SpotMap extends React.Component {
@@ -44,10 +44,11 @@ class SpotMap extends React.Component {
   }
 }
 
-const mdp = (dispatch) => {
-  return {
-    fetchSpots: (bounds) => dispatch(fetchSpots(bounds))
-  };
-};
+// const mdp = (dispatch) => {
+//   return {
+//     fetchSpots: (bounds) => dispatch(fetchSpots(bounds))
+//   };
+// };
 
-export default connect(null, mdp)(SpotMap);
+export default SpotMap;
+// export default connect(null, mdp)(SpotMap);

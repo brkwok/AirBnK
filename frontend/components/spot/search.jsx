@@ -1,11 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import SpotIndex from './spot_index';
 import SpotMap from './spot_map';
 
 class Search extends React.Component{
   constructor(props) {
     super(props);
-
     this.state = {
       activePage: 1,
       itemsPerPage: 21,
@@ -144,6 +144,7 @@ class Search extends React.Component{
   componentDidUpdate(prevProps) {
     if (this.props.bounds !== prevProps.bounds) {
       this.props.fetchSpots(this.props.bounds);
+      this.setState({activePage: 1});
     }
   }
 
@@ -162,6 +163,7 @@ class Search extends React.Component{
             bounds={this.props.bounds}
             />
           <SpotMap
+            onClick={window.scrollTo(0, 0)}
             spots={spots}
             updateBounds={this.props.updateBounds}
             bounds={this.props.bounds}

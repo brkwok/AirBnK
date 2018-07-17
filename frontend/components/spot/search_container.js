@@ -4,9 +4,11 @@ import { fetchSpots } from '../../actions/spot_actions';
 import { updateBounds } from '../../actions/filter_actions';
 
 const msp = (state) => {
+  const spots = Object.values(state.entities.spots);
+
   return {
-    spots: Object.values(state.entities.spots),
-    bounds: state.ui.filters.bounds
+    spots,
+    bounds: state.ui.filters.bounds,
   };
 };
 
