@@ -1,0 +1,76 @@
+.spot-show-img-container {
+  width: 100%;
+  height: 70vh;
+  overflow-y: hidden;
+}
+
+.spot-show-img {
+  width: 100%;
+}
+
+.spot-booking-show-container {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.spot-header {
+  margin: 25px 0;
+  width: 60%;
+}
+
+.spot-detail-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.spot-title-type-location {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.spot-type-show {
+  font-size: 14px;
+  color: #616b7a;
+  padding-bottom: 5px;
+}
+
+.spot-title-show {
+  font-size: 30px;
+  color: #30353d;
+  padding-bottom: 15px;
+  padding-top: 5px;
+}
+
+.spot-location-show {
+  font-size: 16px;
+  color: #424a54;
+}
+
+.user-profile-container {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.user-profile-pic {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.user-username {
+  padding: 5px 0;
+  color: #969fad;
+}
+
+.spot-configs {
+  padding-bottom: 25px;
+}

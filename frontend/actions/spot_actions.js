@@ -10,10 +10,26 @@ const receiveAllSpots = spots => {
   };
 };
 
+const receiveSpot = payload => {
+  return {
+    type: RECEIVE_SPOT,
+    spot: payload.spot,
+    user: payload.user
+  };
+};
+
 export const fetchSpots = (filters) => {
   return dispatch => {
     return SpotApiUtil.fetchSpots(filters).then(
       spots => dispatch(receiveAllSpots(spots))
+    );
+  };
+};
+
+export const fetchSpot = (spotId) => {
+  return dispatch => {
+    return SpotApiUtil.fetchSpot(spotId).then(
+      spot => dispatch(receiveSpot(spot))
     );
   };
 };

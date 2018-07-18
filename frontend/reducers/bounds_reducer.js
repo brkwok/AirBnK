@@ -1,6 +1,10 @@
 import { UPDATE_BOUNDS } from '../actions/filter_actions';
 
-export default (state = {}, action) => {
+let defaultState = {
+  minGuest: 1,
+};
+
+export default (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case UPDATE_BOUNDS:

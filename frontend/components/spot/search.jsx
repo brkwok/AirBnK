@@ -8,7 +8,7 @@ class Search extends React.Component{
     super(props);
     this.state = {
       activePage: 1,
-      itemsPerPage: 21,
+      itemsPerPage: 15,
     };
 
     this.handleClickNextButton = this.handleClickNextButton.bind(this);

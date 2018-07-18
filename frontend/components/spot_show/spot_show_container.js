@@ -5,11 +5,13 @@ import SpotShow from './spot_show';
 
 const msp = (state, ownProps) => {
   const spotId = ownProps.match.params.spotId;
-  const spot = state.entities.spots[spotId];
+  const spot = state.entities.spots[spotId] || {};
+  const user = spot.host || {};
 
   return {
     spotId,
-    spot
+    spot,
+    user
   };
 };
 
