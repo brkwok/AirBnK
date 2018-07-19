@@ -1,6 +1,8 @@
 .spot-show-img-container {
+  position: relative;
+  min-width: 1250px;
   width: 100%;
-  height: 70vh;
+  height: 72vh;
   overflow-y: hidden;
 }
 
@@ -20,6 +22,7 @@
 .spot-header {
   margin: 25px 0;
   width: 60%;
+  min-width: 400px;
 }
 
 .spot-detail-wrap {
@@ -73,4 +76,13 @@
 
 .spot-configs {
   padding-bottom: 25px;
+  color: #30353d;
+}
+
+.spot-detail-others {
+  padding-right: 20px;
+}
+
+.fas {
+  padding-right: 10px;
 }

@@ -7,6 +7,8 @@ import Modal from './modal/modal';
 import SearchContainer from './spot/search_container';
 import SpotShowContainer from './spot_show/spot_show_container';
 import ShowNavContainer from './show_nav/show_nav_container';
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
 
 const App = () => {
   return (

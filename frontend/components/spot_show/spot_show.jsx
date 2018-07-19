@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+// import { Link, withRouter } from 'react-router-dom';
 import SpotDetail from './spot_detail';
-import BookingForm from './spot_booking_form';
+import BookingFormContainer from './spot_booking_form_container';
 
 class SpotShow extends React.Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ class SpotShow extends React.Component {
         <section className="spot-booking-show-container">
           <SpotDetail spot={this.props.spot} user={this.props.user} spotId={this.props.spotId} />
           <section className="booking-show">
-            <BookingForm />
+            <BookingFormContainer spot={this.props.spot}/>
           </section>
         </section>
       </section>

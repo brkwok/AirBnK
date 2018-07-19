@@ -1,6 +1,95 @@
 .booking-show {
   border: 1px solid lightgrey;
   margin-top: 25px;
-  width: 35%;
-  height: 45vh;
+  width: 30%;
+  height: 40vh;
+  min-width: 358px;
+}
+
+.booking-form-container {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.booking-cost-rating {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.booking-cost {
+  font-size: 20px;
+  color: #444040;
+}
+
+.booking-cost-per-night {
+  font-size: 15px;
+  color: #756e6e;
+}
+
+.booking-rating {
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.booking-dates {
+  font-size: 15px;
+  padding-bottom: 8px;
+}
+
+.booking-form-guests {
+  font-size: 15px;
+  padding-top: 15px;
+  padding-bottom: 8px;
+}
+
+.booking-num-guests {
+  border: 1px solid lightgrey;
+  height: 46px;
+  display:flex;
+  padding-left: 12px;
+  justify-content: left;
+  align-items: center;
+  color: #756e6e;
+  font-size: 19px;
+  font-weight: normal;
+}
+
+.booking-request {
+  width: 100%;
+  background: #4286f4;
+  color: white;
+  height: 48px;
+  border-radius: 5px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.not-charged {
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.booking-errors {
+  text-align: center;
+  color: red;
+  margin-top: 25px;
+}
+
+.DateInput_input {
+  width: 85% !important;
+}
+
+.DateRangePickerInput__showClearDates {
+  padding-right: 15px !important;
+  width: 100% !important;
+}
+
+.DateRangePickerInput_clearDates {
+  right: -20px !important;
 }

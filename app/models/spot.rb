@@ -15,14 +15,23 @@
 #  cost         :integer          not null
 #  rating       :float
 #  guests       :integer          not null
+#  img_url      :string           not null
+#  bedroom      :integer          default(1), not null
+#  beds         :integer          default(1), not null
+#  bath         :integer          default(1), not null
 #
 
 class Spot < ApplicationRecord
-  validates :title, :details, :lat, :lng, :type_of_spot, :location, :cost, :guests, :img_url, presence: true
+  validates :title, :details, :lat, :lng, :type_of_spot, :location, :cost, :guests, :img_url,
+    :bedroom, :beds, :bath, presence: true
 
   belongs_to :host,
   foreign_key: :host_id,
   class_name: :User
+
+  has_many :bookings,
+  foreign_key: :spot_id,
+  class_name: :Booking
 
   def self.in_bounds(bounds)
     lat_range = (bounds[:southWest][:lat].to_f..bounds[:northEast][:lat].to_f)

@@ -155,7 +155,7 @@ class Search extends React.Component{
     const spotsEndIdx = itemsPerPage * (activePage);
     const spots = allSpots.slice(spotsStartIdx, spotsEndIdx);
 
-    return(
+    const searchFound = () => (
       <div>
         <div className="spots-container">
           <SpotIndex spots={spots}
@@ -175,6 +175,29 @@ class Search extends React.Component{
         </ul>
       </div>
     );
+
+    const noSearchFound = () => (
+      <div>
+        <div className="spots-container">
+          <div className="no-result-found">
+            <strong className="no-results">No results</strong>
+            <span className="no-results-details">To get more results, try adjusting your search or move the map around</span>
+          </div>
+          <SpotMap
+            onClick={window.scrollTo(0, 0)}
+            spots={spots}
+            updateBounds={this.props.updateBounds}
+            bounds={this.props.bounds}
+            />
+        </div>
+
+        <ul className="pages-buttons">
+          {this.pages()}
+        </ul>
+      </div>
+    );
+
+    return spots.length === 0 ? noSearchFound() : searchFound();
   }
 }
 

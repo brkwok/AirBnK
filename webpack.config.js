@@ -21,7 +21,11 @@ module.exports = {
             presets: ['env', 'react']
           }
         },
-      }
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader']
+      },
     ]
   },
   devtool: 'source-map'
