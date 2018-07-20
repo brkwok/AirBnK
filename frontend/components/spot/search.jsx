@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SpotIndex from './spot_index';
 import SpotMap from './spot_map';
+import { withRouter } from 'react-router-dom';
 
 class Search extends React.Component{
   constructor(props) {
@@ -167,6 +168,8 @@ class Search extends React.Component{
             spots={spots}
             updateBounds={this.props.updateBounds}
             bounds={this.props.bounds}
+            lat={this.props.lat}
+            lng={this.props.lng}
             />
         </div>
 
@@ -188,6 +191,8 @@ class Search extends React.Component{
             spots={spots}
             updateBounds={this.props.updateBounds}
             bounds={this.props.bounds}
+            lat={this.props.lat}
+            lng={this.props.lng}
             />
         </div>
 
@@ -201,4 +206,4 @@ class Search extends React.Component{
   }
 }
 
-export default Search;
+export default withRouter(Search);

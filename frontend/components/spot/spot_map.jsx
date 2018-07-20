@@ -9,8 +9,8 @@ class SpotMap extends React.Component {
   componentDidMount() {
     //NY Coord
     const mapOptions = {
-      center: { lat: 40.752316, lng: -73.985951 },
-      zoom: 13
+      center: { lat: this.props.lat, lng: this.props.lng },
+      zoom: 11
     };
 
     this.map = new google.maps.Map(this.mapNode, mapOptions);

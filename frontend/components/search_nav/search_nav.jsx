@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import SearchBarNav from '../search_bar/search_bar_nav';
 
 class SearchNav extends React.Component {
   constructor(props) {
@@ -37,9 +38,12 @@ class SearchNav extends React.Component {
     const sessionLinks = () => (
       <nav className="header-wrap-other">
         <div className="header-nav-other">
-          <Link className="header-logo" to='/' >
-            <img src={window.logoURL} />
-          </Link>
+          <div className="search-logo-container">
+            <Link className="header-logo" to='/' >
+              <img src={window.logoURL} />
+            </Link>
+            <SearchBarNav />
+          </div>
           <div className="login-signup">
             <div className="login-signup-button-other" onClick={() => this.props.openModal('signup')}>Sign up</div>
             <div className="login-signup-button-other" onClick={() => this.props.openModal('login')}>Log in</div>
@@ -62,9 +66,12 @@ class SearchNav extends React.Component {
     const greetingLink = () => (
       <nav className="header-wrap-other">
         <div className="header-nav-other">
-        <Link className="header-logo" to='/' >
-          <img src={window.logoURL} />
-        </Link>
+          <div className="search-logo-container">
+            <Link className="header-logo" to='/' >
+              <img src={window.logoURL} />
+            </Link>
+            <SearchBarNav />
+          </div>
         <section className="login-signup">
           <div className="login-signup-button-prof-other" onClick={this.showMenu}>
             <img className='profile-picture' src={this.props.currentUser.img_url} />

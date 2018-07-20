@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'bootsnap'
 gem 'faker'
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
+gem "figaro"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

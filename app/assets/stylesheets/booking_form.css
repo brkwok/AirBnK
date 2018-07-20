@@ -2,8 +2,9 @@
   border: 1px solid lightgrey;
   margin-top: 25px;
   width: 30%;
-  height: 40vh;
+  height: 40%;
   min-width: 358px;
+  min-height: 404px;
 }
 
 .booking-form-container {
