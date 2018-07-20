@@ -149,6 +149,12 @@ class Search extends React.Component{
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.lat !== nextProps.lat) {
+      this.setState({lat: nextProps.lat, lng: nextProps.lng});
+    }
+  }
+
   render () {
     const allSpots = this.props.spots || [];
     const { activePage, itemsPerPage } = this.state;

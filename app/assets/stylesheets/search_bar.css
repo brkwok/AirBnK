@@ -50,6 +50,10 @@
 .search-nav {
   width: 100%;
   height: 100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search-bar-nav-class {
@@ -59,4 +63,10 @@
   border: 1px solid lightgrey !important;
   padding-left: 10px;
   font-size: 14px;
+}
+
+.clear-input-nav {
+  width: 20px;
+  position: absolute;
+  padding-left: 280px; 
 }

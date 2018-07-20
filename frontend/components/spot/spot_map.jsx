@@ -23,7 +23,12 @@ class SpotMap extends React.Component {
     if (this.props.spots !== prevProps.spots) {
       this.MarkerManager.updateMarkers(this.props.spots);
     }
+    if (this.props.lat !== prevProps.lat) {
+      this.map.setCenter({lat: this.props.lat, lng: this.props.lng});
+      this.map.setZoom(11);
+    }
   }
+
 
   addEventListener() {
     google.maps.event.addListener(this.map, 'idle', () => {
