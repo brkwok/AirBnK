@@ -26,6 +26,7 @@ class SearchBar extends React.Component {
   }
 
   handleSubmit(search) {
+    search = this.state.search;
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({address: search}, (results, status) => {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -34,13 +35,6 @@ class SearchBar extends React.Component {
         this.props.history.push(`/spots?latitude=${lat}&longitude=${lng}`);
       }
     });
-  }
-
-  handleEnter(e) {
-    if (e.keyCode === 13 && e.shiftKey === false) {
-      e.preventDefault();
-      this.handleSubmit(this.state.search);
-    }
   }
 
   handleUpdate(e) {
@@ -62,7 +56,8 @@ class SearchBar extends React.Component {
     return (
       <div className="search-bar-container">
         <div className="intro-words">Book unique homes from all over the world.</div>
-        <div className="search" onKeyDown={this.handleEnter}>
+        <div className="search" onSubmit={this.handleSubmit}>
+          <i className="fas fa-search search-main-icon"></i>
           <input id='search-bar' onChange={this.handleUpdate}
             type="text" className="search-bar"  value={this.state.search}
             placeholder='Try "Manhattan"' />

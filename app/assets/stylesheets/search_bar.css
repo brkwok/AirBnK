@@ -4,19 +4,35 @@
   justify-content: center;
 }
 
+.search-main-icon {
+  position: absolute;
+  left: -45px;
+  bottom: 14px;
+  font-size: 20px;
+  color: grey;
+}
+
+.search-nav-icon {
+  position: absolute;
+  left: 138px;
+  top: 45px;
+  color: grey;
+}
+
 .search-bar {
-  min-width: 500px;
-  width: 40%;
+  min-width: 515px;
+  width: 515px;
   height: 50px;
   border-radius: 5px;
   box-shadow: 1px 1px 2em #6a6d72;
   border: 0 !important;
-  padding: 0 15px;
+  padding: 0 50px;
   font-size: 18px;
 }
 
 .intro-words {
-  width: 40%;
+  min-width: 600px;
+  width: 600px;
   color: white;
   font-size: 50px;
   margin-bottom: 40px;
@@ -26,7 +42,8 @@
 
 .search-bar-container {
   margin: 0 auto;
-  width: 100%;
+  width: 40%;
+  left:30%;
   position:absolute;
   top: 35%;
   display: flex;
@@ -61,12 +78,21 @@
   height: 100%;
   border-radius: 5px;
   border: 1px solid lightgrey !important;
-  padding-left: 10px;
+  padding-left: 30px;
   font-size: 14px;
+}
+
+.clear-input {
+  position: absolute;
+  right: -60px;
+  font-size: 42px;
+  color: lightgrey;
+  bottom: 5px;
+  font-weight: 100;
 }
 
 .clear-input-nav {
   width: 20px;
   position: absolute;
-  padding-left: 280px; 
+  padding-left: 280px;
 }

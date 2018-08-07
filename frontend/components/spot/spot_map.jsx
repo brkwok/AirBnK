@@ -49,11 +49,5 @@ class SpotMap extends React.Component {
   }
 }
 
-// const mdp = (dispatch) => {
-//   return {
-//     fetchSpots: (bounds) => dispatch(fetchSpots(bounds))
-//   };
-// };
 
 export default SpotMap;
-// export default connect(null, mdp)(SpotMap);
