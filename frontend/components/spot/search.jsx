@@ -9,7 +9,7 @@ class Search extends React.Component{
     super(props);
     this.state = {
       activePage: 1,
-      itemsPerPage: 15,
+      itemsPerPage: 6,
     };
 
     this.handleClickNextButton = this.handleClickNextButton.bind(this);
@@ -85,7 +85,7 @@ class Search extends React.Component{
       lastIdx = numPages;
 
       firstPage.push(overflow1);
-    } else if (activePage <= numPages - 4 && activePage <= 7) {
+    } else if (activePage <= numPages - 4 && activePage >= 7) {
       startIdx = activePage - 1;
       lastIdx = activePage + 2;
 

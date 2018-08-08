@@ -5,17 +5,16 @@
 }
 
 .search-main-icon {
-  position: absolute;
-  left: -45px;
-  bottom: 14px;
+  position: relative;
+  left: 45px;
+  bottom: -16px;
   font-size: 20px;
   color: grey;
 }
 
 .search-nav-icon {
-  position: absolute;
-  left: 138px;
-  top: 45px;
+  position: relative;
+  left: 36px;
   color: grey;
 }
 
@@ -41,10 +40,9 @@
 }
 
 .search-bar-container {
+  width: 100%;
   margin: 0 auto;
-  width: 40%;
-  left:30%;
-  position:absolute;
+  position: absolute;
   top: 35%;
   display: flex;
   flex-direction: column;
@@ -83,16 +81,32 @@
 }
 
 .clear-input {
-  position: absolute;
-  right: -60px;
+  position: relative;
+  right: 35px;
   font-size: 42px;
   color: lightgrey;
-  bottom: 5px;
+  bottom: -3px;
+  font-weight: 100;
+}
+
+.clear-input-char {
+  position: relative;
+  right: 35px;
+  font-size: 42px;
+  color: transparent;
+  bottom: -3px;
   font-weight: 100;
 }
 
 .clear-input-nav {
   width: 20px;
-  position: absolute;
-  padding-left: 280px;
+  position: relative;
+  left: -20px;
+}
+
+.clear-input-char-nav {
+  width: 20px;
+  position: relative;
+  left: -20px;
+  color: transparent;
 }

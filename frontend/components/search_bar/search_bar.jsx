@@ -25,8 +25,8 @@ class SearchBar extends React.Component {
     });
   }
 
-  handleSubmit(search) {
-    search = this.state.search;
+  handleSubmit() {
+    let search = this.state.search;
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({address: search}, (results, status) => {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -51,6 +51,8 @@ class SearchBar extends React.Component {
       clear = (
         <div className='clear-input' onClick={this.handleClear}>&times;</div>
       );
+    } else {
+      clear = (<div className='clear-input-char'>&times;</div>);
     }
 
     return (
