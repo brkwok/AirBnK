@@ -141,3 +141,8 @@
 #demo:hover {
   cursor: default;
 }
+
+.session-errors {
+  padding-top: 10px;
+  font-size: 15px;
+}

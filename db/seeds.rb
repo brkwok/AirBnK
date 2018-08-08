@@ -13,5 +13,12 @@ User.create!(id: 0, email: "demo", password: "123456", name: "demo", img_url: Ac
 Spot.destroy_all
 typeof = ['Entire house', 'Private room', 'Entire apartment']
 200.times do
-  Spot.create!(lat: Faker::Address.latitude, lng: Faker::Address.longitude, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..100), guests: rand(1..8), host_id: 0, details: Faker::ChuckNorris.fact, title: Faker::Address.city, img_url: ActionController::Base.helpers.asset_path('house4.jpg'))
+  Spot.create!(lat: Faker::Address.latitude, lng: Faker::Address.longitude, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: 0, details: Faker::ChuckNorris.fact, title: Faker::Address.city, img_url: ActionController::Base.helpers.asset_path("house#{rand(1..4)}.jpg"))
+end
+
+Review.destroy_all
+first_spot = Spot.first.id
+last_spot = Spot.last.id
+200.times do
+  Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: 0, rating: rand(1..5))
 end

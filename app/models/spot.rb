@@ -13,7 +13,6 @@
 #  type_of_spot :string           not null
 #  location     :string           not null
 #  cost         :integer          not null
-#  rating       :float
 #  guests       :integer          not null
 #  img_url      :string           not null
 #  bedroom      :integer          default(1), not null
@@ -32,6 +31,19 @@ class Spot < ApplicationRecord
   has_many :bookings,
   foreign_key: :spot_id,
   class_name: :Booking
+
+  has_many :reviews
+
+  def avg_ratings
+    if !self.reviews.empty?
+      ratings = self.reviews.map { |el| el.rating }
+      sum_ratings = ratings.reduce(:+)
+      float = sum_ratings / (ratings.length.to_f)
+      return (float * 10).ceil / 10.0
+    else
+      return nil
+    end
+  end
 
   def self.in_bounds(bounds)
     lat_range = (bounds[:southWest][:lat].to_f..bounds[:northEast][:lat].to_f)

@@ -60,6 +60,23 @@ class SpotBookingForm extends React.Component {
     );
   }
 
+  renderStars() {
+    let rating = this.props.spot.avg_ratings;
+    let ratingPercentage = rating / 5 * 100;
+    let width = {width: `${ratingPercentage}%`};
+    return (
+      rating ? (
+        <div className="stars-wrapper">
+          <div className="stars-outer"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
+          <div className="stars-inner" style={width}><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
+          </div>
+        </div>
+      )
+      :
+      (<div className="stars-wrapper"></div>)
+    );
+  }
+
 
   render() {
     return (
@@ -67,7 +84,10 @@ class SpotBookingForm extends React.Component {
         <div className="booking-form-wrap">
           <div className="booking-cost-rating">
             <span className="booking-cost">${this.props.spot.cost} <span className="booking-cost-per-night"> per night</span></span>
-            <span className="booking-rating">{this.props.spot.rating || "No reviews yet"}</span>
+            <div className="rating-wrap">
+              {this.renderStars()}
+              <span className="booking-rating">{this.props.spot.avg_ratings || "No reviews yet"}</span>
+            </div>
           </div>
 
           <div className="booking-calendar">

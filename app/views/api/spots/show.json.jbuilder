@@ -1,5 +1,6 @@
 json.spot do
   json.partial! '/api/spots/spot', spot: @spot
+  json.avg_ratings @spot.avg_ratings
 end
 
 

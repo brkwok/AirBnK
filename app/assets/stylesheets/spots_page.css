@@ -81,7 +81,8 @@
 }
 
 .spot-rating {
-  font-size: 14px;
+  padding-top: 5px;
+  font-size: 13px;
   color: #444040;
 }
 
@@ -129,6 +130,12 @@
   margin: 5px;
 }
 
+.rating-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
 .overflow {
   padding-top: 10px;
 }
@@ -163,4 +170,45 @@
 
 .not-selected > span:hover {
   border-bottom: 1px solid teal;
+}
+
+.stars-outer-show {
+  display: inline-block;
+  position: relative;
+  color: teal;
+  font-size: 12px;
+}
+
+.stars-wrapper {
+  font-size: 12px;
+}
+
+.stars-outer-show::before {
+  /* content: "\f006 \f006 \f006 \f006 \f006"; */
+}
+
+.stars-inner-show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  /* width: 0; */
+}
+
+.fa-star {
+  padding: 0 !important;
+}
+
+.stars-inner-show::before {
+  /* content: "\f005 \f005 \f005 \f005 \f005"; */
+  color: #f8ce0b;
+}
+
+.stars-wrapper-show {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-top: 5px;
+  padding-right: 5px;
 }
