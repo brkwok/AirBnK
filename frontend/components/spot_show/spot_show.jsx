@@ -9,7 +9,7 @@ class SpotShow extends React.Component {
   }
 
   render() {
-    debugger
+    
     return(
       <section>
         <section className="spot-show-img-container">

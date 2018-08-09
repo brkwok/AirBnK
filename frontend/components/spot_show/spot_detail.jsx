@@ -26,7 +26,6 @@ export default ({ spot, user, reviews, users }) => {
       const date2 = new Date(review2.created_at);
       return date2 - date1;
     }).map(review => {
-      debugger
       return (
         <div key={review.id} className="each-review-container">
           <div className="each-review-container-top">
