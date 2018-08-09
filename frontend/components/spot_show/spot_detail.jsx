@@ -27,56 +27,88 @@ export default ({ spot, user, reviews, users }) => {
       return date2 - date1;
     }).map(review => {
       return (
-        <div key={review.id} className="">
-          <div>
-            <img src={users[review.user_id].img_url}></img>
-            <div>{users[review.user_id].name}</div>
-            <div>{new Date(review.created_at).toString().split("GMT")[0]}</div>
+        <div key={review.id} className="each-review-container">
+          <div className="each-review-container-top">
+            <div className="review-picture-container">
+              <img className="review-profile-picture" src={users[review.user_id].img_url}></img>
+            </div>
+            <div className="review-user-detail-container">
+              <div className="review-username">{users[review.user_id].name}</div>
+              <div className="review-timestamp">{new Date(review.created_at).toString().split("GMT")[0]}</div>
+            </div>
           </div>
-          <div>{review.comment}</div>
+          <div className="review-comment">{review.comment}</div>
         </div>
       );
     });
   }
 
+  let rating = eachSpot.avg_ratings;
+  let ratingPercentage = rating / 5 * 100;
+  let width = {width: `${ratingPercentage}%`};
+
+  const renderStars = rating ? (
+      <div className="stars-wrapper-review-list">
+        <div className="stars-outer-review-list"><i className="far fa-star star-review-list"></i><i className="far fa-star star-review-list"></i><i className="far fa-star star-review-list"></i><i className="far fa-star star-review-list"></i><i className="far fa-star star-review-list"></i>
+        <div className="stars-inner-review-list" style={width}><i className="fas fa-star star-review-list"></i><i className="fas fa-star star-review-list"></i><i className="fas fa-star star-review-list"></i><i className="fas fa-star star-review-list"></i><i className="fas fa-star star-review-list"></i></div>
+        </div>
+      </div>
+    )
+    :
+    (<div className="stars-wrapper"></div>);
+
+  const totalReview = reviews ? (
+    <div className="review-total">{reviews.length} Reviews</div>
+  ) : (
+    <div className="review-total">No reviews yet</div>
+  );
+
   return(
     <section className="spot-header">
-      <span className="spot-type-show">{eachSpot.type_of_spot}</span>
-      <section className="spot-detail-wrap">
-        <section className="spot-title-type-location">
-          <span className="spot-title-show">{eachSpot.title}</span>
-          <span className="spot-location-show">{eachSpot.location}</span>
+      <div className="spot-detail-divider">
+        <span className="spot-type-show">{eachSpot.type_of_spot}</span>
+        <section className="spot-detail-wrap">
+          <section className="spot-title-type-location">
+            <span className="spot-title-show">{eachSpot.title}</span>
+            <span className="spot-location-show">{eachSpot.location}</span>
+          </section>
+          <section className="user-profile-container">
+            {link}
+            {name}
+          </section>
         </section>
-        <section className="user-profile-container">
-          {link}
-          {name}
+        <div className="spot-configs">
+          <span className="spot-detail-others">
+            <i className="fas fa-users"></i>
+            {eachSpot.guests} guests
+          </span>
+          <span className="spot-detail-others">
+            <i className="fas fa-door-open"></i>
+            {eachSpot.bedroom} bedroom
+          </span>
+          <span className="spot-detail-others">
+            <i className="fas fa-bed"></i>
+            {eachSpot.beds} bed
+          </span>
+          <span className="spot-detail-others">
+            <i className="fas fa-bath"></i>
+            {eachSpot.bath} bath
+          </span>
+        </div>
+        <div>
+          {eachSpot.details}
+        </div>
+      </div>
+      <div className="review-full-container">
+        <div className="review-intro">
+          { totalReview }
+          { renderStars }
+        </div>
+        {reviewDisp}
+        <section className="review-form">
+          <ReviewFormContainer spot={eachSpot}/>
         </section>
-      </section>
-      <div className="spot-configs">
-        <span className="spot-detail-others">
-          <i className="fas fa-users"></i>
-          {eachSpot.guests} guests
-        </span>
-        <span className="spot-detail-others">
-          <i className="fas fa-door-open"></i>
-          {eachSpot.bedroom} bedroom
-        </span>
-        <span className="spot-detail-others">
-          <i className="fas fa-bed"></i>
-          {eachSpot.beds} bed
-        </span>
-        <span className="spot-detail-others">
-          <i className="fas fa-bath"></i>
-          {eachSpot.bath} bath
-        </span>
       </div>
-      <div>
-        {eachSpot.details}
-      </div>
-      {reviewDisp}
-      <section className="review-form">
-        <ReviewFormContainer spot={eachSpot}/>
-      </section>
     </section>
   );
 };

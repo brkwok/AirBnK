@@ -25,10 +25,10 @@ class SearchBar extends React.Component {
     });
   }
 
-  handleSubmit() {
-    let search = this.state.search;
+  handleSubmit(search) {
+    let thisSearch = search || this.state.search;
     const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({address: search}, (results, status) => {
+    geocoder.geocode({address: thisSearch}, (results, status) => {
       if (status == google.maps.GeocoderStatus.OK) {
         const lat = results[0].geometry.location.lat();
         const lng = results[0].geometry.location.lng();

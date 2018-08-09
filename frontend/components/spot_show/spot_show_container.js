@@ -29,7 +29,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
   return {
-    fetchSpot: id => dispatch(fetchSpot(id))
+    fetchSpot: id => dispatch(fetchSpot(id)),
   };
 };
 

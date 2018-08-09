@@ -8,7 +8,6 @@ class SpotShow extends React.Component {
     this.props.fetchSpot(this.props.match.params.spotId);
   }
 
-
   render() {
 
     return(
