@@ -25,6 +25,7 @@ class ReviewForm extends React.Component {
           rating: this.state.rating
         }
       });
+
     } else {
       this.props.openModal('login');
     }

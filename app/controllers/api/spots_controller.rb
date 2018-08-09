@@ -6,7 +6,14 @@ class Api::SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.find(params[:id])
+    @spot = Spot.includes(
+      reviews: [:user]
+    ).find(params[:id])
+    @reviews = @spot.reviews
+    @users = []
+    @reviews.each do |review|
+      @users << review.user
+    end
     render :show
   end
 

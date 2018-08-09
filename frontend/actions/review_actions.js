@@ -8,7 +8,9 @@ export const receiveReviews = payload => {
   return {
     type: RECEIVE_REVIEWS,
     reviews: payload.reviews,
-    spot: payload.spot
+    spot: payload.spot,
+    user: payload.user,
+    users: payload.users
   };
 };
 

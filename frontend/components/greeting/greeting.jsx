@@ -36,7 +36,7 @@ class Greeting extends React.Component {
   render() {
     const sessionLinks = () => (
       <nav className="header-wrap">
-        <img className="root-background" src={window.house2} />
+        <img className="root-background" src={window.background} />
         <div className="header-nav">
           <Link className="header-logo" to='/' >
             <img src={window.logoURL} />
@@ -51,7 +51,7 @@ class Greeting extends React.Component {
 
     const greetingLink = () => (
       <nav className="header-wrap">
-        <img className="root-background" src={window.house2} />
+        <img className="root-background" src={window.background} />
         <div className="header-nav">
         <Link className="header-logo" to='/' >
           <img src={window.logoURL} />

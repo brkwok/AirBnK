@@ -6,7 +6,7 @@ import ReviewFormContainer from '../reviews/review_form_container';
 export default ({ spot, user, reviews, users }) => {
   let eachSpot = spot || {};
   let link = '';
-  if (typeof user === 'undefined') { return; } else { link = (
+  if (typeof user === 'undefined' || user.length === 0) { return; } else { link = (
       <Link to="">
         <img  className="user-profile-pic" src={user.img_url} />
       </Link>
@@ -26,6 +26,7 @@ export default ({ spot, user, reviews, users }) => {
       const date2 = new Date(review2.created_at);
       return date2 - date1;
     }).map(review => {
+      debugger
       return (
         <div key={review.id} className="each-review-container">
           <div className="each-review-container-top">

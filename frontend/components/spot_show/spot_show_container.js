@@ -23,7 +23,7 @@ const msp = (state, ownProps) => {
     spot,
     user,
     users: state.entities.users,
-    reviews: _.compact(reviews)
+    reviews: _.compact(reviews),
   };
 };
 

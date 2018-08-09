@@ -9,11 +9,11 @@ class SpotShow extends React.Component {
   }
 
   render() {
-
+    debugger
     return(
       <section>
         <section className="spot-show-img-container">
-          <img className="spot-show-img" src={window.house3} />
+          <img className="spot-show-img" src={this.props.spot.img_url} />
         </section>
         <section className="spot-booking-show-container">
           <SpotDetail
