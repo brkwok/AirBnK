@@ -7,11 +7,21 @@ const msp = (state, ownProps) => {
   const spotId = ownProps.match.params.spotId;
   const spot = state.entities.spots[spotId] || {};
   const user = spot.host || {};
+  let reviews;
+  if (typeof Object.keys(state.entities.reviews) !== 'undefined') {
+    reviews = Object.keys(state.entities.reviews).map(id => {
+      if (state.entities.reviews[id].spot_id === parseInt(spotId)) {
+        return state.entities.reviews[id];
+      } else {}
+    });
+  }
 
   return {
     spotId,
     spot,
-    user
+    user,
+    users: state.entities.users,
+    reviews
   };
 };
 

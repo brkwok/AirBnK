@@ -1,0 +1,32 @@
+.review-form-wrap {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-form-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+.review-review {
+  height: 100px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid lightgrey;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.review-submit {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+  background: #4286f4;
+}

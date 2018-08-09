@@ -56,8 +56,8 @@ export const deleteBooking = bookingId => {
     return BookingApiUtil.deleteBooking(bookingId).then(() => {
       return dispatch(removeBooking(bookingId));
     },
-    (errors) => {
-      return dispatch(receiveErrors(errors.responseJSON));
+    (err) => {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };

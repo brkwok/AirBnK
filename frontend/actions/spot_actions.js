@@ -14,7 +14,8 @@ const receiveSpot = payload => {
   return {
     type: RECEIVE_SPOT,
     spot: payload.spot,
-    user: payload.user
+    user: payload.user,
+    reviews: payload.reviews
   };
 };
 

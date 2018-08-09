@@ -15,7 +15,11 @@ class SpotShow extends React.Component {
           <img className="spot-show-img" src={window.house3} />
         </section>
         <section className="spot-booking-show-container">
-          <SpotDetail spot={this.props.spot} user={this.props.user} spotId={this.props.spotId} />
+          <SpotDetail
+            reviews={this.props.reviews}
+            spot={this.props.spot}
+            user={this.props.user} spotId={this.props.spotId}
+            users={this.props.users}/>
           <section className="booking-show">
             <BookingFormContainer spot={this.props.spot}/>
           </section>

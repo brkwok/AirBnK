@@ -8,8 +8,8 @@ class Api::ReviewsController < ApplicationController
     @review.user_id = current_user.id
 
     if @review.save
-      @reviews = Review.all
-      render :index
+      @spot = @review.spot
+      render "api/spots/show", :id => @spot.id
     else
       render json: @review.errors.full_messages, status: 422
     end

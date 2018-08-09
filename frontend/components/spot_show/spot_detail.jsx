@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReviewFormContainer from '../reviews/review_form_container';
+import ReviewList from '../reviews/review_list';
 
-export default ({ spot, user }) => {
+
+export default ({ spot, user, reviews, users }) => {
   let eachSpot = spot || {};
   let link = '';
   if (typeof user === 'undefined') { return; } else { link = (
@@ -13,6 +16,29 @@ export default ({ spot, user }) => {
   let name = '';
   if (typeof user === 'undefined') { return; } else {
     name = (<div className="user-username">{user.name}</div>);
+  }
+
+  let reviewDisp;
+  if (reviews.length === 0) {
+  } else {
+    reviewDisp = reviews.sort((review1, review2) => {
+      const date1 = new Date(review1.created_at);
+      const date2 = new Date(review2.created_at);
+      return date2 - date1;
+    }).map(review => {
+
+
+      return (
+        <div key={review.id} className="">
+          <div>
+            <img src={users[review.user_id].img_url}></img>
+            <div>{users[review.user_id].name}</div>
+            <div>{new Date(review.created_at).toString().split("GMT")[0]}</div>
+          </div>
+          <div>{review.comment}</div>
+        </div>
+      );
+    });
   }
 
   return(
@@ -49,6 +75,10 @@ export default ({ spot, user }) => {
       <div>
         {eachSpot.details}
       </div>
+      {reviewDisp}
+      <section className="review-form">
+        <ReviewFormContainer spot={eachSpot}/>
+      </section>
     </section>
   );
 };

@@ -19,6 +19,6 @@ end
 Review.destroy_all
 first_spot = Spot.first.id
 last_spot = Spot.last.id
-200.times do
+1000.times do
   Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: 0, rating: rand(1..5))
 end
