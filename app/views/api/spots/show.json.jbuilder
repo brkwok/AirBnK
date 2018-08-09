@@ -14,7 +14,7 @@ json.reviews do
   if @spot.reviews
     @spot.reviews.each do |review|
       json.set! review.id do
-        json.extract! review, :comment, :user_id, :spot_id, :rating, :created_at
+        json.extract! review,:id, :comment, :user_id, :spot_id, :rating, :created_at
       end
     end
   end

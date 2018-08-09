@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReviewFormContainer from '../reviews/review_form_container';
-import ReviewList from '../reviews/review_list';
 
 
 export default ({ spot, user, reviews, users }) => {
@@ -19,15 +18,14 @@ export default ({ spot, user, reviews, users }) => {
   }
 
   let reviewDisp;
-  if (reviews.length === 0) {
+  if ((typeof reviews === "undefined") || (reviews.length === 0)) {
   } else {
+
     reviewDisp = reviews.sort((review1, review2) => {
       const date1 = new Date(review1.created_at);
       const date2 = new Date(review2.created_at);
       return date2 - date1;
     }).map(review => {
-
-
       return (
         <div key={review.id} className="">
           <div>
