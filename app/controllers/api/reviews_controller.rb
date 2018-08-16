@@ -9,7 +9,8 @@ class Api::ReviewsController < ApplicationController
 
     if @review.save
       @spot = Spot.find(@review.spot_id)
-      
+      @reviews = @spot.reviews
+      @users = @reviews.map { |review| review.user }
       render "api/spots/show", :id => @spot.id
     else
       render json: @review.errors.full_messages, status: 422

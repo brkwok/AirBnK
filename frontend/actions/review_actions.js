@@ -34,7 +34,7 @@ export const fetchReviews = () => {
       reviews => {
         return dispatch(receiveReviews(reviews));
       },
-      err => {
+      (err) => {
         return dispatch(receiveErrors(err.responseJSON));
       }
     );
@@ -47,7 +47,7 @@ export const createReview = (data) => {
       (payload) => {
         return dispatch(receiveReviews(payload));
       },
-      err => {
+      (err) => {
         return dispatch(receiveErrors(err.responseJSON));
       }
     );
@@ -60,7 +60,7 @@ export const deleteReview = reviewId => {
       () => {
         return dispatch(removeReview(reviewId));
       },
-      err => {
+      (err) => {
         return dispatch(receiveErrors(err.responseJSON));
       }
     );

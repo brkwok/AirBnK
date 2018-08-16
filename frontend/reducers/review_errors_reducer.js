@@ -4,7 +4,7 @@ const reviewErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_REVIEW_ERRORS:
-      return action.err;
+      return action.err || [];
     case RECEIVE_REVIEWS:
       return [];
     default:
