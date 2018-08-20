@@ -6,7 +6,7 @@ class ReviewForm extends React.Component {
 
     this.state = {
       comment: null,
-      rating: 1,
+      rating: null,
     };
 
     this.updateField = this.updateField.bind(this);
@@ -35,7 +35,7 @@ class ReviewForm extends React.Component {
     let reviewErrors = this.props.errors || [];
 
     return(
-      <ul>
+      <ul className="review-error">
         {reviewErrors.map( (err, i) => {
           return <li key={`error${i}`} className="review-errors">
             {err}
