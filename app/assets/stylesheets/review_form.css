@@ -3,7 +3,8 @@
   height: 220px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .review-form-container {

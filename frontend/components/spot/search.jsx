@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import SpotIndex from './spot_index';
 import SpotMap from './spot_map';
 import { withRouter } from 'react-router-dom';
