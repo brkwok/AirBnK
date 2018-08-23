@@ -69,7 +69,7 @@ class SignupForm extends React.Component {
                 />
 
               <input className="login-signup-submit-button" type="submit" value="Sign up" />
-            <div className="to-signup">Already have an Airbnb account? <strong className="to-login-signup-modal" onClick={this.openModal}>Log in</strong></div>
+            <div className="to-signup">Already have an localhost account? <strong className="to-login-signup-modal" onClick={this.openModal}>Log in</strong></div>
           </div>
         </form>
       </div>

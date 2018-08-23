@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } form 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class guestsForm extends React.Component {
   constructor(props) {

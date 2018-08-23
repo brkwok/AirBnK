@@ -81,7 +81,9 @@ class SearchNav extends React.Component {
             this.state.showMenu
             ? (
               <div className="dropdown">
-                <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
+                <div className="dropdown-comp">Edit Profile</div>
+                <div className="dropdown-comp">Manage Bookings</div>
+                <div className="dropdown-comp" onClick={this.handleLogout}>Log Out</div>
               </div>
             )
             : (
