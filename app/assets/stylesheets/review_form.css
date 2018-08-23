@@ -20,8 +20,10 @@
   width: 100%;
   border-radius: 3px;
   border: 1px solid lightgrey;
-  margin-bottom: 15px;
   font-size: 13px;
+  margin: inherit;
+  margin-bottom: 15px;
+  resize: none;
 }
 
 .review-submit {
@@ -30,4 +32,18 @@
   border-radius: 5px;
   color: white;
   background: #4286f4;
+}
+
+.rating-button {
+  color: teal;
+}
+
+.review-header {
+  font-size: 25px;
+  margin: 15px 0;
+}
+
+.review-star-rating {
+  font-size: 18px;
+  margin-bottom: 15px;
 }

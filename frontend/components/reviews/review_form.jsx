@@ -120,10 +120,11 @@ class ReviewForm extends React.Component {
   render() {
     return (
       <div className="review-form-wrap">
-        {this.renderErrors()}
-        <div>
+        <div className="review-header">Leave a Review</div>
+        <div className="review-star-rating">
           {this.displayStars()}
         </div>
+        {this.renderErrors()}
         <form className="review-form-container" onSubmit={this.handleSubmit}>
           <textarea id="textarea" className="review-review" onChange={this.updateField('comment')} placeholder="Your review about the place"></textarea>
           <button className="review-submit" type="submit">Post Review</button>
