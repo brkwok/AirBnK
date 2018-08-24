@@ -38,6 +38,10 @@
   color: teal;
 }
 
+.rating-button:hover {
+  cursor: pointer;
+}
+
 .review-header {
   font-size: 25px;
   margin: 15px 0;
@@ -46,4 +50,10 @@
 .review-star-rating {
   font-size: 18px;
   margin-bottom: 15px;
+}
+
+.review-error {
+  padding-bottom: 15px;
+  color: red;
+  font-size: 13px;
 }
