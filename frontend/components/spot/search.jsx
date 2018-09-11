@@ -4,7 +4,7 @@ import SpotIndex from './spot_index';
 import SpotMap from './spot_map';
 import { withRouter } from 'react-router-dom';
 
-class Search extends React.Component{
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

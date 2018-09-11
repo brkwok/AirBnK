@@ -4,10 +4,12 @@ export const RECEIVE_BOOKINGS = 'RECEIVE_BOOKINGS';
 export const REMOVE_BOOKING = 'REMOVE_BOOKING';
 export const RECEIVE_BOOKING_ERRORS = 'RECEIVE_BOOKING_ERRORS';
 
-export const receiveBookings = bookings => {
+export const receiveBookings = payload => {
+  
   return {
     type: RECEIVE_BOOKINGS,
-    bookings
+    bookings: payload.bookings,
+    spots: payload.spots
   };
 };
 
@@ -28,7 +30,7 @@ export const removeBooking = bookingId => {
 export const fetchBookings = () => {
   return dispatch => {
     return BookingApiUtil.fetchBookings().then(
-      bookings => {
+      (bookings) => {
         return dispatch(receiveBookings(bookings));
       },
       (err) => {
@@ -41,8 +43,8 @@ export const fetchBookings = () => {
 export const createBooking = (data) => {
   return dispatch => {
     return BookingApiUtil.createBooking(data).then(
-      () => {
-        return dispatch(fetchBookings());
+      (payload) => {
+        return dispatch(fetchBookings(payload));
       },
       (err) => {
         return dispatch(receiveErrors(err.responseJSON));

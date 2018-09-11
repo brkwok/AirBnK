@@ -2,11 +2,13 @@
 #
 # Table name: bookings
 #
-#  id        :bigint(8)        not null, primary key
-#  spot_id   :integer          not null
-#  user_id   :integer          not null
-#  check_in  :date             not null
-#  check_out :date             not null
+#  id         :bigint(8)        not null, primary key
+#  spot_id    :integer          not null
+#  user_id    :integer          not null
+#  check_in   :date             not null
+#  check_out  :date             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Booking < ApplicationRecord

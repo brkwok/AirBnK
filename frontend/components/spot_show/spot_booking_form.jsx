@@ -37,7 +37,7 @@ class SpotBookingForm extends React.Component {
             check_out: this.state.endDate._d
           }
         }).then(
-          () => this.props.history.push(`/`)
+          () => this.props.history.push(`/bookings`)
         );
       } else {
         alert("Dates required");
