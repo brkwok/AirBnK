@@ -5,7 +5,6 @@ export const REMOVE_BOOKING = 'REMOVE_BOOKING';
 export const RECEIVE_BOOKING_ERRORS = 'RECEIVE_BOOKING_ERRORS';
 
 export const receiveBookings = payload => {
-  
   return {
     type: RECEIVE_BOOKINGS,
     bookings: payload.bookings,
