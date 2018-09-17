@@ -13,6 +13,7 @@ class Greeting extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.redirectBookings = this.redirectBookings.bind(this);
   }
 
   showMenu(e) {
@@ -33,13 +34,17 @@ class Greeting extends React.Component {
     this.props.logout();
   }
 
+  redirectBookings() {
+    this.props.history.push("/bookings");
+  }
+
   render() {
     const sessionLinks = () => (
       <nav className="header-wrap">
         <img className="root-background" src={window.background} />
         <div className="header-nav">
           <Link className="header-logo" to='/' >
-            <img src={window.logoURL} />
+            <img className="localhost-logo" src={window.logoURL} />
           </Link>
           <div className="login-signup">
             <div className="login-signup-button" onClick={() => this.props.openModal('signup')}>Sign up</div>
@@ -54,7 +59,7 @@ class Greeting extends React.Component {
         <img className="root-background" src={window.background} />
         <div className="header-nav">
         <Link className="header-logo" to='/' >
-          <img src={window.logoURL} />
+          <img className="localhost-logo" src={window.logoURL} />
         </Link>
         <section className="login-signup">
           <div className="login-signup-button-prof" onClick={this.showMenu}>
@@ -65,6 +70,8 @@ class Greeting extends React.Component {
             this.state.showMenu
             ? (
               <div className="dropdown">
+                <div className="dropdown-comp">Edit Profile</div>
+                <div className="dropdown-comp" onClick={this.redirectBookings}>Manage Bookings</div>
                 <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
               </div>
             )

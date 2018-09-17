@@ -3,13 +3,14 @@ import {
   RECEIVE_BOOKINGS,
   REMOVE_BOOKING
 } from '../actions/booking_actions';
-// import { RECEIVE_ALL_SPOTS } from '../actions/spot_actions';
+import { RECEIVE_ALL_SPOTS } from '../actions/spot_actions';
 
 const BookingsReducer = (state = {}, action) => {
-  
+
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_BOOKINGS:
+    case RECEIVE_ALL_SPOTS:
       return action.bookings || {};
     case REMOVE_BOOKING:
       const newState = merge({}, state);

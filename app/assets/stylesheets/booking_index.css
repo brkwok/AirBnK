@@ -1,0 +1,60 @@
+.booking-index-img {
+  width: 320px;
+  height: 180px;
+}
+
+.booking-index-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  cursor: pointer;
+}
+
+.booking-index-item-wrap {
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid lightgrey;
+}
+
+.bookings-index {
+  width: 60%;
+  min-width: 700px;
+  margin: 0 auto;
+}
+
+.booking-index-check {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  color: #424a54;
+}
+
+.booking-index-title {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: #30353d;
+}
+
+.booking-index-info-wrap {
+  width: 100%;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.booking-index-button {
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 15px;
+  background: #4286f4;
+  color: white;
+  width: 100%;
+  border: none;
+}
+
+.booking-index-button-wrap {
+
+}

@@ -14,6 +14,7 @@ class SearchNav extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.redirectBookings = this.redirectBookings.bind(this);
   }
 
   showMenu(e) {
@@ -34,13 +35,17 @@ class SearchNav extends React.Component {
     this.props.logout();
   }
 
+  redirectBookings() {
+    this.props.history.push("/bookings");
+  }
+
   render() {
     const sessionLinks = () => (
       <nav className="header-wrap-other">
         <div className="header-nav-other">
           <div className="search-logo-container">
             <Link className="header-logo" to='/' >
-              <img src={window.logoURL} />
+              <img className="localhost-logo" src={window.logoURL} />
             </Link>
             <SearchBarNav />
           </div>
@@ -68,7 +73,7 @@ class SearchNav extends React.Component {
         <div className="header-nav-other">
           <div className="search-logo-container">
             <Link className="header-logo" to='/' >
-              <img src={window.logoURL} />
+              <img className="localhost-logo" src={window.logoURL} />
             </Link>
             <SearchBarNav />
           </div>
@@ -82,7 +87,7 @@ class SearchNav extends React.Component {
             ? (
               <div className="dropdown">
                 <div className="dropdown-comp">Edit Profile</div>
-                <div className="dropdown-comp">Manage Bookings</div>
+                <div className="dropdown-comp" onClick={this.redirectBookings}>Manage Bookings</div>
                 <div className="dropdown-comp" onClick={this.handleLogout}>Log Out</div>
               </div>
             )

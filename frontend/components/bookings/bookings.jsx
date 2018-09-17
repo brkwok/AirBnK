@@ -6,6 +6,10 @@ class Bookings extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchBookings();
+  }
+
   render() {
     return (
       <div className="bookings-wrap">
@@ -13,6 +17,7 @@ class Bookings extends React.Component {
           bookings={this.props.bookings}
           spots={this.props.spots}
           deleteBooking={this.props.deleteBooking}
+          history={this.props.history}
           />
       </div>
     );

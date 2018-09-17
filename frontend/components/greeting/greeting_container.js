@@ -4,9 +4,10 @@ import { logout } from '../../actions/session_actions';
 import Greeting from './greeting';
 import { openModal } from '../../actions/modal_actions';
 
-const msp = ({ session, entities: { users }}) => {
+const msp = ({ session, entities: { users }}, ownProps) => {
   return {
-    currentUser: users[session.id]
+    currentUser: users[session.id],
+    history: ownProps.history
   };
 };
 
