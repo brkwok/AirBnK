@@ -49,6 +49,7 @@
   "homepage": "https://github.com/brkwok/AirBnK#readme",
   "devDependencies": {
     "css-loader": "^1.0.0",
+    "loose-envify": "^1.4.0",
     "style-loader": "^0.21.0",
     "webpack-cli": "^3.1.0"
   }
