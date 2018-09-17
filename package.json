@@ -33,8 +33,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --mode=production --watch",
-    "postinstall": "webpack --mode=production"
+    "webpack": "webpack --mode=development --watch",
+    "postinstall": "webpack --mode=development"
   },
   "repository": {
     "type": "git",
