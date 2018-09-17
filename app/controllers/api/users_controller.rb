@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = user.find(id: current_user.id)
+    @user = User.find(params[:id])
   end
 
   def create

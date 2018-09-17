@@ -9,6 +9,7 @@ import SpotShowContainer from './spot_show/spot_show_container';
 import ShowNavContainer from './show_nav/show_nav_container';
 import SearchBar from './search_bar/search_bar';
 import BookingsContainer from './bookings/bookings_container';
+import UserShowContainer from './users/user_show_container';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 
@@ -26,6 +27,8 @@ const App = () => {
       <Route exact path="/spots" component={ SearchContainer } />
       <Route path="/spots/:spotId" component={ ShowNavContainer } />
       <Route path="/spots/:spotId" component={ SpotShowContainer } />
+      <Route path="/users/:userId" component={ ShowNavContainer } />
+      <Route path="/users/:userId" component={UserShowContainer} />
       <Switch>
         <AuthRoute exact path="/bookings" component={ ShowNavContainer } />
       </Switch>
