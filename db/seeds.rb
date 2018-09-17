@@ -6,12 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# prof_pic1 = ActionController::Base.helpers.asset_path('prof_pic.png')
-# prof_pic1 = ActionController::Base.helpers.asset_path('prof_pic.png')
-# prof_pic1 = ActionController::Base.helpers.asset_path('prof_pic.png')
-# prof_pic1 = ActionController::Base.helpers.asset_path('prof_pic.png')
-# prof_pic1 = ActionController::Base.helpers.asset_path('prof_pic.png')
-# prof_pic1 = ActionController::Base.helpers.asset_path('prof_pic.png')
 house_pics = []
 prof_pics = []
 (1..33).each do |n|
@@ -34,13 +28,34 @@ last_user = User.last.id
 Spot.destroy_all
 typeof = ['Entire house', 'Private room', 'Entire apartment']
 
-500.times do
+200.times do
   Spot.create!(lat: Faker::Address.latitude, lng: Faker::Address.longitude, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
 end
+
+Spot.create!(lat: 40.757155, lng: -73.981687, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.759990, lng: -73.990781, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.750782, lng: -73.996623, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.745880, lng: -73.996211, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.743250, lng: -73.994329, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.755543, lng: -73.980568, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.758229, lng: -73.990480, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.737070, lng: -73.998769, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.727623, lng: -73.989690, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
+Spot.create!(lat: 40.719196, lng: -73.000607, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+
 
 first_spot = Spot.first.id
 last_spot = Spot.last.id
 Review.destroy_all
 2000.times do
-  Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: rand(first_user..last_user), rating: rand(1..5))
+  Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: rand(first_user..last_user), rating: rand(3..5))
 end
