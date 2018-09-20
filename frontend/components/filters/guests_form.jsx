@@ -8,7 +8,7 @@ class guestsForm extends React.Component {
     this.state = {
       minGuests: 1,
       maxNumGuests: props.maxNumGuests,
-      active: false;
+      active: false
     }
   }
 
@@ -21,8 +21,6 @@ class guestsForm extends React.Component {
   }
 
   increaseGuest(guests) {
-
-    this.setState({minGuests:})
   }
 
   render() {

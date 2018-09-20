@@ -1,27 +1,16 @@
+import { Redirect } from 'react-router-dom';
+import React from 'react';
+import { connect } from 'react-redux';
 
-
-export default class MarkerManager {
-  constructor(map) {
+export default class MarkerManager extends React.Component {
+  constructor(map, history) {
+    super();
     this.map = map;
+    this.history = history;
     this.markers = {};
   }
 
   updateMarkers(spots) {
-    // let spotsObj = spots.map(
-    //   spot => {
-    //     if (!this.markers[spot.id]) {
-    //       return this.createMarkerFromSpot(spot);
-    //     }
-    //   }
-    // );
-    //
-    // Object.keys(this.markers).forEach( (spotId) => {
-    //   if (!spotsObj[spotId]) {
-    //     this.removeMarker(this.markers[spotId]);
-    //   } else {
-    //     this.markers[spotId] = spotsObj[spotId];
-    //   }
-    // });
     const spotsObj = {};
     spots.forEach( spot => spotsObj[spot.id] = spot);
 
@@ -36,10 +25,14 @@ export default class MarkerManager {
     const marker = new google.maps.Marker({
       position: { lat: spot.lat, lng: spot.lng },
       map: this.map,
-      spotId: spot.id
+      spotId: spot.id,
+      animation: google.maps.Animation.DROP,
     });
 
     marker.setMap(this.map);
+    marker.addListener('click', () => {
+      this.history.push(`/spots/${spot.id}`);
+    });
     this.markers[marker.spotId] = marker;
   }
 

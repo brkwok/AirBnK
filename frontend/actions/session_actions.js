@@ -33,11 +33,12 @@ export const receiveErrors = errors => {
 };
 
 export const signup = user => {
+
   return dispatch => {
     return SessionApiUtil.signup(user).then(
       user => dispatch(receiveCurrentUser(user)),
-      err => {
-      return dispatch(receiveErrors(err.responseJSON));
+      errors => {
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -54,8 +55,8 @@ export const updateUser = user => {
   return dispatch => {
     return SessionApiUtil.updateUser(user).then(
       user => dispatch(receiveCurrentUser(user)),
-      err => {
-        return dispatch(receiveErrors(err.responseJSON));
+      errors => {
+        return dispatch(receiveErrors(errors.responseJSON));
       }
     );
   };
@@ -64,8 +65,9 @@ export const updateUser = user => {
 export const login = user => {
   return dispatch => {
     return SessionApiUtil.login(user).then(
-      user => dispatch(receiveCurrentUser(user)), err => {
-      return dispatch(receiveErrors(err.responseJSON));
+      user => dispatch(receiveCurrentUser(user)),
+      errors => {
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };

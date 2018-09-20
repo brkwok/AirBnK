@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { withRouter } from 'react-router-dom';
+// import ReactDOM from 'react-dom';
+// import { withRouter } from 'react-router-dom';
 import MarkerManager from '../../util/marker_manager';
-// import { fetchSpots } from '../../actions/spot_actions';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 class SpotMap extends React.Component {
   componentDidMount() {
@@ -14,7 +13,7 @@ class SpotMap extends React.Component {
     };
 
     this.map = new google.maps.Map(this.mapNode, mapOptions);
-    this.MarkerManager = new MarkerManager(this.map);
+    this.MarkerManager = new MarkerManager(this.map, this.props.history);
     this.MarkerManager.updateMarkers(this.props.spots);
     this.addEventListener();
   }

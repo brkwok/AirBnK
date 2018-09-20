@@ -32,8 +32,8 @@ export const fetchBookings = () => {
       (bookings) => {
         return dispatch(receiveBookings(bookings));
       },
-      (err) => {
-        return dispatch(receiveErrors(err.responseJSON));
+      (errors) => {
+        return dispatch(receiveErrors(errors.responseJSON));
       }
     );
   };

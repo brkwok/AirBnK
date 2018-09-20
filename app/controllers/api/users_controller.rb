@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.img_url = ActionController::Base.helpers.asset_path('prof_pic.png')
+    @user.img_url = ActionController::Base.helpers.asset_path('prof_pic1.jpg')
 
     if @user.save
       log_in(@user)

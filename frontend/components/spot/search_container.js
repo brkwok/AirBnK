@@ -11,7 +11,8 @@ const msp = (state, ownProps) => {
     spots,
     bounds: state.ui.filters.bounds,
     lat,
-    lng
+    lng,
+    history: ownProps.match.history
   };
 };
 
