@@ -3,10 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export default class MarkerManager extends React.Component {
-  constructor(map, history) {
-    super();
+  constructor(map, props) {
+    super(props);
     this.map = map;
-    this.history = history;
+    this.history = this.props.history;
     this.markers = {};
   }
 

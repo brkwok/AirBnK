@@ -176,6 +176,7 @@ class Search extends React.Component {
             bounds={this.props.bounds}
             lat={this.props.lat}
             lng={this.props.lng}
+            history={this.props.history}
             />
         </div>
 
