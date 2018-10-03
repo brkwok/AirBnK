@@ -12,10 +12,12 @@ export const receiveCurrentUser = currentUser => {
   };
 };
 
-export const receiveUser = user => {
+export const receiveUser = payload => {
   return {
     type: RECEIVE_USER,
-    user
+    user: payload.user,
+    reviews: payload.reviews,
+    spots: payload.spots
   };
 };
 

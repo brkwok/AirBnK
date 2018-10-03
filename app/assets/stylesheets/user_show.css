@@ -1,0 +1,18 @@
+.user-show-profile-pic-container {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+.user-show-profile-pic {
+  width: 400px;
+  height: auto;
+}
+
+.user-show-header {
+  display: flex;
+}
+
+.user-show-username {
+  font-size: 40px;
+  color: #444040;;
+}

@@ -5,12 +5,14 @@ import {
 import { RECEIVE_REVIEWS } from '../actions/review_actions';
 import { merge } from 'lodash';
 import { RECEIVE_BOOKINGS } from '../actions/booking_actions';
+import { RECEIVE_USER } from '../actions/session_actions';
 
 const spotsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ALL_SPOTS:
     case RECEIVE_BOOKINGS:
+    case RECEIVE_USER:
       return action.spots;
     case RECEIVE_SPOT:
     case RECEIVE_REVIEWS:
