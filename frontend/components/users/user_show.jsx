@@ -16,8 +16,14 @@ class UserShow extends React.Component {
 
   render() {
     const user = this.props.user;
+<<<<<<< HEAD
 
     const reviews = this.state.reviews.map( (review) => {
+=======
+    const reviews = this.props.reviews;
+
+    const reviewsDiv = reviews.map( (review) => {
+>>>>>>> c0d9fcf0d3d040df16273015986a40cc98129b5f
       return(
         <div className='user-show-review' key={review.id}>
           <div>{review.comment}</div>
@@ -35,7 +41,11 @@ class UserShow extends React.Component {
         </div>
         <div>
           <div>Reviews</div>
+<<<<<<< HEAD
           {reviews}
+=======
+          {reviewsDiv}
+>>>>>>> c0d9fcf0d3d040df16273015986a40cc98129b5f
         </div>
       </section>
     );
