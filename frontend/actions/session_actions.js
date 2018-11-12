@@ -14,10 +14,7 @@ export const receiveCurrentUser = currentUser => {
 };
 
 export const receiveUser = payload => {
-<<<<<<< HEAD
 
-=======
->>>>>>> c0d9fcf0d3d040df16273015986a40cc98129b5f
   return {
     type: RECEIVE_USER,
     user: payload.user,
