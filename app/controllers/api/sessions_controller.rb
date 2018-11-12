@@ -7,6 +7,8 @@ class Api::SessionsController < ApplicationController
 
     if @user
       log_in(@user)
+      @reviews = Review.where(user_id: params[:id])
+      @spots = @reviews.map { |review| review.spot }
       render 'api/users/show'
     else
       render json: ["Invalid email/password"], status: 401
