@@ -6,7 +6,6 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_USER = 'RECEIVE_USER';
 
 export const receiveCurrentUser = currentUser => {
-
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser
@@ -14,7 +13,6 @@ export const receiveCurrentUser = currentUser => {
 };
 
 export const receiveUser = payload => {
-
   return {
     type: RECEIVE_USER,
     user: payload.user,

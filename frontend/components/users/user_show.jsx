@@ -17,7 +17,7 @@ class UserShow extends React.Component {
   render() {
     const user = this.props.user;
 
-    const reviews = this.state.reviews.map( (review) => {
+    const reviews = this.props.reviews.map( (review) => {
       return(
         <div className='user-show-review' key={review.id}>
           <div>{review.comment}</div>

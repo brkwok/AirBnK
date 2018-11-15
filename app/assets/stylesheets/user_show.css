@@ -1,3 +1,7 @@
+.user-show {
+
+}
+
 .user-show-profile-pic-container {
   width: 250px;
   height: 250px;
@@ -15,4 +19,13 @@
 .user-show-username {
   font-size: 40px;
   color: #444040;;
+}
+
+.user-show-review {
+  padding: 5px 0;
+  border-top: 1px solid lightgrey;
+}
+
+.user-show-review:last-child {
+  border-bottom: 1px solid lightgrey;
 }
