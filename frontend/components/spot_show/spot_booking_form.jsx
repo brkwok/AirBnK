@@ -10,10 +10,24 @@ class SpotBookingForm extends React.Component {
       startDate: null,
       endDate: null,
       focusedInput: null,
-      guests: 1
+      maxGuests: null,
+      guests: 1,
+      showMenu: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.showMenu = this.showMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+  }
+
+  componentDidUpdate(pP) {
+    if (this.props.spot !== pP.spot) {
+      let spot = this.props.spot;
+
+      this.setState({
+        maxGuests: spot.guests
+      });
+    }
   }
 
   guests() {
@@ -45,6 +59,20 @@ class SpotBookingForm extends React.Component {
     } else {
       this.props.openModal('login');
     }
+  }
+
+  showMenu(e) {
+    e.preventDefault();
+
+    this.setState({ showMenu: true }, () => {
+      document.addEventListener('click', this.closeMenu);
+    });
+  }
+
+  closeMenu() {
+    this.setState({ showMenu: false }, () => {
+      document.removeEventListener('click', this.closeMenu);
+    });
   }
 
   renderErrors() {
@@ -114,7 +142,20 @@ class SpotBookingForm extends React.Component {
         </div>
         <div className="booking-form-guests-container">
           <div className="booking-form-guests">Guests</div>
-          <div className="booking-num-guests">{this.guests()}</div>
+          <div className="booking-num-guests" onClick={this.showMenu}>{this.guests()}</div>
+            {this.state.showMenu ? (
+              <div>
+                <div>
+                  <div>-</div>
+                  <div>
+                    Adults
+                  </div>
+                  <div>+</div>
+                </div>
+              </div>
+            ) : (
+              null
+            )}
         </div>
         {this.renderErrors()}
         <button className="booking-request" onClick={this.handleSubmit}>Request to Book</button>

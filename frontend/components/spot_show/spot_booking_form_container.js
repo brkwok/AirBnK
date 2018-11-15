@@ -6,7 +6,7 @@ import { createBooking } from '../../actions/booking_actions';
 const msp = (state) => {
   return {
     currentUserId: state.session.id,
-    errors: state.errors.booking
+    errors: state.errors.booking,
   };
 };
 

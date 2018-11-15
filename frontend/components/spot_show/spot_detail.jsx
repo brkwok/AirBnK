@@ -18,8 +18,8 @@ export default ({ spot, user, reviews, users }) => {
   }
 
   let reviewDisp;
-  if ((typeof reviews === "undefined") || (reviews.length === 0)) {
-  } else {
+  if ((typeof reviews === "undefined") || (reviews.length === 0))
+  {} else {
 
     reviewDisp = reviews.sort((review1, review2) => {
       const date1 = new Date(review1.created_at);
