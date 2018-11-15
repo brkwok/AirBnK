@@ -7,7 +7,7 @@ export default ({ spot, user, reviews, users }) => {
   let eachSpot = spot || {};
   let link = '';
   if (typeof user === 'undefined' || user.length === 0) { return; } else { link = (
-      <Link to="">
+      <Link to={`/users/${user.id}`}>
         <img  className="user-profile-pic" src={user.img_url} />
       </Link>
     );
@@ -29,9 +29,9 @@ export default ({ spot, user, reviews, users }) => {
       return (
         <div key={review.id} className="each-review-container">
           <div className="each-review-container-top">
-            <div className="review-picture-container">
+            <Link className="review-picture-container" to={`/users/${review.user_id}`}>
               <img className="review-profile-picture" src={users[review.user_id].img_url}></img>
-            </div>
+            </Link>
             <div className="review-user-detail-container">
               <div className="review-username">{users[review.user_id].name}</div>
               <div className="review-timestamp">{new Date(review.created_at).toString().split("GMT")[0]}</div>
