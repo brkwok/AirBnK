@@ -34,7 +34,7 @@ class UserShow extends React.Component {
           <div className="user-show-username"><span>Hey, I'm </span>{user.name}!</div>
         </div>
         <div>
-          <div>Reviews</div>
+          <div className="user-show-review-header">Reviews</div>
           {reviews}
         </div>
       </section>

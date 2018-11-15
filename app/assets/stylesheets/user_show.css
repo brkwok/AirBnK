@@ -16,6 +16,10 @@
   display: flex;
 }
 
+.user-show-review-header {
+  font-size: 30px;
+}
+
 .user-show-username {
   font-size: 40px;
   color: #444040;;
