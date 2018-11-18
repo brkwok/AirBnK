@@ -11,6 +11,9 @@ class SpotBookingForm extends React.Component {
       endDate: null,
       focusedInput: null,
       maxGuests: null,
+      adults: 1,
+      children: 0,
+      infants: 0,
       guests: 1,
       showMenu: false,
     };
@@ -144,13 +147,13 @@ class SpotBookingForm extends React.Component {
           <div className="booking-form-guests">Guests</div>
           <div className="booking-num-guests" onClick={this.showMenu}>{this.guests()}</div>
             {this.state.showMenu ? (
-              <div>
-                <div>
-                  <div>-</div>
-                  <div>
-                    Adults
+              <div className="guests-number-container">
+                <div className="guests-adult-container">
+                  <div className="guests-signs">-</div>
+                  <div className="guests-adult">
+                    {this.state.adults} {(this.state.adults === 1) ? 'adult' : 'adults'}
                   </div>
-                  <div>+</div>
+                  <div className="guests-signs">+</div>
                 </div>
               </div>
             ) : (

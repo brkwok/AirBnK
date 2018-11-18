@@ -127,3 +127,38 @@
 .DateRangePickerInput_clearDates {
   right: -20px !important;
 }
+
+.guests-number-container {
+  position: absolute;
+  background: white;
+  width: 300px;
+  padding: 0 8px;
+  border: 1px solid lightgrey;
+}
+
+.guests-adult-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.guests-adult {
+  color: grey;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.guests-signs {
+  margin: 10px 15px;
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  color: white;
+  background: teal;
+  border: 1px solid teal;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
