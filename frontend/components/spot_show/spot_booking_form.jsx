@@ -20,16 +20,49 @@ class SpotBookingForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showMenu = this.showMenu.bind(this);
+    this.handleGuestMath = this.handleGuestMath.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
   }
 
-  componentDidUpdate(pP) {
+  componentDidUpdate(pP, pS) {
     if (this.props.spot !== pP.spot) {
       let spot = this.props.spot;
 
       this.setState({
         maxGuests: spot.guests
       });
+    } else if ( (pS.adults !== this.state.adults) || (pS.children !== this.state.children)) {
+      let total = this.state.adults + this.state.children;
+
+      this.setState({
+        guests: total
+      });
+    }
+  }
+
+  handleGuestMath(e) {
+    e.preventDefault;
+    const sign = e.target.classList[0];
+    const type = e.target.classList[1];
+    let numAdults = this.state.adults;
+    let numChildren = this.state.children;
+
+    if (sign === 'add' && type === 'adult') {
+      let added = numAdults + 1;
+
+      this.setState( { adults: added} );
+    } else if (sign === 'subtract' && type === 'adult') {
+      let subtracted = numAdults - 1;
+
+      this.setState( { adults: subtracted} );
+    } else if (sign === 'add' && type === 'children') {
+      let added = numChildren + 1;
+
+      this.setState( { children: added} );
+    } else if (sign === 'subtract' && type === 'children') {
+      let subtracted = numChildren - 1;
+
+      this.setState( { children: subtracted} );
     }
   }
 
@@ -37,7 +70,7 @@ class SpotBookingForm extends React.Component {
     if (this.state.guests === 1) {
       return "1 guest";
     } else {
-      return this.state.guests + "guests";
+      return this.state.guests + " guests";
     }
   }
 
@@ -67,15 +100,13 @@ class SpotBookingForm extends React.Component {
   showMenu(e) {
     e.preventDefault();
 
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
-    });
+    this.setState( { showMenu: true } );
   }
 
-  closeMenu() {
-    this.setState({ showMenu: false }, () => {
-      document.removeEventListener('click', this.closeMenu);
-    });
+  closeMenu(e) {
+    e.preventDefault();
+
+    this.setState( { showMenu: false } );
   }
 
   renderErrors() {
@@ -110,8 +141,11 @@ class SpotBookingForm extends React.Component {
 
 
   render() {
+    let total = this.state.adults + this.state.children;
+
     return (
       <section className="booking-form-container">
+        <div className="booking-number-modal"></div>
         <div className="booking-form-wrap">
           <div className="booking-cost-rating">
             <span className="booking-cost">${this.props.spot.cost} <span className="booking-cost-per-night"> per night</span></span>
@@ -145,15 +179,42 @@ class SpotBookingForm extends React.Component {
         </div>
         <div className="booking-form-guests-container">
           <div className="booking-form-guests">Guests</div>
-          <div className="booking-num-guests" onClick={this.showMenu}>{this.guests()}</div>
+          <div className="booking-num-guests" onClick={this.showMenu}>
+            { this.guests() }
+          </div>
             {this.state.showMenu ? (
               <div className="guests-number-container">
-                <div className="guests-adult-container">
-                  <div className="guests-signs">-</div>
-                  <div className="guests-adult">
+                <div className="guests-container">
+                  <div
+                    className={
+                      (this.state.adults < 2) ? "guests-signs-disabled" : "subtract adult guests-signs"
+                    }
+                    onClick={this.handleGuestMath}>-</div>
+                  <div className="guests-type">
                     {this.state.adults} {(this.state.adults === 1) ? 'adult' : 'adults'}
                   </div>
-                  <div className="guests-signs">+</div>
+                  <div
+                    className={
+                      (this.state.maxGuests === total) ? "guests-signs-disabled" : "add adult guests-signs"
+                    }
+                    onClick={this.handleGuestMath}
+                    >+</div>
+                </div>
+                <div className="guests-container">
+                  <div
+                    className={
+                      (this.state.children < 1) ? "guests-signs-disabled" : "subtract children guests-signs"
+                    }
+                    onClick={this.handleGuestMath}>-</div>
+                  <div className="guests-type">
+                    {this.state.children} {(this.state.children === 1) ? 'child' : 'children'}
+                  </div>
+                  <div
+                    className={
+                      (this.state.maxGuests === total) ? "guests-signs-disabled" : "add children guests-signs"
+                    }
+                    onClick={this.handleGuestMath}
+                    >+</div>
                 </div>
               </div>
             ) : (
