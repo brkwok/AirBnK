@@ -10,6 +10,7 @@ class Search extends React.Component {
     this.state = {
       activePage: 1,
       itemsPerPage: 12,
+      loading: true,
     };
 
     this.handleClickNextButton = this.handleClickNextButton.bind(this);
