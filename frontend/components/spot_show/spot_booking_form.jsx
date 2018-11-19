@@ -100,13 +100,19 @@ class SpotBookingForm extends React.Component {
   showMenu(e) {
     e.preventDefault();
 
-    this.setState( { showMenu: true } );
+    this.setState( { showMenu: true }, () => {
+      document.addEventListener('click', this.closeMenu);
+    });
   }
 
   closeMenu(e) {
     e.preventDefault();
 
-    this.setState( { showMenu: false } );
+    if (e.target.id !== 'guests-filter') {
+      this.setState( { showMenu: false }, () => {
+        document.removeEventListener('click', this.closeMenu);
+      } );
+    }
   }
 
   renderErrors() {
@@ -145,7 +151,6 @@ class SpotBookingForm extends React.Component {
 
     return (
       <section className="booking-form-container">
-        <div className="booking-number-modal"></div>
         <div className="booking-form-wrap">
           <div className="booking-cost-rating">
             <span className="booking-cost">${this.props.spot.cost} <span className="booking-cost-per-night"> per night</span></span>
@@ -154,7 +159,6 @@ class SpotBookingForm extends React.Component {
               <span className="booking-rating">{this.props.spot.avg_ratings || "No reviews yet"}</span>
             </div>
           </div>
-
           <div className="booking-calendar">
             <div className="booking-dates">Dates</div>
             <DateRangePicker
@@ -179,40 +183,44 @@ class SpotBookingForm extends React.Component {
         </div>
         <div className="booking-form-guests-container">
           <div className="booking-form-guests">Guests</div>
-          <div className="booking-num-guests" onClick={this.showMenu}>
+          <div className="booking-num-guests" onClick={this.state.showMenu ? this.closeMenu : this.showMenu}>
             { this.guests() }
           </div>
             {this.state.showMenu ? (
-              <div className="guests-number-container">
-                <div className="guests-container">
+              <div id="guests-filter" className="guests-number-container">
+                <div id="guests-filter" className="guests-container">
                   <div
                     className={
                       (this.state.adults < 2) ? "guests-signs-disabled" : "subtract adult guests-signs"
                     }
+                    id="guests-filter"
                     onClick={this.handleGuestMath}>-</div>
-                  <div className="guests-type">
+                  <div id="guests-filter" className="guests-type">
                     {this.state.adults} {(this.state.adults === 1) ? 'adult' : 'adults'}
                   </div>
                   <div
                     className={
                       (this.state.maxGuests === total) ? "guests-signs-disabled" : "add adult guests-signs"
                     }
+                    id="guests-filter"
                     onClick={this.handleGuestMath}
                     >+</div>
                 </div>
-                <div className="guests-container">
+                <div id="guests-filter" className="guests-container">
                   <div
                     className={
                       (this.state.children < 1) ? "guests-signs-disabled" : "subtract children guests-signs"
                     }
+                    id="guests-filter"
                     onClick={this.handleGuestMath}>-</div>
-                  <div className="guests-type">
+                  <div id="guests-filter" className="guests-type">
                     {this.state.children} {(this.state.children === 1) ? 'child' : 'children'}
                   </div>
                   <div
                     className={
                       (this.state.maxGuests === total) ? "guests-signs-disabled" : "add children guests-signs"
                     }
+                    id="guests-filter"
                     onClick={this.handleGuestMath}
                     >+</div>
                 </div>

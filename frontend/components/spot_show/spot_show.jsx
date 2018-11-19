@@ -1,9 +1,17 @@
 import React from 'react';
-// import { Link, withRouter } from 'react-router-dom';
 import SpotDetail from './spot_detail';
-import BookingFormContainer from './spot_booking_form_container';
+import SpotBookingFormContainer from './spot_booking_form_container';
 
 class SpotShow extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showMenu: false,
+    };
+
+  }
+
   componentDidMount() {
     this.props.fetchSpot(this.props.match.params.spotId);
   }
@@ -21,7 +29,9 @@ class SpotShow extends React.Component {
             user={this.props.user} spotId={this.props.spotId}
             users={this.props.users}/>
           <section className="booking-show">
-            <BookingFormContainer spot={this.props.spot}/>
+            <SpotBookingFormContainer
+              spot={this.props.spot}
+            />
           </section>
         </section>
       </section>

@@ -138,6 +138,7 @@
   width: 300px;
   padding: 0 8px;
   border: 1px solid lightgrey;
+  z-index: 99;
 }
 
 .guests-container {
@@ -187,11 +188,4 @@
 
 .guests-signs:hover {
   cursor: pointer;
-}
-
-.guests-number-modal {
-  width: 100vh;
-  height: 100vh;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5)
 }
