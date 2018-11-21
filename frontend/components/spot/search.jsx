@@ -59,8 +59,6 @@ class Search extends React.Component {
 
     const overflow1 = <li className='overflow' key={'overflow1'}>...</li>;
     const overflow2 = <li className='overflow' key={'overflow2'}>...</li>;
-    // const overflow3 = <li key={'overflow3'}>...</li>;
-    // const overflow4 = <li key={'overflow4'}>...</li>;
 
     let startIdx;
     let lastIdx;
@@ -146,7 +144,13 @@ class Search extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.bounds !== prevProps.bounds) {
       this.props.fetchSpots(this.props.bounds);
-      this.setState({activePage: 1});
+      this.setState({
+        activePage: 1,
+      });
+    } else if (prevProps.spots !== this.props.spots) {
+      this.setState({
+        loading: false
+      });
     }
   }
 
@@ -163,8 +167,21 @@ class Search extends React.Component {
     const spotsEndIdx = itemsPerPage * (activePage);
     const spots = allSpots.slice(spotsStartIdx, spotsEndIdx);
 
-    const searchFound = () => (
+    const searchFound =
       <div>
+        <section className="search-header-nav">
+          <div className="filter-button-container">
+            <button className="filter-button">
+              <span>Dates</span>
+            </button>
+            <button className="filter-button">
+              <span>Guests</span>
+            </button>
+            <button className="filter-button">
+              <span>Price</span>
+            </button>
+          </div>
+        </section>
         <div className="spots-container">
           <SpotIndex spots={spots}
             updateBounds={this.props.updateBounds}
@@ -184,34 +201,59 @@ class Search extends React.Component {
         <ul className="pages-buttons">
           {this.pages()}
         </ul>
-      </div>
-    );
+      </div>;
 
-    const noSearchFound = () => (
-      <div>
-        <div className="spots-container">
-          <div className="no-result-found">
-            <strong className="no-results">No results</strong>
-            <span className="no-results-details">To get more results, try adjusting your search or move the map around</span>
+    const noSearchFound =
+        <div>
+          <section className="search-header-nav">
+            <div className="filter-button-container">
+              <button className="filter-button">
+                <span>Dates</span>
+              </button>
+              <button className="filter-button">
+                <span>Guests</span>
+              </button>
+              <button className="filter-button">
+                <span>Price</span>
+              </button>
+            </div>
+          </section>
+          <div className="spots-container">
+            {
+            this.state.loading
+            ?
+            (
+            <div className="loading">
+              <div className="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>)
+            :
+            (<div className="no-result-found">
+                <strong className="no-results">No results</strong>
+                <span className="no-results-details">To get more results, try adjusting your search or move the map around</span>
+              </div>)
+            }
+            <SpotMap
+              onClick={window.scrollTo(0, 0)}
+              spots={spots}
+              updateBounds={this.props.updateBounds}
+              bounds={this.props.bounds}
+              lat={this.props.lat}
+              lng={this.props.lng}
+              history={this.props.history}
+              />
           </div>
-          <SpotMap
-            onClick={window.scrollTo(0, 0)}
-            spots={spots}
-            updateBounds={this.props.updateBounds}
-            bounds={this.props.bounds}
-            lat={this.props.lat}
-            lng={this.props.lng}
-            history={this.props.history}
-            />
-        </div>
 
-        <ul className="pages-buttons">
-          {this.pages()}
-        </ul>
-      </div>
-    );
+          <ul className="pages-buttons">
+            {this.pages()}
+          </ul>
+        </div>;
 
-    return spots.length === 0 ? noSearchFound() : searchFound();
+    return spots.length === 0 ? noSearchFound : searchFound;
   }
 }
 

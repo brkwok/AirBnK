@@ -38,7 +38,9 @@
 }
 
 .search-header-nav {
-  width: auto;
+  position: absolute;
+  top: 120px;
+  width: 100%;
   padding: 16px 72px;
   border-bottom: 1px solid lightgrey;
 }

@@ -54,19 +54,19 @@ class SearchNav extends React.Component {
             <div className="login-signup-button-other" onClick={() => this.props.openModal('login')}>Log in</div>
           </div>
         </div>
-        <div className="search-header-nav">
-          <button className="filter-button">
-            <span>Dates</span>
-          </button>
-          <button className="filter-button">
-            <span>Guests</span>
-          </button>
-          <button className="filter-button">
-            <span>Price</span>
-          </button>
-        </div>
       </nav>
     );
+    // <div className="search-header-nav">
+    //   <button className="filter-button">
+    //     <span>Dates</span>
+    //   </button>
+    //   <button className="filter-button">
+    //     <span>Guests</span>
+    //   </button>
+    //   <button className="filter-button">
+    //     <span>Price</span>
+    //   </button>
+    // </div>
 
     const greetingLink = () => (
       <nav className="header-wrap-other">
@@ -97,21 +97,21 @@ class SearchNav extends React.Component {
           }
         </section>
         </div>
-        <section className="search-header-nav">
-          <div className="filter-button-container">
-            <button className="filter-button">
-              <span>Dates</span>
-            </button>
-            <button className="filter-button">
-              <span>Guests</span>
-            </button>
-            <button className="filter-button">
-              <span>Price</span>
-            </button>
-          </div>
-        </section>
       </nav>
     );
+    // <section className="search-header-nav">
+    //   <div className="filter-button-container">
+    //     <button className="filter-button">
+    //       <span>Dates</span>
+    //     </button>
+    //     <button className="filter-button">
+    //       <span>Guests</span>
+    //     </button>
+    //     <button className="filter-button">
+    //       <span>Price</span>
+    //     </button>
+    //   </div>
+    // </section>
     return this.props.currentUser ? greetingLink() : sessionLinks();
   }
 }
