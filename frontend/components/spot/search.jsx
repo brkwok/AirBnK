@@ -143,6 +143,7 @@ class Search extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.bounds !== prevProps.bounds) {
+      this.setState({ loading: true});
       this.props.fetchSpots(this.props.bounds);
       this.setState({
         activePage: 1,

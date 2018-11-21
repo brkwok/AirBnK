@@ -38,11 +38,17 @@
 }
 
 .search-header-nav {
-  position: absolute;
+  position: fixed;
+  background: white;
+  z-index: 5;
   top: 120px;
   width: 100%;
-  padding: 16px 72px;
+  padding: 16px 0;
   border-bottom: 1px solid lightgrey;
+}
+
+.filter-button-container {
+  padding: 0 72px;
 }
 
 .filter-button {
