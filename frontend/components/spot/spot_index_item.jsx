@@ -10,12 +10,23 @@ class SpotIndexItem extends React.Component {
   renderStars() {
     let rating = this.props.spot.avg_ratings;
     let ratingPercentage = rating / 5 * 100;
-    let width = {width: `${ratingPercentage}%`};
+    let width = { width: `${ratingPercentage}%` };
     return (
       rating ? (
         <div className="stars-wrapper-show">
-          <div className="stars-outer-show"><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i>
-          <div className="stars-inner-show" style={width}><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
+          <div className="stars-outer-show">
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+            <div className="stars-inner-show" style={width}>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+            </div>
           </div>
         </div>
       )
