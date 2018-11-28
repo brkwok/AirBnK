@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 
 class SpotIndexItem extends React.Component {
   constructor(props) {
-
     super(props);
   }
 

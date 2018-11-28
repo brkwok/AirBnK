@@ -11,12 +11,36 @@ class Search extends React.Component {
       activePage: 1,
       itemsPerPage: 12,
       loading: true,
+      allSpots: [],
+      renderSpots: [],
+      maxCosts: null,
+      minCosts: null,
+      currMaxCosts: null,
+      currMinCosts: null,
+      maxGuests: null,
+      minGuests: null,
+      currMinGuests: null,
+      currMaxGuests: null,
+      guestFilter: false,
+      costFilter: false,
+      guestActive: false,
+      costActive: false,
+      guests: 1,
+      adults: 1,
+      children: 0
     };
 
     this.handleClickNextButton = this.handleClickNextButton.bind(this);
     this.handleClickPrevButton = this.handleClickPrevButton.bind(this);
     this.handleClickPage = this.handleClickPage.bind(this);
+    this.showGuestMenu = this.showGuestMenu.bind(this);
+    this.closeGuestMenu = this.closeGuestMenu.bind(this);
+    this.showCostMenu = this.showCostMenu.bind(this);
+    this.closeCostMenu = this.closeCostMenu.bind(this);
+    this.guests = this.guests.bind(this);
+    this.priceFilter = this.priceFilter.bind(this);
   }
+
 
   handleClickNextButton(page) {
     const nextPage = page + 1;
@@ -141,16 +165,44 @@ class Search extends React.Component {
     this.props.updateBounds(this.props.bounds);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.bounds !== prevProps.bounds) {
+  componentDidUpdate(pP, pS) {
+    if (this.props.bounds !== pP.bounds) {
       this.setState({ loading: true});
       this.props.fetchSpots(this.props.bounds);
       this.setState({
         activePage: 1,
       });
-    } else if (prevProps.spots !== this.props.spots) {
+    } else if ((JSON.stringify(pP.spots) !== JSON.stringify(this.props.spots))
+      || this.state.allSpots.length !== this.props.spots.length) {
+      const spots = Object.values(this.props.spots);
+      let costs = [];
+      let guests = [];
+
+      spots.forEach( (spot) => {
+        costs.push(spot.cost);
+        guests.push(spot.guests);
+      });
+
+      const [maxCosts, minCosts, maxGuests, minGuests] =
+      [Math.max(...costs), Math.min(...costs), Math.max(...guests), Math.min(...guests)];
+
+      const { activePage, itemsPerPage } = this.state;
+      const spotsStartIdx = itemsPerPage * (activePage - 1);
+      const spotsEndIdx = itemsPerPage * (activePage);
+      const renderSpots = this.props.spots.slice(spotsStartIdx, spotsEndIdx);
+
       this.setState({
-        loading: false
+        maxCosts,
+        minCosts,
+        currMaxCosts: maxCosts,
+        currMinCosts: minCosts,
+        maxGuests,
+        minGuests,
+        currMaxGuests: maxGuests,
+        currMinGuests: minGuests,
+        allSpots: this.props.spots,
+        renderSpots,
+        loading: false,
       });
     }
   }
@@ -161,30 +213,83 @@ class Search extends React.Component {
     }
   }
 
+  showGuestMenu(e) {
+    e.preventDefault();
+
+    this.setState( { guestFilter: true, guestActive: true }, () => {
+      document.addEventListener('click', this.closeGuestMenu);
+    });
+  }
+
+  closeGuestMenu(e) {
+    e.preventDefault();
+
+    this.setState( { guestFilter: false, guestActive: false }, () => {
+      document.removeEventListener('click', this.closeGuestMenu);
+    });
+  }
+
+  showCostMenu(e) {
+    e.preventDefault();
+
+    this.setState( { costFilter: true, costActive: true }, () => {
+      document.addEventListener('click', this.closeCostMenu);
+    });
+  }
+
+  closeCostMenu(e) {
+    e.preventDefault();
+
+    this.setState( { costFilter: false, costActive: false }, () => {
+      document.removeEventListener('click', this.closeCostMenu);
+    });
+  }
+
+  guests() {
+    if (this.state.guests === 1) {
+      return "1 guest";
+    } else {
+      return this.state.guests + " guests";
+    }
+  }
+
+  priceFilter() {
+    return (<span>${this.state.currMinCosts} - ${this.state.currMaxCosts}</span>);
+  }
+
   render () {
-    const allSpots = this.props.spots || [];
-    const { activePage, itemsPerPage } = this.state;
-    const spotsStartIdx = itemsPerPage * (activePage - 1);
-    const spotsEndIdx = itemsPerPage * (activePage);
-    const spots = allSpots.slice(spotsStartIdx, spotsEndIdx);
+    const spots = this.state.renderSpots;
+    const guestsFilter = this.state.guestActive ?
+      (<button onClick={this.showGuestMenu} className="filter-button filter-button-active">
+        <span>{this.guests()}</span>
+      </button>)
+      :
+      (<button onClick={this.showGuestMenu} className="filter-button">
+        <span>Guests</span>
+      </button>);
+
+    const costFilter = this.state.costActive ?
+      (<button onClick={this.showCostMenu} className="filter-button filter-button-active">
+        {this.priceFilter()}
+      </button>)
+      :
+      (<button onClick={this.showCostMenu} className="filter-button">
+        <span>Price</span>
+      </button>);
 
     const searchFound =
       <div>
         <section className="search-header-nav">
           <div className="filter-button-container">
-            <button className="filter-button">
-              <span>Dates</span>
-            </button>
-            <button className="filter-button">
-              <span>Guests</span>
-            </button>
-            <button className="filter-button">
-              <span>Price</span>
-            </button>
+            { guestsFilter }
+            {this.state.guestFilter ? <div>hello</div> : null}
+            { costFilter }
+            {this.state.costFilter ? <div>hello</div> : null}
           </div>
         </section>
         <div className="spots-container">
-          <SpotIndex spots={spots}
+          <SpotIndex
+            spots={spots}
             updateBounds={this.props.updateBounds}
             bounds={this.props.bounds}
             />
@@ -208,15 +313,10 @@ class Search extends React.Component {
         <div>
           <section className="search-header-nav">
             <div className="filter-button-container">
-              <button className="filter-button">
-                <span>Dates</span>
-              </button>
-              <button className="filter-button">
-                <span>Guests</span>
-              </button>
-              <button className="filter-button">
-                <span>Price</span>
-              </button>
+              { guestsFilter }
+              {this.state.guestFilter ? <div>hello</div> : null}
+              { costFilter }
+              {this.state.costFilter ? <div>hello</div> : null}
             </div>
           </section>
           <div className="spots-container">

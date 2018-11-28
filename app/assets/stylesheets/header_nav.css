@@ -64,9 +64,13 @@
   background: lightgrey;
 }
 
-.filter-button:active {
+.filter-button-active {
   background: teal;
   color: white;
+}
+
+.filter-button:focus {
+  outline: none;
 }
 
 .header-logo {
