@@ -212,3 +212,33 @@
   padding-top: 5px;
   padding-right: 5px;
 }
+
+.guests-number-container-search {
+  position: absolute;
+  background: white;
+  width: 300px;
+  padding: 0 8px;
+  margin-left: 15px;
+  border: 1px solid lightgrey;
+  z-index: 99;
+}
+
+.guests-apply {
+  border: 1px solid teal;
+  height: 35px;
+  border-radius: 5px;
+  background: teal;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.guests-apply-container {
+  float: right;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}

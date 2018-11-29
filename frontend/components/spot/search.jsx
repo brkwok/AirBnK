@@ -23,11 +23,10 @@ class Search extends React.Component {
       currMaxGuests: null,
       guestFilter: false,
       costFilter: false,
-      guestActive: false,
-      costActive: false,
       guests: 1,
       adults: 1,
-      children: 0
+      children: 0,
+      currGuests: 1,
     };
 
     this.handleClickNextButton = this.handleClickNextButton.bind(this);
@@ -39,6 +38,9 @@ class Search extends React.Component {
     this.closeCostMenu = this.closeCostMenu.bind(this);
     this.guests = this.guests.bind(this);
     this.priceFilter = this.priceFilter.bind(this);
+    this.guestFilterMenu = this.guestFilterMenu.bind(this);
+    this.handleGuestMath = this.handleGuestMath.bind(this);
+    this.applyFilter = this.applyFilter.bind(this);
   }
 
 
@@ -204,7 +206,7 @@ class Search extends React.Component {
         renderSpots,
         loading: false,
       });
-    } else if ((pS.loading !== this.state.loading) && this.props.spots.length === 0) {
+    } else if ((pS.loading !== this.state.loading) && (this.state.allSpots.length === 0)) {
       this.setState( { loading: false } );
     }
   }
@@ -218,7 +220,7 @@ class Search extends React.Component {
   showGuestMenu(e) {
     e.preventDefault();
 
-    this.setState( { guestFilter: true, guestActive: true }, () => {
+    this.setState( { guestFilter: true }, () => {
       document.addEventListener('click', this.closeGuestMenu);
     });
   }
@@ -226,15 +228,17 @@ class Search extends React.Component {
   closeGuestMenu(e) {
     e.preventDefault();
 
-    this.setState( { guestFilter: false, guestActive: false }, () => {
-      document.removeEventListener('click', this.closeGuestMenu);
-    });
+    if (e.target.id !== 'guests-filter') {
+      this.setState( { guestFilter: false }, () => {
+        document.removeEventListener('click', this.closeGuestMenu);
+      });
+    }
   }
 
   showCostMenu(e) {
     e.preventDefault();
 
-    this.setState( { costFilter: true, costActive: true }, () => {
+    this.setState( { costFilter: true }, () => {
       document.addEventListener('click', this.closeCostMenu);
     });
   }
@@ -242,16 +246,43 @@ class Search extends React.Component {
   closeCostMenu(e) {
     e.preventDefault();
 
-    this.setState( { costFilter: false, costActive: false }, () => {
+    this.setState( { costFilter: false }, () => {
       document.removeEventListener('click', this.closeCostMenu);
     });
   }
 
   guests() {
-    if (this.state.guests === 1) {
-      return "1 guest";
-    } else {
-      return this.state.guests + " guests";
+    return(
+      this.state.currGuests === 1 ?
+      ("1 guests") : (this.state.currGuests + " guests")
+    );
+  }
+
+  handleGuestMath(e) {
+    e.preventDefault;
+    const sign = e.target.classList[0];
+    const type = e.target.classList[1];
+    let numAdults = this.state.adults;
+    let numChildren = this.state.children;
+    let currGuestsAdded = this.state.currGuests + 1;
+    let currGuestsSubtracted = this.state.currGuests - 1;
+
+    if (sign === 'add' && type === 'adult') {
+      let added = numAdults + 1;
+
+      this.setState( { adults: added, currGuests: currGuestsAdded } );
+    } else if (sign === 'subtract' && type === 'adult') {
+      let subtracted = numAdults - 1;
+
+      this.setState( { adults: subtracted, currGuests: currGuestsSubtracted } );
+    } else if (sign === 'add' && type === 'children') {
+      let added = numChildren + 1;
+
+      this.setState( { children: added, currGuests: currGuestsAdded } );
+    } else if (sign === 'subtract' && type === 'children') {
+      let subtracted = numChildren - 1;
+
+      this.setState( { children: subtracted, currGuests: currGuestsSubtracted } );
     }
   }
 
@@ -259,9 +290,82 @@ class Search extends React.Component {
     return (<span>${this.state.currMinCosts} - ${this.state.currMaxCosts}</span>);
   }
 
+  applyFilter() {
+    let allSpots = this.state.allSpots;
+    const currGuests = this.state.currGuests;
+
+    let renderSpots = allSpots.filter( (spot) => {
+      return (
+        spot.guests >= currGuests
+      );
+    });
+
+    this.setState({ renderSpots, guestFilter: false, costFilter: false });
+  }
+
+  guestFilterMenu() {
+    const total = this.state.currGuests;
+    return (
+      this.state.guestFilter ?
+      (
+        <div id="guests-filter" className="guests-number-container-search">
+          <div id="guests-filter" className="guests-container">
+            <div
+              className={
+                (this.state.adults < 2) ? "guests-signs-disabled" : "subtract adult guests-signs"
+              }
+              id="guests-filter"
+              onClick={this.handleGuestMath}>-</div>
+            <div id="guests-filter" className="guests-type">
+              {this.state.adults} {(this.state.adults === 1) ? 'adult' : 'adults'}
+            </div>
+            <div
+              className={
+                (this.state.maxGuests === total) ? "guests-signs-disabled" : "add adult guests-signs"
+              }
+              id="guests-filter"
+              onClick={this.handleGuestMath}
+              >+</div>
+          </div>
+          <div id="guests-filter" className="guests-container">
+            <div
+              className={
+                (this.state.children < 1) ? "guests-signs-disabled" : "subtract children guests-signs"
+              }
+              id="guests-filter"
+              onClick={this.handleGuestMath}>-</div>
+            <div id="guests-filter" className="guests-type">
+              {this.state.children} {(this.state.children === 1) ? 'child' : 'children'}
+            </div>
+            <div
+              className={
+                (this.state.maxGuests === total) ? "guests-signs-disabled" : "add children guests-signs"
+              }
+              id="guests-filter"
+              onClick={this.handleGuestMath}
+              >+</div>
+          </div>
+          <div className="guests-apply-container">
+            <div onClick={this.applyFilter} id="guests-filter" className="guests-apply">apply</div>
+          </div>
+        </div>
+      )
+      :
+      (
+        null
+      )
+    );
+  }
+
+  // priceFilterMenu() {
+  //   this.state.priceFilter ?
+  //   (<div></div>)
+  // }
+
   render () {
     const spots = this.state.renderSpots;
-    const guestsFilter = this.state.guestActive ?
+
+    const guestsFilter = this.state.guestFilter ?
       (<button onClick={this.showGuestMenu} className="filter-button filter-button-active">
         <span>{this.guests()}</span>
       </button>)
@@ -270,7 +374,7 @@ class Search extends React.Component {
         <span>Guests</span>
       </button>);
 
-    const costFilter = this.state.costActive ?
+    const costFilter = this.state.costFilter ?
       (<button onClick={this.showCostMenu} className="filter-button filter-button-active">
         {this.priceFilter()}
       </button>)
@@ -284,7 +388,7 @@ class Search extends React.Component {
         <section className="search-header-nav">
           <div className="filter-button-container">
             { guestsFilter }
-            {this.state.guestFilter ? <div>hello</div> : null}
+            { this.guestFilterMenu() }
             { costFilter }
             {this.state.costFilter ? <div>hello</div> : null}
           </div>
