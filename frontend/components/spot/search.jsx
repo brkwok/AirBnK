@@ -204,6 +204,8 @@ class Search extends React.Component {
         renderSpots,
         loading: false,
       });
+    } else if ((pS.loading !== this.state.loading) && this.props.spots.length === 0) {
+      this.setState( { loading: false } );
     }
   }
 
@@ -313,10 +315,12 @@ class Search extends React.Component {
         <div>
           <section className="search-header-nav">
             <div className="filter-button-container">
-              { guestsFilter }
-              {this.state.guestFilter ? <div>hello</div> : null}
-              { costFilter }
-              {this.state.costFilter ? <div>hello</div> : null}
+              <button className="filter-button filter-disabled">
+                <span>Guests</span>
+              </button>
+              <button className="filter-button filter-disabled">
+                <span>Price</span>
+              </button>
             </div>
           </section>
           <div className="spots-container">
@@ -348,7 +352,6 @@ class Search extends React.Component {
               history={this.props.history}
               />
           </div>
-
           <ul className="pages-buttons">
             {this.pages()}
           </ul>

@@ -69,6 +69,10 @@
   color: white;
 }
 
+.filter-disabled {
+  cursor: not-allowed;
+}
+
 .filter-button:focus {
   outline: none;
 }
