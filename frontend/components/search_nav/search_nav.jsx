@@ -15,6 +15,7 @@ class SearchNav extends React.Component {
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.redirectBookings = this.redirectBookings.bind(this);
+    this.redirectProfile = this.redirectProfile.bind(this);
   }
 
   showMenu(e) {
@@ -39,6 +40,10 @@ class SearchNav extends React.Component {
     this.props.history.push("/bookings");
   }
 
+  redirectProfile() {
+    this.props.history.push(`/users/${this.props.currentUser.id}`);
+  }
+
   render() {
     const sessionLinks = () => (
       <nav className="header-wrap-other">
@@ -56,17 +61,7 @@ class SearchNav extends React.Component {
         </div>
       </nav>
     );
-    // <div className="search-header-nav">
-    //   <button className="filter-button">
-    //     <span>Dates</span>
-    //   </button>
-    //   <button className="filter-button">
-    //     <span>Guests</span>
-    //   </button>
-    //   <button className="filter-button">
-    //     <span>Price</span>
-    //   </button>
-    // </div>
+
 
     const greetingLink = () => (
       <nav className="header-wrap-other">
@@ -86,7 +81,7 @@ class SearchNav extends React.Component {
             this.state.showMenu
             ? (
               <div className="dropdown">
-                <div className="dropdown-comp">My Profile</div>
+                <div className="dropdown-comp" onClick={this.redirectProfile}>My Profile</div>
                 <div className="dropdown-comp" onClick={this.redirectBookings}>Manage Bookings</div>
                 <div className="dropdown-comp" onClick={this.handleLogout}>Log Out</div>
               </div>
@@ -99,19 +94,7 @@ class SearchNav extends React.Component {
         </div>
       </nav>
     );
-    // <section className="search-header-nav">
-    //   <div className="filter-button-container">
-    //     <button className="filter-button">
-    //       <span>Dates</span>
-    //     </button>
-    //     <button className="filter-button">
-    //       <span>Guests</span>
-    //     </button>
-    //     <button className="filter-button">
-    //       <span>Price</span>
-    //     </button>
-    //   </div>
-    // </section>
+
     return this.props.currentUser ? greetingLink() : sessionLinks();
   }
 }

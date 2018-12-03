@@ -15,6 +15,7 @@ class ShowNav extends React.Component {
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.redirectBookings = this.redirectBookings.bind(this);
+    this.redirectProfile = this.redirectProfile.bind(this);
   }
 
   showMenu(e) {
@@ -37,6 +38,10 @@ class ShowNav extends React.Component {
 
   redirectBookings() {
     this.props.history.push("/bookings");
+  }
+
+  redirectProfile() {
+    this.props.history.push(`/users/${this.props.currentUser.id}`);
   }
 
   render() {
@@ -75,7 +80,7 @@ class ShowNav extends React.Component {
             this.state.showMenu
             ? (
               <div className="dropdown">
-                <div className="dropdown-comp">My Profile</div>
+                <div className="dropdown-comp" onClick={this.redirectProfile}>My Profile</div>
                 <div className="dropdown-comp" onClick={this.redirectBookings}>Manage Bookings</div>
                 <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
               </div>
