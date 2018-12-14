@@ -1,11 +1,13 @@
 .user-show {
   margin: 0% 10%;
+  display: flex;
 }
 
 .user-show-profile-pic-container {
   width: 250px;
   height: 250px;
   overflow: hidden;
+
 }
 .user-show-profile-pic {
   width: 400px;

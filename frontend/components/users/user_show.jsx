@@ -27,15 +27,17 @@ class UserShow extends React.Component {
 
     return(
       <section className="user-show">
-        <div className="user-show-header">
-          <div className="user-show-profile-pic-container">
-            <img className="user-show-profile-pic"  src={user.img_url} />
-          </div>
-          <div className="user-show-username"><span>Hey, I'm </span>{user.name}!</div>
+        <div className="user-show-profile-pic-container">
+          <img className="user-show-profile-pic"  src={user.img_url} />
         </div>
-        <div>
-          <div className="user-show-review-header">Reviews</div>
-          {reviews}
+        <div className="user-show-intro-reviews">
+          <div className="user-show-header">
+            <div className="user-show-username"><span>Hey, I'm </span>{user.name}!</div>
+          </div>
+          <div>
+            <div className="user-show-review-header">Reviews</div>
+            {reviews}
+          </div>
         </div>
       </section>
     );
