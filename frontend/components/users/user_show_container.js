@@ -6,11 +6,13 @@ const msp = (state, ownProps) => {
   const id = ownProps.match.params.userId;
   const user = state.entities.users[id] || {};
   const reviews = Object.values(state.entities.reviews);
+  const spots = state.entities.spots;
 
   return {
     user,
     userId: id,
-    reviews
+    reviews,
+    spots
   };
 };
 

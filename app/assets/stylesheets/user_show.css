@@ -1,13 +1,15 @@
 .user-show {
-  margin: 0% 10%;
+  margin: 0% 5%;
+  height: 100vh;
   display: flex;
 }
 
 .user-show-profile-pic-container {
+  min-width: 250px;
   width: 250px;
   height: 250px;
   overflow: hidden;
-
+  margin-right: 25px;
 }
 .user-show-profile-pic {
   width: 400px;
@@ -16,6 +18,7 @@
 
 .user-show-header {
   display: flex;
+  height: 250px;
 }
 
 .user-show-review-header {
@@ -28,10 +31,36 @@
 }
 
 .user-show-review {
-  padding: 5px 0;
+  padding: 15px;
   border-top: 1px solid lightgrey;
 }
 
 .user-show-review:last-child {
   border-bottom: 1px solid lightgrey;
+}
+
+.user-show-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-show-review-spot-img {
+  height: 50px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.user-show-review-spot-container {
+  display: flex;
+}
+
+.user-show-spot-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
 }

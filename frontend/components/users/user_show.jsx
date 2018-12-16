@@ -8,18 +8,35 @@ class UserShow extends React.Component {
       offset: 9,
       reviews: this.props.reviews,
     };
+
+    this.linkToSpot = this.linkToSpot.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.userId);
   }
 
+  linkToSpot(e) {
+    e.preventDefault;
+
+    this.props.history.push(`/spots/${e.target.id}`);
+  }
+
   render() {
     const user = this.props.user;
+    const spots = this.props.spots || {};
 
     const reviews = this.props.reviews.map( (review) => {
       return(
         <div className='user-show-review' key={review.id}>
+          <div className="user-show-review-spot-container">
+            <div className="user-show-review-spot-img">
+              <img id={review.spot_id} onClick={this.linkToSpot} className="user-show-img" src={spots[review.spot_id].img_url} />
+            </div>
+            <div id={review.spot_id} onClick={this.linkToSpot} className="user-show-spot-title">
+              {spots[review.spot_id].title}
+            </div>
+          </div>
           <div>{review.comment}</div>
         </div>
       );
