@@ -41,6 +41,7 @@ class Search extends React.Component {
     this.guestFilterMenu = this.guestFilterMenu.bind(this);
     this.handleGuestMath = this.handleGuestMath.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
+    this.clickSlider = this.clickSlider.bind(this);
     // this.priceFilterMenu = this.priceFilterMenu.bind(this);
     // this.handleCostInput = this.handleCostInput.bind(this);
   }
@@ -361,6 +362,22 @@ class Search extends React.Component {
     );
   }
 
+  clickSlider(e) {
+    e.preventDefault();
+
+    const cost = e.target.classList[0];
+
+    if (cost < this.state.currMinCosts) {
+      this.setState({
+        currMinCosts: cost
+      });
+    } else if (cost > this.state.currMinCosts) {
+      this.setState({
+        currMaxCosts: cost
+      });
+    }
+  }
+
   priceFilterMenu() {
     let costSlider = [];
     const currMinCosts = this.state.currMinCosts;
@@ -394,16 +411,18 @@ class Search extends React.Component {
       } else if (i >= currMinCosts && i <= currMaxCosts) {
         part =
           <div
+            onClick={this.clickSlider}
             id="costs-filter"
             key={i}
-            className="filter-slider filter-slider-filled">
+            className={`${i} filter-slider filter-slider-filled`}>
           </div>;
       } else {
         part =
         <div
+          onClick={this.clickSlider}
           id="costs-filter"
           key={i}
-          className="filter-slider">
+          className={`${i} filter-slider`}>
         </div>;
       }
 
