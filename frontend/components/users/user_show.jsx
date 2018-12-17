@@ -41,8 +41,13 @@ class UserShow extends React.Component {
               <div className="user-show-review-spot-img">
                 <img id={review.spot_id} onClick={this.linkToSpot} className="user-show-img" src={spots[review.spot_id].img_url} />
               </div>
-              <div id={review.spot_id} onClick={this.linkToSpot} className="user-show-spot-title">
-                {spots[review.spot_id].title}
+              <div className="user-show-spot-container">
+                <div id={review.spot_id} onClick={this.linkToSpot} className="user-show-spot-title">
+                  {spots[review.spot_id].title}
+                </div>
+                <div className="user-show-review-created">
+                  {review.created_at.split("T")[0]}
+                </div>
               </div>
             </div>
             {(this.props.currentUserId !== this.props.userId) ? <div id={review.id} onClick={this.deleteReview} className="delete-review">x</div> : <div></div>}

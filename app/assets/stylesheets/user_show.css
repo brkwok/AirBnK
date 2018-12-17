@@ -85,3 +85,15 @@
 .user-show-review-container {
   width: 100%;
 }
+
+.user-show-spot-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.user-show-review-created {
+  font-size: 12px;
+  color: grey;
+}
