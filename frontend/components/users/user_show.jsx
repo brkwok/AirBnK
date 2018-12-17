@@ -10,6 +10,7 @@ class UserShow extends React.Component {
     };
 
     this.linkToSpot = this.linkToSpot.bind(this);
+    this.deleteReview = this.deleteReview.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +23,12 @@ class UserShow extends React.Component {
     this.props.history.push(`/spots/${e.target.id}`);
   }
 
+  deleteReview(e) {
+    e.preventDefault;
+
+    this.props.deleteReview(e.target.id);
+  }
+
   render() {
     const user = this.props.user;
     const spots = this.props.spots || {};
@@ -30,12 +37,15 @@ class UserShow extends React.Component {
       return(
         <div className='user-show-review' key={review.id}>
           <div className="user-show-review-spot-container">
-            <div className="user-show-review-spot-img">
-              <img id={review.spot_id} onClick={this.linkToSpot} className="user-show-img" src={spots[review.spot_id].img_url} />
+            <div className="user-show-review-header">
+              <div className="user-show-review-spot-img">
+                <img id={review.spot_id} onClick={this.linkToSpot} className="user-show-img" src={spots[review.spot_id].img_url} />
+              </div>
+              <div id={review.spot_id} onClick={this.linkToSpot} className="user-show-spot-title">
+                {spots[review.spot_id].title}
+              </div>
             </div>
-            <div id={review.spot_id} onClick={this.linkToSpot} className="user-show-spot-title">
-              {spots[review.spot_id].title}
-            </div>
+            {(this.props.currentUserId !== this.props.userId) ? <div id={review.id} onClick={this.deleteReview} className="delete-review">x</div> : <div></div>}
           </div>
           <div>{review.comment}</div>
         </div>
@@ -51,7 +61,7 @@ class UserShow extends React.Component {
           <div className="user-show-header">
             <div className="user-show-username"><span>Hey, I'm </span>{user.name}!</div>
           </div>
-          <div>
+          <div className="user-show-review-container">
             <div className="user-show-review-header">Reviews</div>
             {reviews}
           </div>

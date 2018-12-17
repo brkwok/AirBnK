@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.user-show-intro-reviews {
+  width: 100%;
+}
+
 .user-show-profile-pic-container {
   min-width: 250px;
   width: 250px;
@@ -23,6 +27,7 @@
 
 .user-show-review-header {
   font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .user-show-username {
@@ -48,19 +53,35 @@
 .user-show-review-spot-img {
   height: 50px;
   overflow: hidden;
-  margin-bottom: 15px;
   margin-right: 15px;
   cursor: pointer;
 }
 
 .user-show-review-spot-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .user-show-spot-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
   cursor: pointer;
+}
+
+.user-show-review-header {
+  display: flex;
+  font-size: 18px;
+}
+
+.delete-review {
+  margin-bottom: 25px;
+  font-size: 20px;
+  color: grey;
+  cursor: pointer;
+}
+
+.user-show-review-container {
+  width: 100%;
 }

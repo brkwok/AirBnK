@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/session_actions';
+import { deleteReview } from '../../actions/review_actions';
 import UserShow from './user_show';
 
 const msp = (state, ownProps) => {
@@ -7,8 +8,10 @@ const msp = (state, ownProps) => {
   const user = state.entities.users[id] || {};
   const reviews = Object.values(state.entities.reviews);
   const spots = state.entities.spots;
+  const currentUserId = state.session.id;
 
   return {
+    currentUserId,
     user,
     userId: id,
     reviews,
@@ -19,6 +22,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
   return {
     fetchUser: userId => dispatch(fetchUser(userId)),
+    deleteReview: reviewId => dispatch(deleteReview(reviewId)),
   };
 };
 
