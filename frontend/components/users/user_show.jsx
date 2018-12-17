@@ -8,13 +8,18 @@ class UserShow extends React.Component {
       offset: 9,
       reviews: this.props.reviews,
     };
-
     this.linkToSpot = this.linkToSpot.bind(this);
     this.deleteReview = this.deleteReview.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.userId);
+  }
+
+  componentDidUpdate(pP) {
+    if (pP.userId !== this.props.userId) {
+      this.props.fetchUser(this.props.userId);
+    }
   }
 
   linkToSpot(e) {
@@ -50,12 +55,12 @@ class UserShow extends React.Component {
                 </div>
               </div>
             </div>
-            {(this.props.currentUserId !== this.props.userId) ? <div id={review.id} onClick={this.deleteReview} className="delete-review">x</div> : <div></div>}
+            {(this.props.currentUserId !== this.props.userId) ? <div></div> : <div id={review.id} onClick={this.deleteReview} className="delete-review">x</div>}
           </div>
           <div>{review.comment}</div>
         </div>
       );
-    });
+    }, this);
 
     return(
       <section className="user-show">
