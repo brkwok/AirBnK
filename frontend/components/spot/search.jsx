@@ -41,7 +41,8 @@ class Search extends React.Component {
     this.guestFilterMenu = this.guestFilterMenu.bind(this);
     this.handleGuestMath = this.handleGuestMath.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
-    this.clickSlider = this.clickSlider.bind(this);
+    // this.changeCost = this.changeCost.bind(this);
+    // this.clickSlider = this.clickSlider.bind(this);
     // this.priceFilterMenu = this.priceFilterMenu.bind(this);
     // this.handleCostInput = this.handleCostInput.bind(this);
   }
@@ -168,6 +169,7 @@ class Search extends React.Component {
 
   componentDidMount() {
     this.props.updateBounds(this.props.bounds);
+    this.timer = null;
   }
 
   componentDidUpdate(pP, pS) {
@@ -362,92 +364,131 @@ class Search extends React.Component {
     );
   }
 
-  clickSlider(e) {
-    e.preventDefault();
+  // clickSlider(e) {
+  //   e.preventDefault();
+  //
+  //   const cost = e.target.classList[0];
+  //
+  //   if (cost < this.state.currMinCosts) {
+  //     this.setState({
+  //       currMinCosts: cost
+  //     });
+  //   } else if (cost > this.state.currMinCosts) {
+  //     this.setState({
+  //       currMaxCosts: cost
+  //     });
+  //   }
+  // }
+  //
+  // priceFilterMenu() {
+  //   let costSlider = [];
+  //   const currMinCosts = this.state.currMinCosts;
+  //   const currMaxCosts = this.state.currMaxCosts;
+  //
+  //   for (let i = 0; i <= this.state.maxCosts; i++) {
+  //     let part;
+  //
+  //     if (i === currMinCosts) {
+  //       part =
+  //         <div key={i} id="costs-filter" className="selector-container">
+  //           <div id="costs-filter" className="costs-disp-container">
+  //             <div id="costs-filter" className="costs-disp-text">${currMinCosts}</div>
+  //           </div>
+  //           <div id="costs-filter" className="selector-outer">
+  //             <div id="costs-filter" className="selector-inner">
+  //             </div>
+  //           </div>
+  //         </div>;
+  //     } else if (i === currMaxCosts) {
+  //       part =
+  //         <div key={i} id="costs-filter" className="selector-container">
+  //           <div id="costs-filter" className="costs-disp-container">
+  //             <div id="costs-filter" className="costs-disp-text">${currMaxCosts}</div>
+  //           </div>
+  //           <div id="costs-filter" className="selector-outer">
+  //             <div id="costs-filter" className="selector-inner">
+  //             </div>
+  //           </div>
+  //         </div>;
+  //     } else if (i >= currMinCosts && i <= currMaxCosts) {
+  //       part =
+  //         <div
+  //           onClick={this.clickSlider}
+  //           id="costs-filter"
+  //           key={i}
+  //           className={`${i} filter-slider filter-slider-filled`}>
+  //         </div>;
+  //     } else {
+  //       part =
+  //       <div
+  //         onClick={this.clickSlider}
+  //         id="costs-filter"
+  //         key={i}
+  //         className={`${i} filter-slider`}>
+  //       </div>;
+  //     }
+  //
+  //     costSlider.push(part);
+  //   }
+  //
+  //   const container =
+  //   <div id="costs-filter" className="costs-filter-container">
+  //     <span
+  //       id="costs-filter"
+  //       className="costs-input-min"
+  //       type="text">
+  //         {this.state.currMinCosts}
+  //     </span>
+  //     <span
+  //       id="costs-filter"
+  //       className="costs-input-max"
+  //       type="text">
+  //         {this.state.currMaxCosts}
+  //     </span>
+  //     <div id="costs-filter" className="filter-slider-container">{costSlider}</div>
+  //   </div>;
+  //
+  //   return this.state.costFilter ? container : null;
+  // }
 
-    const cost = e.target.classList[0];
-
-    if (cost < this.state.currMinCosts) {
-      this.setState({
-        currMinCosts: cost
-      });
-    } else if (cost > this.state.currMinCosts) {
-      this.setState({
-        currMaxCosts: cost
-      });
-    }
-  }
-
-  priceFilterMenu() {
-    let costSlider = [];
-    const currMinCosts = this.state.currMinCosts;
-    const currMaxCosts = this.state.currMaxCosts;
-
-    for (let i = 0; i <= this.state.maxCosts; i++) {
-      let part;
-
-      if (i === currMinCosts) {
-        part =
-          <div key={i} id="costs-filter" className="selector-container">
-            <div id="costs-filter" className="costs-disp-container">
-              <div id="costs-filter" className="costs-disp-text">${currMinCosts}</div>
-            </div>
-            <div id="costs-filter" className="selector-outer">
-              <div id="costs-filter" className="selector-inner">
-              </div>
-            </div>
-          </div>;
-      } else if (i === currMaxCosts) {
-        part =
-          <div key={i} id="costs-filter" className="selector-container">
-            <div id="costs-filter" className="costs-disp-container">
-              <div id="costs-filter" className="costs-disp-text">${currMaxCosts}</div>
-            </div>
-            <div id="costs-filter" className="selector-outer">
-              <div id="costs-filter" className="selector-inner">
-              </div>
-            </div>
-          </div>;
-      } else if (i >= currMinCosts && i <= currMaxCosts) {
-        part =
-          <div
-            onClick={this.clickSlider}
-            id="costs-filter"
-            key={i}
-            className={`${i} filter-slider filter-slider-filled`}>
-          </div>;
-      } else {
-        part =
-        <div
-          onClick={this.clickSlider}
-          id="costs-filter"
-          key={i}
-          className={`${i} filter-slider`}>
-        </div>;
-      }
-
-      costSlider.push(part);
-    }
-
-    const container =
-    <div id="costs-filter" className="costs-filter-container">
-      <span
-        id="costs-filter"
-        className="costs-input-min"
-        type="text">
-          {this.state.currMinCosts}
-      </span>
-      <span
-        id="costs-filter"
-        className="costs-input-max"
-        type="text">
-          {this.state.currMaxCosts}
-      </span>
-      <div id="costs-filter" className="filter-slider-container">{costSlider}</div>
-    </div>;
-
-    return this.state.costFilter ? container : null;
-  }
+  // changeCost(e) {
+  //   e.preventDefault();
+  //   if (e.keyCode === 13) {
+  //     if (e.target.className === "min-cost-input") {
+  //       this.setState({
+  //         currMinCosts: e.target.value
+  //       });
+  //     } else if (e.target.className === "max-cost-input") {
+  //       this.setState({
+  //         currMaxCosts: e.target.value
+  //       });
+  //     }
+  //   }
+  // }
+  //
+  // priceFilterMenu() {
+  //   const priceInput =
+  //   <div id="costs-filter" className="costs-filter-container">
+  //     <input
+  //       className="min-cost-input"
+  //       onChange={this.changeCost}
+  //       id="costs-filter"
+  //       type="string"
+  //       value={this.state.currMinCosts}>
+  //     </input>
+  //     <input
+  //       className="max-cost-input"
+  //       onChange={this.changeCost}
+  //       id="costs-filter"
+  //       type="string"
+  //       value={this.state.currMaxCosts}></input>
+  //   </div>;
+  //
+  //   return(
+  //     this.state.costFilter ?
+  //     priceInput : null
+  //   );
+  // }
 
   render () {
     const spots = this.state.renderSpots;
@@ -476,8 +517,7 @@ class Search extends React.Component {
           <div className="filter-button-container">
             { guestsFilter }
             { this.guestFilterMenu() }
-            { costFilter }
-            { this.priceFilterMenu() }
+
           </div>
         </section>
         <div className="spots-container">
@@ -509,9 +549,7 @@ class Search extends React.Component {
               <button className="filter-button filter-disabled">
                 <span>Guests</span>
               </button>
-              <button className="filter-button filter-disabled">
-                <span>Price</span>
-              </button>
+
             </div>
           </section>
           <div className="spots-container">
