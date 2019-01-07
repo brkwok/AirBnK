@@ -8,7 +8,7 @@ const msp = (state, ownProps) => {
   const user = state.entities.users[id] || {};
   const reviews = Object.values(state.entities.reviews);
   const spots = state.entities.spots;
-  const currentUserId = state.session.id.toString();
+  const currentUserId = state.session.id;
 
   return {
     currentUserId,
