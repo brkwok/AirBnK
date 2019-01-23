@@ -32,6 +32,7 @@ gem 'bootsnap'
 gem 'faker'
 gem 'geocoder', '~> 1.3', '>= 1.3.7'
 gem "figaro"
+gem "aws-sdk-s3"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

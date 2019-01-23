@@ -27,6 +27,8 @@ class User < ApplicationRecord
 
   has_many :reviews
 
+  has_one_attached :photo
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

@@ -9,7 +9,7 @@
     "geocoder": "^0.2.3",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "react": "^16.4.1",
+    "react": "^16.7.0",
     "react-dates": "^17.1.1",
     "react-dom": "^16.4.1",
     "react-input-range": "^1.3.0",
