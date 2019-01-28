@@ -17,6 +17,17 @@ class Api::SpotsController < ApplicationController
     render :show
   end
 
+  def create
+    @spot = Spot.new(spot_params)
+    @spot.host = current_user
+
+    if @spot.save
+      @spots = Spots.where(host_id: current_user.id)
+    else
+      render json: @spot.errors.full_messages, status: 422
+    end
+  end
+
   def update
 
   end

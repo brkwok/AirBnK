@@ -67,6 +67,7 @@
 
 .login-signup-box {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   margin: 15px 0;
 }
@@ -147,4 +148,21 @@
 .session-errors {
   padding-top: 10px;
   font-size: 15px;
+}
+
+.img-attach-container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.img-attach {
+  max-height: 100%;
+}
+
+.img-attach-input {
+  padding: 15px;
+  width: 200px;
+  margin: 0 auto;
 }

@@ -8,7 +8,7 @@ export default ({ spot, user, reviews, users }) => {
   let link = '';
   if (typeof user === 'undefined' || user.length === 0) { return; } else { link = (
       <Link to={`/users/${user.id}`}>
-        <img  className="user-profile-pic" src={user.img_url} />
+        <img  className="user-profile-pic" src={user.photoUrl} />
       </Link>
     );
   }
@@ -30,7 +30,7 @@ export default ({ spot, user, reviews, users }) => {
         <div key={review.id} className="each-review-container">
           <div className="each-review-container-top">
             <Link className="review-picture-container" to={`/users/${review.user_id}`}>
-              <img className="review-profile-picture" src={users[review.user_id].img_url}></img>
+              <img className="review-profile-picture" src={users[review.user_id].photoUrl}></img>
             </Link>
             <div className="review-user-detail-container">
               <div className="review-username">{users[review.user_id].name}</div>

@@ -14,3 +14,13 @@ export const fetchSpot = (spotId) => {
     url: `/api/spots/${spotId}`
   });
 };
+
+export const createSpot = (data) => {
+  return $.ajax({
+    method: "POST",
+    url: "/api/spots",
+    data,
+    contentType: false,
+    processData: false,
+  });
+};

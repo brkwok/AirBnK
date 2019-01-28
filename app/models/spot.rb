@@ -34,6 +34,8 @@ class Spot < ApplicationRecord
 
   has_many :reviews
 
+  has_one_attached :photo
+
   def avg_ratings
     if !self.reviews.empty?
       ratings = self.reviews.map { |el| el.rating }

@@ -74,7 +74,7 @@ class SearchNav extends React.Component {
           </div>
         <section className="login-signup">
           <div className="login-signup-button-prof-other" onClick={this.showMenu}>
-            <img className='profile-picture' src={this.props.currentUser.img_url} />
+            <img className='profile-picture' src={this.props.currentUser.photoUrl} />
           </div>
 
           {

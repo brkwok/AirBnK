@@ -11,7 +11,6 @@ const receiveAllSpots = spots => {
 };
 
 const receiveSpot = payload => {
-  
   return {
     type: RECEIVE_SPOT,
     spot: payload.spot,
@@ -32,6 +31,14 @@ export const fetchSpots = (filters) => {
 export const fetchSpot = (spotId) => {
   return dispatch => {
     return SpotApiUtil.fetchSpot(spotId).then(
+      spot => dispatch(receiveSpot(spot))
+    );
+  };
+};
+
+export const createSpot = (data) => {
+  return dispatch => {
+    return SpotApiUtil.createSpot(data).then(
       spot => dispatch(receiveSpot(spot))
     );
   };

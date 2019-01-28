@@ -84,7 +84,7 @@ class SignupForm extends React.Component {
 
   render() {
     const preview = this.state.photoUrl ?
-      <div><img src={this.state.photoUrl}></img></div>
+      <div className="img-attach-container"><img className="img-attach" src={this.state.photoUrl}></img></div>
       :
       null;
 
@@ -96,7 +96,7 @@ class SignupForm extends React.Component {
         {this.renderErrors()}
           <div className="login-signup-box">
               {preview}
-              <input onChange={this.handleFile} type="file"/>
+              <input className="img-attach-input" onChange={this.handleFile} type="file"/>
 
               <input className="login-signup-contentbox" type="text"
                 value={this.state.email}
