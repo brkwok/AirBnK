@@ -32,10 +32,16 @@ class SignupForm extends React.Component {
     const datas = Object.keys(this.state);
     const data = new FormData();
     const user = Object.assign({}, this.state);
+    const defaultPic = new File([""], "../../../app/assets/images/prof_pic1.jpg", { type: "image/jpg"});
+
 
     datas.forEach( (input) => {
       if (input === "photoUrl") {
         return;
+      }
+
+      if (input === "photo" && this.state.photo === window.profilePic) {
+        return data.append(`user[${input}]`, defaultPic);
       }
 
       return data.append(`user[${input}]`, this.state[input]);
@@ -48,9 +54,11 @@ class SignupForm extends React.Component {
 
   handleFile(e) {
     const photo = e.currentTarget.files[0];
+
     let fileReader = new FileReader();
 
     fileReader.onloadend = () => {
+
       this.setState({
         photo,
         photoUrl: fileReader.result

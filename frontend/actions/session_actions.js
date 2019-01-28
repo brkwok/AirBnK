@@ -9,7 +9,7 @@ export const receiveCurrentUser = currentUser => {
 
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser
+    currentUser,
   };
 };
 
@@ -41,8 +41,6 @@ export const signup = (data, user) => {
     return SessionApiUtil.signup(data, user).then(
       () => {
 
-        console.log(data);
-
         return dispatch(receiveCurrentUser(user));
       },
       errors => {
@@ -71,10 +69,11 @@ export const updateUser = user => {
 };
 
 export const login = user => {
+
   return dispatch => {
 
     return SessionApiUtil.login(user).then(
-      user => {
+      ({ user }) => {
 
         return dispatch(receiveCurrentUser(user));
       },
