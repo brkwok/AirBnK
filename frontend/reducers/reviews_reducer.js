@@ -12,6 +12,7 @@ const ReviewsReducer = (state = {}, action) => {
     case RECEIVE_REVIEWS:
     case RECEIVE_SPOT:
     case RECEIVE_USER:
+      
       return action.reviews || {};
     case REMOVE_REVIEW:
       const newState = merge({}, state);

@@ -11,6 +11,7 @@ const receiveAllSpots = spots => {
 };
 
 const receiveSpot = payload => {
+  
   return {
     type: RECEIVE_SPOT,
     spot: payload.spot,

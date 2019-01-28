@@ -17,6 +17,8 @@ class User < ApplicationRecord
   validates :email, :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  # validate :default_prof_pic
+
   after_initialize :ensure_session_token
 
   has_many :spots,
@@ -52,8 +54,16 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  # def default_prof_pic
+  #   if !self.photo.attached?
+  #     self.photo = ActionController::Base.helpers.asset_path('prof_pic1.jpg')
+  #     self.img_url = ActionController::Base.helpers.asset_path('prof_pic1.jpg')
+  #   end
+  # end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.base64
   end
+
 end

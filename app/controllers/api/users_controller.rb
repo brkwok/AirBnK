@@ -7,7 +7,8 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.img_url = ActionController::Base.helpers.asset_path('prof_pic1.jpg')
+    @reviews = Review.where(user_id: @user.id)
+    @spots = @reviews.map { |review| review.spot }
 
     if @user.save
       @reviews = Review.where(user_id: params[:id])
@@ -31,6 +32,6 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :name, :img_url)
+    params.require(:user).permit(:email, :password, :name, :photo)
   end
 end

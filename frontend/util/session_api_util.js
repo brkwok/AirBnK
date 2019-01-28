@@ -5,11 +5,15 @@ export const fetchUser = userId => {
   });
 };
 
-export const signup = (user) => {
+export const signup = (data, user) => {
+
   return $.ajax({
     method: "POST",
     url: "/api/users",
-    data: { user: user }
+    data,
+    user: { user: user},
+    contentType: false,
+    processData: false,
   });
 };
 
@@ -25,7 +29,7 @@ export const login = (user) => {
   return $.ajax({
     method: "POST",
     url: "/api/session",
-    data: { user }
+    data: user
   });
 };
 

@@ -66,7 +66,7 @@ class UserShow extends React.Component {
     return(
       <section className="user-show">
         <div className="user-show-profile-pic-container">
-          <img className="user-show-profile-pic"  src={user.img_url} />
+          <img className="user-show-profile-pic"  src={user.photoUrl} />
         </div>
         <div className="user-show-intro-reviews">
           <div className="user-show-header">

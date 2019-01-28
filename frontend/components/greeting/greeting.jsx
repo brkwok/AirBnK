@@ -14,6 +14,7 @@ class Greeting extends React.Component {
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.redirectBookings = this.redirectBookings.bind(this);
+    this.redirectMyProf = this.redirectMyProf.bind(this);
   }
 
   showMenu(e) {
@@ -36,6 +37,24 @@ class Greeting extends React.Component {
 
   redirectBookings() {
     this.props.history.push("/bookings");
+  }
+
+  componentDidMount() {
+    if (this.props.currentUser) {
+      const currentUser = this.props.currentUser;
+
+      this.props.fetchUser(currentUser.id);
+    }
+  }
+
+  // componentDidUpdate() {
+  // }
+
+  redirectMyProf(e) {
+    e.preventDefault();
+    const currentUserId = this.props.currentUser.id;
+
+    this.props.history.push(`/users/${currentUserId}`);
   }
 
   render() {
@@ -63,14 +82,14 @@ class Greeting extends React.Component {
         </Link>
         <section className="login-signup">
           <div className="login-signup-button-prof" onClick={this.showMenu}>
-            <img className='profile-picture' src={this.props.currentUser.img_url} />
+            <img className='profile-picture' src={this.props.currentUser.photoUrl} />
           </div>
 
           {
             this.state.showMenu
             ? (
               <div className="dropdown">
-                <div className="dropdown-comp">My Profile</div>
+                <div onClick={this.redirectMyProf} className="dropdown-comp">My Profile</div>
                 <div className="dropdown-comp" onClick={this.redirectBookings}>Manage Bookings</div>
                 <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
               </div>

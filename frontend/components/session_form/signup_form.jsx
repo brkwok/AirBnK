@@ -7,10 +7,14 @@ class SignupForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      name: ''
+      name: '',
+      photo: window.profilePic,
+      photoUrl: window.profilePic,
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   openModal() {
@@ -25,8 +29,37 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const datas = Object.keys(this.state);
+    const data = new FormData();
     const user = Object.assign({}, this.state);
-    this.props.signup(user).then(this.props.closeModal);
+
+    datas.forEach( (input) => {
+      if (input === "photoUrl") {
+        return;
+      }
+
+      return data.append(`user[${input}]`, this.state[input]);
+    }, this);
+
+    const promise = this.props.signup(data, user);
+
+    promise.then(this.props.closeModal);
+  }
+
+  handleFile(e) {
+    const photo = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState({
+        photo,
+        photoUrl: fileReader.result
+      });
+    };
+
+    if (photo) {
+      fileReader.readAsDataURL(photo);
+    }
   }
 
   renderErrors() {
@@ -42,6 +75,11 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    const preview = this.state.photoUrl ?
+      <div><img src={this.state.photoUrl}></img></div>
+      :
+      null;
+
     return (
       <div className="login-signup">
         <form onSubmit={this.handleSubmit} className="login-signup-formbox">
@@ -49,6 +87,8 @@ class SignupForm extends React.Component {
         Sign Up
         {this.renderErrors()}
           <div className="login-signup-box">
+              {preview}
+              <input onChange={this.handleFile} type="file"/>
 
               <input className="login-signup-contentbox" type="text"
                 value={this.state.email}

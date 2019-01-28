@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import Greeting from './greeting';
 import { openModal } from '../../actions/modal_actions';
+import { fetchUser } from '../../actions/session_actions';
 
 const msp = ({ session, entities: { users }}, ownProps) => {
   return {
@@ -13,7 +14,8 @@ const msp = ({ session, entities: { users }}, ownProps) => {
 
 const mdp = dispatch => ({
   logout: () => dispatch(logout()),
-  openModal: modal => dispatch(openModal(modal))
+  openModal: modal => dispatch(openModal(modal)),
+  fetchUser: userId => dispatch(fetchUser(userId)),
 });
 
 export default connect(msp, mdp)(Greeting);

@@ -16,12 +16,13 @@ end
   prof_pics << 'prof_pic' + n.to_s + '.jpg'
 end
 
-User.destroy_all
-User.create!(email: "demo", password: "123456", name: "demo", img_url: ActionController::Base.helpers.asset_path(prof_pics.sample))
-
-200.times do
-  User.create!(name: Faker::Name.first_name, password: "123456", email: Faker::Internet.email, img_url: ActionController::Base.helpers.asset_path(prof_pics.sample))
-end
+# User.destroy_all
+# User.create!(email: "demo", password: "123456", name: "demo", img_url: ActionController::Base.helpers.asset_path(prof_pics.sample))
+#
+#
+# 200.times do
+#   User.create!(name: Faker::Name.first_name, password: "123456", email: Faker::Internet.email, img_url: ActionController::Base.helpers.asset_path(prof_pics.sample))
+# end
 
 first_user = User.first.id
 last_user = User.last.id
@@ -56,6 +57,6 @@ Spot.create!(lat: 40.719196, lng: -73.000607, location: Faker::Address.city, typ
 first_spot = Spot.first.id
 last_spot = Spot.last.id
 Review.destroy_all
-2000.times do
-  Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: rand(first_user..last_user), rating: rand(3..5))
-end
+# 50.times do
+#   Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: 1, rating: rand(3..5))
+# end

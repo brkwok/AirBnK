@@ -6,10 +6,10 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_USER = 'RECEIVE_USER';
 
 export const receiveCurrentUser = currentUser => {
-  
+
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser: currentUser.user
+    currentUser
   };
 };
 
@@ -35,18 +35,23 @@ export const receiveErrors = errors => {
   };
 };
 
-export const signup = user => {
+export const signup = (data, user) => {
   return dispatch => {
-    return SessionApiUtil.signup(user).then(
-      user => dispatch(receiveCurrentUser(user)),
+
+    return SessionApiUtil.signup(data, user).then(
+      () => {
+
+        console.log(data);
+
+        return dispatch(receiveCurrentUser(user));
+      },
       errors => {
-      return dispatch(receiveErrors(errors.responseJSON));
+        return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
 
 export const fetchUser = userId => {
-
   return dispatch => {
     return SessionApiUtil.fetchUser(userId).then(
       user => dispatch(receiveUser(user))
@@ -67,12 +72,14 @@ export const updateUser = user => {
 
 export const login = user => {
   return dispatch => {
+
     return SessionApiUtil.login(user).then(
       user => {
 
-      return dispatch(receiveCurrentUser(user)); },
+        return dispatch(receiveCurrentUser(user));
+      },
       errors => {
-      return dispatch(receiveErrors(errors.responseJSON));
+        return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };

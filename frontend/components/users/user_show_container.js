@@ -9,13 +9,15 @@ const msp = (state, ownProps) => {
   const reviews = Object.values(state.entities.reviews);
   const spots = state.entities.spots;
   const currentUserId = state.session.id;
+  const photoUrl = user.photoUrl;
 
   return {
     currentUserId,
     user,
     userId: id,
     reviews,
-    spots
+    spots,
+    photoUrl
   };
 };
 

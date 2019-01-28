@@ -1,8 +1,10 @@
 json.user do
   json.partial! '/api/users/user', user: @user
+  json.photoUrl url_for(@user.photo)
 end
 
 json.reviews do
+
   @reviews.each do |review|
     json.set! review.id do
       json.partial! './api/reviews/review', review: review

@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
       email: '',
       password: ''
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -23,7 +24,6 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     const promise = this.props.login(user);
-    console.log(promise);
     promise.then(this.props.closeModal);
   }
 

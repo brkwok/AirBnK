@@ -7,6 +7,7 @@ end
 json.user do
   json.set! @spot.host.id do
     json.partial! '/api/users/user', user: @spot.host
+    json.photoUrl url_for(@spot.host.photo)
   end
 end
 
@@ -14,6 +15,7 @@ json.users do
   @users.each do |user|
     json.set! user.id do
       json.partial! '/api/users/user', user: user
+      json.photoUrl url_for(user.photo)
     end
   end
 end
