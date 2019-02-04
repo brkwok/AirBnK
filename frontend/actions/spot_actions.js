@@ -2,6 +2,7 @@ import * as SpotApiUtil from '../util/spot_api_util';
 
 export const RECEIVE_ALL_SPOTS = 'RECEIVE_ALL_SPOTS';
 export const RECEIVE_SPOT = 'RECEIVE_SPOT';
+export const RECEIVE_SPOT_ERRORS = 'RECEIVE_SPOT_ERRORS';
 
 const receiveAllSpots = spots => {
   return {
@@ -17,6 +18,13 @@ const receiveSpot = payload => {
     user: payload.user,
     users: payload.users,
     reviews: payload.reviews
+  };
+};
+
+const receiveErrors = err => {
+  return {
+    type: RECEIVE_SPOT_ERRORS,
+    err
   };
 };
 
@@ -39,7 +47,8 @@ export const fetchSpot = (spotId) => {
 export const createSpot = (data) => {
   return dispatch => {
     return SpotApiUtil.createSpot(data).then(
-      spot => dispatch(receiveSpot(spot))
+      spot => dispatch(receiveSpot(spot)),
+      err => dispatch(receiveErrors(err.responseJSON))
     );
   };
 };

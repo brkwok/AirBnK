@@ -13,7 +13,7 @@ class SpotForm extends Component {
       zipcode: "",
       title: "",
       cost: "",
-      typeOfSpot: "",
+      typeOfSpot: "Entire House",
       guests: "",
       bedroom: "",
       beds: "",
@@ -27,11 +27,12 @@ class SpotForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   handleNumberChange(field) {
     return e => {
-      if (isNaN(parseInt(e.target.value)) || parseInt(e.target.value) < 0) {
+      if (isNaN(parseInt(e.target.value)) || parseInt(e.target.value) < 1) {
         this.setState({
           [field]: ""
         });
@@ -69,27 +70,59 @@ class SpotForm extends Component {
   }
 
   handleSubmit() {
+    if (this.state.photoUrl === null) {
+      alert("You must attach a photo");
+    }
+
     const geocoder = new google.maps.Geocoder();
     const address = [this.state.address1, this.state.address2,this.state.location, this.state["state"], this.state.zipcode].join(" ");
 
     let lat, lng;
 
     geocoder.geocode({ address: address }, (results, status) => {
-      debugger
       if (status == google.maps.GeocoderStatus.OK) {
         lat = results[0].geometry.location.lat();
         lng = results[0].geometry.location.lng();
-        debugger
       }
     });
-    debugger
 
+    const spotParams = ["title", "details", "location", "guests", "cost", "bath", "lat", "lng", "beds", "bedroom", "photo", "typeOfSpot"];
     const data = new FormData();
+
+    spotParams.forEach( (input) => {
+      if (input === "beds" || input === "bedroom" || input === "bath" || input === "cost" || input === "guests") {
+        return data.append(`spot[${input}]`, parseInt(this.state[input]));
+      } else if (input === "lat") {
+        return data.append(`spot[${input}]`, lat);
+      } else if (input === "lng") {
+        return data.append(`spot[${input}]`, lng);
+      } else if (input === "typeOfSpot") {
+        return data.append('spot[type_of_spot]', this.state.typeOfSpot);
+      } else {
+        return data.append(`spot[${input}]`, this.state[input]);
+      }
+    });
+
+    const promise = this.props.createSpot(data);
+
+    promise.then(this.props.closeModal);
+  }
+
+  renderErrors() {
+    return(
+      <ul className="spot-form-errors">
+        {this.props.errors.map((err, i) => {
+          return <li key={i}>{err}</li>;
+        })}
+      </ul>
+    );
   }
 
   render() {
     const preview = this.state.photoUrl ?
-      <div className="img-attach-container"><img className="img-attach" src={this.state.photoUrl}></img></div>
+      <div className="img-attach-container-spot">
+        <img className="img-attach" src={this.state.photoUrl}></img>
+      </div>
       :
       null;
 
@@ -150,7 +183,8 @@ class SpotForm extends Component {
 
     console.log(this.state);
     return(
-      <div className="spot-create-form">
+      <div className="spot-form">
+        {this.renderErrors()}
         <div>
           <div>Select an Image for Spot</div>
           {preview}
@@ -169,7 +203,6 @@ class SpotForm extends Component {
             placeholder="Name"
           />
         <div>
-        <div>
           <div>Type of Spot</div>
           <select onChange={this.handleInputChange('typeOfSpot')} name="Type of Spot">
             <option value="Entire House">Entire House</option>
@@ -177,77 +210,99 @@ class SpotForm extends Component {
             <option value="Entire Apartment">Entire Apartment</option>
           </select>
         </div>
-          <div
-            className="spot-create-address-holder"
-            >Street Address
-
+        <div className="spot-create-full-address">
+          <div>
+            <div
+              className="spot-create-address-holder"
+              >Street Address
+              <input
+                onChange={this.handleInputChange('address1')}
+                className="spot-create-input spot-create-address"
+                type="text"
+                value={this.state.address1}
+                placeholder="Address Line 1"
+                />
+              <input
+                onChange={this.handleInputChange('address2')}
+                className="spot-create-input spot-create-address"
+                type="text"
+                value={this.state.address2}
+                placeholder="Address Line 2"
+                />
+            </div>
+            <div>City</div>
             <input
-              onChange={this.handleInputChange('address1')}
-              className="spot-create-input spot-create-address"
+              onChange={this.handleInputChange('location')}
+              className="spot-create-input spot-create-city"
               type="text"
-              value={this.state.address1}
-              placeholder="Address Line 1"
-            />
-            <input
-              onChange={this.handleInputChange('address2')}
-              className="spot-create-input spot-create-address"
-              type="text"
-              value={this.state.address2}
-              placeholder="Address Line 2"
-            />
+              value={this.state.location}
+              placeholder="City"
+              />
           </div>
-          <div>City</div>
-          <input
-            onChange={this.handleInputChange('location')}
-            className="spot-create-input spot-create-city"
-            type="text"
-            value={this.state.location}
-            placeholder="City"
-          />
-          <div>State</div>
-          {stateSelect}
-          <div>Zipcode</div>
-          <input
-            onChange={this.handleInputChange('zipcode')}
-            type="text"
-            value={this.state.zipcode}
-            placeholder="Zipcode"
-          />
+          <div className="spot-create-state-zipcode">
+            <div>
+              <div>State</div>
+              {stateSelect}
+            </div>
+            <div>
+              <div>Zipcode</div>
+              <input
+                onChange={this.handleInputChange('zipcode')}
+                className="spot-create-input"
+                type="text"
+                value={this.state.zipcode}
+                placeholder="Zipcode"
+                />
+            </div>
+          </div>
         </div>
+        <div>Other</div>
         <input
           onChange={this.handleNumberChange('cost')}
+          className="spot-create-input spot-create-numbers"
           type="text"
           value={this.state.cost}
           placeholder="Cost"
         />
         <input
           onChange={this.handleNumberChange('guests')}
+          className="spot-create-input spot-create-numbers"
           type="text"
           value={this.state.guests}
           placeholder="Max Guests"
         />
         <input
           onChange={this.handleNumberChange('bedroom')}
+          className="spot-create-input spot-create-numbers"
           type="text"
           value={this.state.bedroom}
           placeholder="Bedrooms"
         />
         <input
           onChange={this.handleNumberChange('beds')}
+          className="spot-create-input spot-create-numbers"
           type="text"
           value={this.state.beds}
           placeholder="Beds"
         />
         <input
           onChange={this.handleNumberChange('bath')}
+          className="spot-create-input spot-create-numbers"
           type="text"
           value={this.state.bath}
           placeholder="Bath"
         />
+        <div>Details</div>
         <input
-          type="submit"
-          onClick={this.handleSubmit}
+          className="spot-create-detail"
+          type="textarea"
+          value={this.state.details}
+          onChange={this.handleInputChange("details")}
         />
+        <div
+          className="spot-create-submit"
+          onClick={this.handleSubmit}
+        >Create Spot</div>
       </div>
     );
   }

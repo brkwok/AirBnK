@@ -6,6 +6,7 @@ import SpotForm from './spot_form';
 const msp = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
+    errors: state.errors.spot
   };
 };
 

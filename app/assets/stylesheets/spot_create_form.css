@@ -1,5 +1,67 @@
-.spot-create-form {
-  width: 800px;
-  height: 500px;
+.spot-form {
   background: white;
+  padding: 30px;
+  padding-bottom: 40px;
+  font-size: 13px;
+}
+
+.spot-create-detail {
+  width: 100%;
+  height: 40px;
+}
+
+.spot-create-submit {
+  color: white;
+  background: #4286f4;
+  border-radius: 5px;
+  margin-top: 15px;
+  width: 100px;
+  justify-content: center;
+  display: flex;
+  height: 30px;
+  align-items: center;
+}
+
+.img-attach-container-spot {
+  width: 400px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.spot-create-full-address {
+  display: flex;
+}
+
+.spot-create-numbers {
+  width: 65px !important;
+  margin-right: 10px;
+}
+
+.spot-create-state-zipcode {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.spot-form-errors {
+  padding: 0;
+}
+
+.spot-form * {
+  padding: 5px 0;
+}
+
+.spot-create-address-holder {
+  display: flex;
+  flex-direction: column;
+}
+
+.spot-create-input {
+  height: 15px;
+  width: 200px;
+  padding-left: 5px;
+}
+
+.spot-create-submit:hover {
+  cursor: pointer;
 }
