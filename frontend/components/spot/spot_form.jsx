@@ -69,7 +69,11 @@ class SpotForm extends Component {
     }
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const spotParams = ["title", "details", "location", "guests", "cost", "bath", "lat", "lng", "beds", "bedroom", "photo", "typeOfSpot"];
+
     if (this.state.photoUrl === null) {
       alert("You must attach a photo");
     }
@@ -77,35 +81,37 @@ class SpotForm extends Component {
     const geocoder = new google.maps.Geocoder();
     const address = [this.state.address1, this.state.address2,this.state.location, this.state["state"], this.state.zipcode].join(" ");
 
-    let lat, lng;
+    let lat = null, lng = null;
+    const data = new FormData();
 
     geocoder.geocode({ address: address }, (results, status) => {
       if (status == google.maps.GeocoderStatus.OK) {
         lat = results[0].geometry.location.lat();
         lng = results[0].geometry.location.lng();
+
+        debugger
+        spotParams.forEach( (input) => {
+          if (input === "beds" || input === "bedroom" || input === "bath" || input === "cost" || input === "guests") {
+            return data.append(`spot[${input}]`, parseInt(this.state[input]));
+          } else if (input === "lat") {
+            return data.append(`spot[${input}]`, parseInt(lat));
+          } else if (input === "lng") {
+            return data.append(`spot[${input}]`, parseInt(lng));
+          } else if (input === "typeOfSpot") {
+            return data.append('spot[type_of_spot]', this.state.typeOfSpot);
+          } else {
+            return data.append(`spot[${input}]`, this.state[input]);
+          }
+        });
+
+        this.props.createSpot(data).then(() => {
+          this.props.history.push(`/users/${this.props.currentUser.id}/spots`);
+        });
       }
     });
 
-    const spotParams = ["title", "details", "location", "guests", "cost", "bath", "lat", "lng", "beds", "bedroom", "photo", "typeOfSpot"];
-    const data = new FormData();
 
-    spotParams.forEach( (input) => {
-      if (input === "beds" || input === "bedroom" || input === "bath" || input === "cost" || input === "guests") {
-        return data.append(`spot[${input}]`, parseInt(this.state[input]));
-      } else if (input === "lat") {
-        return data.append(`spot[${input}]`, lat);
-      } else if (input === "lng") {
-        return data.append(`spot[${input}]`, lng);
-      } else if (input === "typeOfSpot") {
-        return data.append('spot[type_of_spot]', this.state.typeOfSpot);
-      } else {
-        return data.append(`spot[${input}]`, this.state[input]);
-      }
-    });
 
-    const promise = this.props.createSpot(data);
-
-    promise.then(this.props.closeModal);
   }
 
   renderErrors() {

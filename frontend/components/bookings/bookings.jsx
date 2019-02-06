@@ -7,6 +7,9 @@ class Bookings extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchUser(this.props.currentUser.id);
+    }
     this.props.fetchBookings();
   }
 

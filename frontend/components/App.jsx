@@ -28,7 +28,7 @@ const App = () => {
       <Route path="/spots/:spotId" component={ ShowNavContainer } />
       <Route path="/spots/:spotId" component={ SpotShowContainer } />
       <Route path="/users/:userId" component={ ShowNavContainer } />
-      <Route path="/users/:userId" component={ UserShowContainer } />
+      <Route exact path="/users/:userId" component={ UserShowContainer } />
       <Switch>
         <AuthRoute exact path="/bookings" component={ ShowNavContainer } />
       </Switch>

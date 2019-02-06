@@ -21,7 +21,7 @@
 #
 
 class Spot < ApplicationRecord
-  validates :title, :details, :lat, :lng, :type_of_spot, :location, :cost, :guests, :img_url,
+  validates :title, :details, :lat, :lng, :type_of_spot, :location, :cost, :guests,
     :bedroom, :beds, :bath, presence: true
 
   belongs_to :host,

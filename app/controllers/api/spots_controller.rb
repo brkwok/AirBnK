@@ -22,7 +22,12 @@ class Api::SpotsController < ApplicationController
     @spot.host = current_user
 
     if @spot.save
-      @spots = Spots.where(host_id: current_user.id)
+      @reviews = @spot.reviews
+      @users = []
+      @reviews.each do |review|
+        @users << review.user
+      end
+      render :show
     else
       render json: @spot.errors.full_messages, status: 422
     end

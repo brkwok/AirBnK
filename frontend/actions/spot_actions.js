@@ -16,8 +16,8 @@ const receiveSpot = payload => {
     type: RECEIVE_SPOT,
     spot: payload.spot,
     user: payload.user,
-    users: payload.users,
-    reviews: payload.reviews
+    users: payload.users || {},
+    reviews: payload.reviews || {}
   };
 };
 
@@ -47,7 +47,9 @@ export const fetchSpot = (spotId) => {
 export const createSpot = (data) => {
   return dispatch => {
     return SpotApiUtil.createSpot(data).then(
-      spot => dispatch(receiveSpot(spot)),
+      () => {
+        dispatch(fetchSpots());
+      },
       err => dispatch(receiveErrors(err.responseJSON))
     );
   };

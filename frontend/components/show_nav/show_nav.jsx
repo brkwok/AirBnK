@@ -18,6 +18,12 @@ class ShowNav extends React.Component {
     this.redirectProfile = this.redirectProfile.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchUser(this.props.currentUser.id);
+    }
+  }
+
   showMenu(e) {
     e.preventDefault();
 

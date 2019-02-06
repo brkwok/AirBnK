@@ -2,6 +2,7 @@ import { merge } from 'lodash';
 import { RECEIVE_CURRENT_USER, RECEIVE_USER } from '../actions/session_actions';
 import { RECEIVE_SPOT } from '../actions/spot_actions';
 import { RECEIVE_REVIEWS } from '../actions/review_actions';
+import { RECEIVE_BOOKINGS } from '../actions/booking_actions';
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
