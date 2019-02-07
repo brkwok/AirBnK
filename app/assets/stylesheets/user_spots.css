@@ -1,6 +1,5 @@
 .user-spots-container {
   height: calc(100vh - 120px);
-  padding-top: 120px;
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
