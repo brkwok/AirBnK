@@ -16,6 +16,7 @@ class SearchNav extends React.Component {
     this.closeMenu = this.closeMenu.bind(this);
     this.redirectBookings = this.redirectBookings.bind(this);
     this.redirectProfile = this.redirectProfile.bind(this);
+    this.redirectMyListings = this.redirectMyListings.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +49,10 @@ class SearchNav extends React.Component {
 
   redirectProfile() {
     this.props.history.push(`/users/${this.props.currentUser.id}`);
+  }
+
+  redirectMyListings() {
+    this.props.history.push(`/users/${this.props.currentUser.id}/spots`);
   }
 
   render() {
@@ -89,6 +94,7 @@ class SearchNav extends React.Component {
             ? (
               <div className="dropdown">
                 <div className="dropdown-comp" onClick={this.redirectProfile}>My Profile</div>
+                <div className="dropdown-comp" onClick={this.redirectMyListings}>My Listings</div>
                 <div className="dropdown-comp" onClick={this.redirectBookings}>Manage Bookings</div>
                 <div className="dropdown-comp" onClick={this.handleLogout}>Log Out</div>
               </div>

@@ -15,6 +15,7 @@ class Greeting extends React.Component {
     this.closeMenu = this.closeMenu.bind(this);
     this.redirectBookings = this.redirectBookings.bind(this);
     this.redirectMyProf = this.redirectMyProf.bind(this);
+    this.redirectMyListings = this.redirectMyListings.bind(this);
   }
 
   showMenu(e) {
@@ -37,6 +38,10 @@ class Greeting extends React.Component {
 
   redirectBookings() {
     this.props.history.push("/bookings");
+  }
+
+  redirectMyListings() {
+    this.props.history.push(`/users/${this.props.currentUser.id}/spots`);
   }
 
   componentDidMount() {
@@ -91,6 +96,7 @@ class Greeting extends React.Component {
             ? (
               <div className="dropdown">
                 <div onClick={this.redirectMyProf} className="dropdown-comp">My Profile</div>
+                <div onClick={this.redirectMyListings} className="dropdown-comp">My Listings</div>
                 <div className="dropdown-comp" onClick={this.redirectBookings}>Manage Bookings</div>
                 <div className="dropdown-comp" onClick={this.handleLogout}> Log Out </div>
               </div>

@@ -16,7 +16,15 @@ class UserSpots extends Component {
   }
 
   componentDidUpdate(pP) {
-    if (Object.values(pP.spots).length === 0 && pP.spots !== this.props.spots) {
+    if (Object.values(pP.spots).length !== Object.values(this.props.spots).length) {
+      this.setState({
+        loading: false
+      });
+    } else if (pP.spots === this.props.spots && this.state.loading === true) {
+      this.setState({
+        loading: false
+      });
+    } else if (this.state.loading === true && Object.values(pP.spots).length === 0) {
       this.setState({
         loading: false
       });
@@ -31,7 +39,7 @@ class UserSpots extends Component {
 
   render() {
     const loading = this.state.loading ?
-      <div className="loading">
+      <div className="users-spots-loading">
         <div className="lds-ellipsis">
           <div></div>
           <div></div>
