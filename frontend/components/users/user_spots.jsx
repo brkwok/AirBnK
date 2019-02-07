@@ -59,13 +59,13 @@ class UserSpots extends Component {
     } else {
       renderSpots = spots.map( (spot, i) => {
         return(
-          <div onClick={this.redirectToSpot} className="users-spots-each-spot" key={i} id={i}>
-            <div id={i} className="users-spots-spot-img-container">
-              <img id={i} className="users-spots-spot-img" src={spot.photoUrl} />
+          <div onClick={this.redirectToSpot} className="users-spots-each-spot" key={i} id={spot.id}>
+            <div id={spot.id} className="users-spots-spot-img-container">
+              <img id={spot.id} className="users-spots-spot-img" src={spot.photoUrl} />
             </div>
-            <div id={i} className="users-spots-title-location">
-              <div id={i} className="users-spots-title">{spot.title}</div>
-              <div id={i} className="users-spots-location">{spot.location}</div>
+            <div id={spot.id} className="users-spots-title-location">
+              <div id={spot.id} className="users-spots-title">{spot.title}</div>
+              <div id={spot.id} className="users-spots-location">{spot.location}</div>
             </div>
           </div>
         );

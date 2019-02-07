@@ -29,6 +29,7 @@
 
 .header-nav-other {
   position: fixed;
+  z-index: 90;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -36,6 +37,16 @@
   border: 1px solid lightgrey;
   color: #47494f;
   background: white;
+}
+
+.header-nav-other-spot-show {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 100%;
+  border: 1px solid lightgrey;
+  color: #47494f;
 }
 
 .search-header-nav {

@@ -58,7 +58,7 @@ class ShowNav extends React.Component {
   render() {
     const sessionLinks = () => (
       <nav className="header-wrap-show">
-        <div className="header-nav-other">
+        <div className="header-nav-other-spot-show">
           <div className="search-logo-container">
             <Link className="header-logo" to='/' >
               <img className="localhost-logo" src={window.logoURL} />
@@ -75,7 +75,7 @@ class ShowNav extends React.Component {
 
     const greetingLink = () => (
       <nav className="header-wrap-show">
-        <div className="header-nav-other">
+        <div className="header-nav-other-spot-show">
           <div className="search-logo-container">
             <Link className="header-logo" to='/' >
               <img className="localhost-logo" src={window.logoURL} />
