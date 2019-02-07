@@ -11,10 +11,11 @@ const ReviewsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_REVIEWS:
+      return action.reviews || {};
     case RECEIVE_SPOT:
     case RECEIVE_ALL_SPOTS:
     case RECEIVE_USER:
-      return action.reviews || {};
+      return merge({}, state, action.reviews);
     case REMOVE_REVIEW:
       const newState = merge({}, state);
       delete newState[action.reviewId];
