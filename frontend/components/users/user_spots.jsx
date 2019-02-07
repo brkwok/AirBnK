@@ -7,6 +7,8 @@ class UserSpots extends Component {
     this.state = {
       loading: true
     };
+
+    this.redirectToSpot = this.redirectToSpot.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +23,11 @@ class UserSpots extends Component {
     }
   }
 
+  redirectToSpot(e) {
+    e.preventDefault();
 
+    this.props.history.push(`/spots/${e.target.id}`);
+  }
 
   render() {
     const loading = this.state.loading ?
@@ -45,13 +51,13 @@ class UserSpots extends Component {
     } else {
       renderSpots = spots.map( (spot, i) => {
         return(
-          <div key={i}>
-            <div className="users-spots-spot-img-container">
-              <img className="users-spots-spot-img" src={spot.photoUrl} />
+          <div onClick={this.redirectToSpot} className="users-spots-each-spot" key={i} id={i}>
+            <div id={i} className="users-spots-spot-img-container">
+              <img id={i} className="users-spots-spot-img" src={spot.photoUrl} />
             </div>
-            <div className="">
-              <div>{spot.title}</div>
-              <div>{spot.location}</div>
+            <div id={i} className="users-spots-title-location">
+              <div id={i} className="users-spots-title">{spot.title}</div>
+              <div id={i} className="users-spots-location">{spot.location}</div>
             </div>
           </div>
         );

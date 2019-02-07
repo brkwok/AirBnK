@@ -28,13 +28,14 @@
 }
 
 .header-nav-other {
-  position: sticky;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-content: center;
   width: 100%;
   border: 1px solid lightgrey;
   color: #47494f;
+  background: white;
 }
 
 .search-header-nav {

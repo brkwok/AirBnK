@@ -1,3 +1,46 @@
 .user-spots-container {
   height: calc(100vh - 120px);
+  padding-top: 120px;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-spots-each-spot {
+  display: flex;
+  padding: 5px 10px;
+  width: 30%;
+}
+
+.users-spots-each-spot:hover {
+  cursor: pointer;
+}
+
+.users-spots-spot-img-container {
+  width: 150px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.users-spots-spot-img {
+  height: 100%;
+}
+
+.users-spots-title-location {
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.users-spots-title {
+  font-size: 17px;
+  color: #756e6e;
+}
+
+.users-spots-location {
+  font-size: 15px;
+  color: #444040;
 }
