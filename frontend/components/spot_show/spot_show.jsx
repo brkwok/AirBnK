@@ -19,6 +19,7 @@ class SpotShow extends React.Component {
 
   componentDidUpdate(pP, pS) {
     if (pP.spot.id !== this.props.spot.id) {
+
       this.props.fetchSpot(this.props.spotId);
       this.setState({
         spotLoaded: true,

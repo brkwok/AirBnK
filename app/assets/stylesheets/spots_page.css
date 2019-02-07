@@ -45,6 +45,10 @@
   padding-bottom: 12px;
 }
 
+.each-spot-container:hover {
+  cursor: pointer;
+}
+
 .each-spot-container > img {
   height: 66%;
   width: 100%;

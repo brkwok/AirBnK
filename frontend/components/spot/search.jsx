@@ -11,6 +11,7 @@ class Search extends React.Component {
       activePage: 1,
       itemsPerPage: 12,
       loading: true,
+      spotLoaded: false,
       allSpots: [],
       renderSpots: [],
       maxCosts: null,
@@ -175,7 +176,7 @@ class Search extends React.Component {
 
   componentDidUpdate(pP, pS) {
     if (this.props.bounds !== pP.bounds) {
-      this.setState({ loading: true});
+      this.setState({ loading: true, spotLoaded: false });
       this.props.fetchSpots(this.props.bounds);
       this.setState({
         activePage: 1,
@@ -212,8 +213,13 @@ class Search extends React.Component {
         renderSpots,
         loading: false,
       });
-    } else if ((pS.loading !== this.state.loading) && (this.state.allSpots.length === 0)) {
-      this.setState( { loading: false } );
+    } else if (pP.bounds === this.props.bounds && this.state.loading) {
+      this.setState({
+        loading: false,
+        spotLoaded: true,
+      });
+    } else {
+      return;
     }
   }
 
@@ -503,14 +509,23 @@ class Search extends React.Component {
         <span>Guests</span>
       </button>);
 
-    const costFilter = this.state.costFilter ?
-      (<button onClick={this.showCostMenu} className="filter-button filter-button-active">
-        {this.priceFilter()}
-      </button>)
-      :
-      (<button onClick={this.showCostMenu} className="filter-button">
-        <span>Price</span>
-      </button>);
+    // const costFilter = this.state.costFilter ?
+    //   (<button onClick={this.showCostMenu} className="filter-button filter-button-active">
+    //     {this.priceFilter()}
+    //   </button>)
+    //   :
+    //   (<button onClick={this.showCostMenu} className="filter-button">
+    //     <span>Price</span>
+    //   </button>);
+
+    let result;
+
+    if (!this.state.loading && this.state.spotLoaded && this.props.spots.length === 0) {
+      result = (<div className="no-result-found">
+          <strong className="no-results">No results</strong>
+          <span className="no-results-details">To get more results, try adjusting your search or move the map around</span>
+        </div>);
+    }
 
     const searchFound =
       <div>
@@ -567,10 +582,7 @@ class Search extends React.Component {
               </div>
             </div>)
             :
-            (<div className="no-result-found">
-                <strong className="no-results">No results</strong>
-                <span className="no-results-details">To get more results, try adjusting your search or move the map around</span>
-              </div>)
+            (result)
             }
             <SpotMap
               onClick={window.scrollTo(0, 0)}

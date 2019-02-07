@@ -3,7 +3,7 @@ import {
   RECEIVE_REVIEWS,
   REMOVE_REVIEW,
 } from '../actions/review_actions';
-import { RECEIVE_SPOT } from '../actions/spot_actions';
+import { RECEIVE_SPOT, RECEIVE_ALL_SPOTS } from '../actions/spot_actions';
 import { RECEIVE_USER } from '../actions/session_actions';
 
 const ReviewsReducer = (state = {}, action) => {
@@ -11,6 +11,7 @@ const ReviewsReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_REVIEWS:
     case RECEIVE_SPOT:
+    case RECEIVE_ALL_SPOTS:
     case RECEIVE_USER:
       return action.reviews || {};
     case REMOVE_REVIEW:

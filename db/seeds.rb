@@ -57,6 +57,6 @@ Spot.create!(lat: 40.719196, lng: -73.000607, location: Faker::Address.city, typ
 first_spot = Spot.first.id
 last_spot = Spot.last.id
 Review.destroy_all
-# 50.times do
-#   Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: 1, rating: rand(3..5))
-# end
+50.times do
+  Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: 1, rating: rand(3..5))
+end

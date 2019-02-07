@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import { compact } from 'lodash';
 import { fetchSpot } from '../../actions/spot_actions';
 import { fetchUser } from '../../actions/session_actions';
+import { fetchReviews } from '../../actions/review_actions';
 import SpotShow from './spot_show';
 
 const msp = (state, ownProps) => {
-
   const spotId = ownProps.match.params.spotId;
   const spot = state.entities.spots[spotId] || {};
   const users = state.entities.users;
@@ -37,6 +37,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
   return {
+    fetchReviews: () => dispatch(fetchReviews()),
     fetchUser: id => dispatch(fetchUser(id)),
     fetchSpot: id => dispatch(fetchSpot(id)),
   };

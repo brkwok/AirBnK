@@ -21,8 +21,8 @@ export default ({ spot, user, reviews, users }) => {
     name = (<div className="user-username">{user.name}</div>);
   }
 
-  let reviewDisp;
-  if ((typeof reviews === "undefined") || (reviews.length === 0))
+  let reviewDisp = [];
+  if ((typeof reviews === "undefined"))
   { return; } else {
     reviewDisp = reviews.sort((review1, review2) => {
       const date1 = new Date(review1.created_at);
@@ -60,7 +60,7 @@ export default ({ spot, user, reviews, users }) => {
     :
     (<div className="stars-wrapper"></div>);
 
-  const totalReview = reviews ? (
+  const totalReview = reviews.length > 0 ? (
     <div className="review-total">{reviews.length} Reviews</div>
   ) : (
     <div className="review-total">No reviews yet</div>

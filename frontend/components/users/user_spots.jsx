@@ -16,11 +16,7 @@ class UserSpots extends Component {
   }
 
   componentDidUpdate(pP) {
-    if (Object.values(pP.spots).length !== Object.values(this.props.spots).length) {
-      this.setState({
-        loading: false
-      });
-    } else if (pP.spots === this.props.spots && this.state.loading === true) {
+    if (Object.values(pP.spots).length === Object.values(this.props.spots).length && this.state.loading === true) {
       this.setState({
         loading: false
       });
