@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     @reviews = Review.where(user_id: params[:id])
     @spots = @reviews.map { |review| review.spot }
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
   def create

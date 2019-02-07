@@ -6,9 +6,9 @@ import reviewsReducer from './reviews_reducer';
 
 const entitiesReducer = combineReducers({
   users: usersReducer,
-  spots: spotsReducer,
   bookings: bookingsReducer,
-  reviews: reviewsReducer
+  reviews: reviewsReducer,
+  spots: spotsReducer,
 });
 
 export default entitiesReducer;

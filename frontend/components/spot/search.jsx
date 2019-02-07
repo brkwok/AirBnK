@@ -171,7 +171,6 @@ class Search extends React.Component {
   componentDidMount() {
     this.props.fetchSpots(this.props.bounds);
     this.props.updateBounds(this.props.bounds);
-    this.timer = null;
   }
 
   componentDidUpdate(pP, pS) {

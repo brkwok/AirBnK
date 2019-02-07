@@ -6,6 +6,7 @@ import { fetchReviews } from '../../actions/review_actions';
 import SpotShow from './spot_show';
 
 const msp = (state, ownProps) => {
+
   const spotId = ownProps.match.params.spotId;
   const spot = state.entities.spots[spotId] || {};
   const users = state.entities.users;

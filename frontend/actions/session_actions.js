@@ -17,7 +17,8 @@ export const receiveUser = payload => {
     type: RECEIVE_USER,
     user: payload.user,
     reviews: payload.reviews,
-    spots: payload.spots
+    spots: payload.spots,
+    bookings: payload.bookings
   };
 };
 

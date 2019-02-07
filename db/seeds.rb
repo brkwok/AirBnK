@@ -16,47 +16,180 @@ end
   prof_pics << 'prof_pic' + n.to_s + '.jpg'
 end
 
-# User.destroy_all
-# User.create!(email: "demo", password: "123456", name: "demo", img_url: ActionController::Base.helpers.asset_path(prof_pics.sample))
-#
-#
-# 200.times do
-#   User.create!(name: Faker::Name.first_name, password: "123456", email: Faker::Internet.email, img_url: ActionController::Base.helpers.asset_path(prof_pics.sample))
-# end
+User.destroy_all
+
+a = User.new
+a.email = "demo"
+a.password= "123456"
+a.name= "demo"
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{prof_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
+
+
+
+40.times do
+  a = User.new
+  a.email = Faker::Internet.email
+  a.password = "123456"
+  a.name = Faker::Name.first_name
+  a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{prof_pics.sample}"), filename: "profile_pic.jpg")
+  a.save!
+end
 
 first_user = User.first.id
 last_user = User.last.id
 Spot.destroy_all
 typeof = ['Entire house', 'Private room', 'Entire apartment']
 
-200.times do
-  Spot.create!(lat: Faker::Address.latitude, lng: Faker::Address.longitude, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+30.times do
+  a = Spot.new
+  a.lat = Faker::Address.latitude
+  a.lng = Faker::Address.longitude
+  a.location = Faker::Address.city
+  a.type_of_spot = typeof.sample
+  a.cost = rand(50..150)
+  a.guests = rand(1..8)
+  a.host_id = rand(first_user..last_user)
+  a.details = Faker::ChuckNorris.fact
+  a.title = Faker::Address.city
+  a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+  a.save!
 end
 
-Spot.create!(lat: 40.757155, lng: -73.981687, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.757155
+a.lng = -73.981687
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.759990, lng: -73.990781, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.759990
+a.lng = -73.990781
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.750782, lng: -73.996623, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.750782
+a.lng = -73.996623
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.745880, lng: -73.996211, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.745880
+a.lng = -73.996211
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.743250, lng: -73.994329, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.743250
+a.lng = -73.994329
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.755543, lng: -73.980568, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.755543
+a.lng = -73.980568
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.758229, lng: -73.990480, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.758229
+a.lng = -73.990480
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.737070, lng: -73.998769, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.737070
+a.lng = -73.998769
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.727623, lng: -73.989690, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.727623
+a.lng = -73.989690
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
-Spot.create!(lat: 40.719196, lng: -73.000607, location: Faker::Address.city, type_of_spot: typeof.sample, cost: rand(50..150), guests: rand(1..8), host_id: rand(first_user..last_user), details: Faker::ChuckNorris.fact, title: Faker::Address.city + ("a".."z").to_a.sample, img_url: ActionController::Base.helpers.asset_path(house_pics.sample))
+a = Spot.new
+a.lat = 40.719196
+a.lng = -73.000607
+a.location = Faker::Address.city
+a.type_of_spot = typeof.sample
+a.cost = rand(50..150)
+a.guests = rand(1..8)
+a.host_id = rand(first_user..last_user)
+a.details = Faker::ChuckNorris.fact
+a.title = Faker::Address.city
+a.photo.attach(io: File.open("#{Rails.root}/app/assets/images/#{house_pics.sample}"), filename: "profile_pic.jpg")
+a.save!
 
 
 first_spot = Spot.first.id
 last_spot = Spot.last.id
 Review.destroy_all
-50.times do
-  Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: 1, rating: rand(3..5))
+200.times do
+  Review.create!(comment: Faker::ChuckNorris.fact, spot_id: rand(first_spot..last_spot), user_id: rand(first_user..last_user), rating: rand(3..5))
 end

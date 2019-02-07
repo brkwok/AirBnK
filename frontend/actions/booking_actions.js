@@ -40,12 +40,15 @@ export const fetchBookings = () => {
 };
 
 export const createBooking = (data) => {
+
   return dispatch => {
     return BookingApiUtil.createBooking(data).then(
       (payload) => {
+
         return dispatch(fetchBookings(payload));
       },
       (err) => {
+
         return dispatch(receiveErrors(err.responseJSON));
       }
     );

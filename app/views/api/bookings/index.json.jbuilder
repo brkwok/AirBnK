@@ -10,7 +10,7 @@ end
   json.set! 'spots' do
     json.set! spot.id do
       json.partial! '/api/spots/spot', spot: spot
-      json.photoUrl url_for(spot.photoUrl)
+      json.photoUrl url_for(spot.photo)
     end
   end
 end

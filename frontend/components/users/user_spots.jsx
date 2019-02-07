@@ -20,6 +20,10 @@ class UserSpots extends Component {
       this.setState({
         loading: false
       });
+    } else if (Object.values(pP.spots).length !== Object.values(this.props.spots).length) {
+      this.setState({
+        loading: false
+      });
     } else if (this.state.loading === true && Object.values(pP.spots).length === 0) {
       this.setState({
         loading: false

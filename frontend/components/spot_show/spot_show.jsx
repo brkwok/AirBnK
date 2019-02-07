@@ -14,18 +14,16 @@ class SpotShow extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.host) {
+      this.props.fetchUser(this.props.host.id);
+    }
     this.props.fetchSpot(this.props.spotId);
   }
 
   componentDidUpdate(pP, pS) {
     if (pP.spot.id !== this.props.spot.id) {
-
       this.props.fetchSpot(this.props.spotId);
-      this.setState({
-        spotLoaded: true,
-      });
     } else if (pP.spot.id === this.props.spot.id && !this.state.spotLoaded) {
-
       this.setState({
         spotLoaded: true,
       });
