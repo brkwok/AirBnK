@@ -1,6 +1,7 @@
 json.spot do
   json.partial! '/api/spots/spot', spot: @spot
   json.avg_ratings @spot.avg_ratings
+  json.hostId @spot.host.id
   json.photoUrl url_for(@spot.photo)
 end
 

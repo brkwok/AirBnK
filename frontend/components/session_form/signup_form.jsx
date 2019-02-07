@@ -29,6 +29,11 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    if (this.state.photo === window.profilePic) {
+      alert("You must attach a photo!");
+    }
+
     const datas = Object.keys(this.state);
     const data = new FormData();
     const user = Object.assign({}, this.state);

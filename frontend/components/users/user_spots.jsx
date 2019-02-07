@@ -72,19 +72,6 @@ class UserSpots extends Component {
       });
     }
 
-    // if (this.props.spots.length === 0 && this.state.loading === false) {
-    //   spots = <div>You do have your own listings</div>;
-    // } else {
-    //   debugger
-    //   spots = this.props.spots.map( (spot) => {
-    //     return(
-    //       <div key={spot.id}>
-    //         <img className="profile-picture" src={ `${spot.phoroUrl}` }  alt={`${spot.title}'s picture`}/>
-    //       </div>
-    //     );
-    //   });
-    // }
-
     return(
       <div className="user-spots-container">
         { this.state.loading ? loading : renderSpots }

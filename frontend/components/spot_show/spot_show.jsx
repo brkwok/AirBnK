@@ -8,27 +8,46 @@ class SpotShow extends React.Component {
 
     this.state = {
       showMenu: false,
+      spotLoaded: false
     };
 
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.user.id);
     this.props.fetchSpot(this.props.spotId);
   }
 
+  componentDidUpdate(pP, pS) {
+
+    if (pP.spot.id !== this.props.spot.id) {
+      this.setState({
+        spotLoaded: true,
+      });
+    } else {
+
+      return;
+    }
+  }
+
   render() {
+    const spotDetail = this.state.spotLoaded ?
+        (<SpotDetail
+          reviews={this.props.reviews}
+          spot={this.props.spot}
+          spotId={this.props.spotId}
+          users={this.props.users}
+          user={this.props.user}
+          />)
+        :
+        (<div></div>);
+
     return(
       <section>
         <section className="spot-show-img-container">
           <img className="spot-show-img" src={`${this.props.spot.photoUrl}`} />
         </section>
         <section className="spot-booking-show-container">
-          <SpotDetail
-            reviews={this.props.reviews}
-            spot={this.props.spot}
-            spotId={this.props.spotId}
-            users={this.props.users}/>
+          {spotDetail}
           <section className="booking-show">
           <SpotBookingFormContainer
             spot={this.props.spot}

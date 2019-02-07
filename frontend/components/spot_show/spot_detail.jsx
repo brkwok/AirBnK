@@ -4,22 +4,26 @@ import ReviewFormContainer from '../reviews/review_form_container';
 
 
 export default ({ spot, user, reviews, users }) => {
+
   let eachSpot = spot || {};
   let link = '';
+
   if (typeof user === 'undefined' || user === 0) { return; } else { link = (
       <Link to={`/users/${user.id}`}>
-        <img  className="user-profile-pic" src={`${user.photoUrl}`} />
+        <img  className="user-profile-pic" src={`${users[user.id].photoUrl}`} />
       </Link>
     );
   }
   let name = '';
-  if (typeof user === 'undefined') { return; } else {
+  if (typeof user === 'undefined') {
+    return;
+  } else {
     name = (<div className="user-username">{user.name}</div>);
   }
 
   let reviewDisp;
   if ((typeof reviews === "undefined") || (reviews.length === 0))
-  {} else {
+  { return; } else {
     reviewDisp = reviews.sort((review1, review2) => {
       const date1 = new Date(review1.created_at);
       const date2 = new Date(review2.created_at);

@@ -5,9 +5,16 @@ import { fetchUser } from '../../actions/session_actions';
 import SpotShow from './spot_show';
 
 const msp = (state, ownProps) => {
+
   const spotId = ownProps.match.params.spotId;
   const spot = state.entities.spots[spotId] || {};
+  const users = state.entities.users;
+  const host = spot.host || {};
+  let user
 
+  if (Object.values(host).length !== 0) {
+    user = state.entities.users[host.id];
+  }
 
   let reviews;
   reviews = Object.keys(state.entities.reviews).map(id => {
@@ -20,7 +27,10 @@ const msp = (state, ownProps) => {
   return {
     spotId,
     spot,
-    users: state.entities.users,
+    host,
+    users,
+    user,
+    hosts: state.entities.users,
     reviews: _.compact(reviews),
   };
 };

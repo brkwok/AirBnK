@@ -45,7 +45,7 @@ class UserShow extends React.Component {
           <div className="user-show-review-spot-container">
             <div className="user-show-review-header">
               <div className="user-show-review-spot-img">
-                <img id={review.spot_id} onClick={this.linkToSpot} className="user-show-img" src={spots[review.spot_id].img_url} />
+                <img id={review.spot_id} onClick={this.linkToSpot} className="user-show-img" src={spots[review.spot_id].photoUrl} />
               </div>
               <div className="user-show-spot-container">
                 <div id={review.spot_id} onClick={this.linkToSpot} className="user-show-spot-title">
