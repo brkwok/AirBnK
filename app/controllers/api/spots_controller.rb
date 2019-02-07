@@ -14,6 +14,7 @@ class Api::SpotsController < ApplicationController
     @reviews.each do |review|
       @users << review.user
     end
+
     render :show
   end
 

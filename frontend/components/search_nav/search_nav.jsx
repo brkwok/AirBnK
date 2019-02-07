@@ -18,6 +18,12 @@ class SearchNav extends React.Component {
     this.redirectProfile = this.redirectProfile.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchUser(this.props.currentUser.id);
+    }
+  }
+
   showMenu(e) {
     e.preventDefault();
 
@@ -73,6 +79,7 @@ class SearchNav extends React.Component {
             <SearchBarNav />
           </div>
         <section className="login-signup">
+          <div onClick={() => this.props.openModal("createSpot")} className="spot-create-button spot-create-shownav">Become a host</div>
           <div className="login-signup-button-prof-other" onClick={this.showMenu}>
             <img className='profile-picture' src={this.props.currentUser.photoUrl} />
           </div>

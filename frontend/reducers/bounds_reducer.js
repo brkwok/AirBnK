@@ -1,7 +1,7 @@
 import { UPDATE_BOUNDS } from '../actions/filter_actions';
 
 let defaultState = {
-  minGuest: 1,
+  bounds: null,
 };
 
 export default (state = defaultState, action) => {

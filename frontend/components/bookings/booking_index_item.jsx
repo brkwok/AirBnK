@@ -36,7 +36,7 @@ class BookingIndexItem extends React.Component {
     return(
       <div className="booking-index-item-wrap">
         <div onClick={this.showSpot} className="booking-index-item">
-          <img className="booking-index-img" className="booking-index-img" src={spots[spotId].img_url}></img>
+          <img className="booking-index-img" className="booking-index-img" src={spots[spotId].photoUrl}></img>
           <div className="booking-index-info-wrap">
             <div className="booking-index-info">
               <div className="booking-index-title">{spots[spotId].title}</div>

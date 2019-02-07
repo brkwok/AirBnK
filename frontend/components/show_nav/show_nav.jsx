@@ -78,6 +78,7 @@ class ShowNav extends React.Component {
             <SearchBarNav />
           </div>
         <section className="login-signup">
+          <div onClick={() => this.props.openModal("createSpot")} className="spot-create-button spot-create-shownav">Become a host</div>
           <div className="login-signup-button-prof-other" onClick={this.showMenu}>
             <img className='profile-picture' src={this.props.currentUser.photoUrl} />
           </div>

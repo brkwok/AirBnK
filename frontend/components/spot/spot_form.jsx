@@ -89,14 +89,13 @@ class SpotForm extends Component {
         lat = results[0].geometry.location.lat();
         lng = results[0].geometry.location.lng();
 
-        debugger
         spotParams.forEach( (input) => {
           if (input === "beds" || input === "bedroom" || input === "bath" || input === "cost" || input === "guests") {
-            return data.append(`spot[${input}]`, parseInt(this.state[input]));
+            return data.append(`spot[${input}]`, parseFloat(this.state[input]));
           } else if (input === "lat") {
-            return data.append(`spot[${input}]`, parseInt(lat));
+            return data.append(`spot[${input}]`, parseFloat(lat));
           } else if (input === "lng") {
-            return data.append(`spot[${input}]`, parseInt(lng));
+            return data.append(`spot[${input}]`, parseFloat(lng));
           } else if (input === "typeOfSpot") {
             return data.append('spot[type_of_spot]', this.state.typeOfSpot);
           } else {
@@ -104,7 +103,7 @@ class SpotForm extends Component {
           }
         });
 
-        this.props.createSpot(data).then(() => {
+        this.props.createSpot(data).then(this.props.closeModal).then(() => {
           this.props.history.push(`/users/${this.props.currentUser.id}/spots`);
         });
       }

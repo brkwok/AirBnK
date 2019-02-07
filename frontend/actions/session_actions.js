@@ -6,7 +6,6 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_USER = 'RECEIVE_USER';
 
 export const receiveCurrentUser = currentUser => {
-
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser,
@@ -38,9 +37,8 @@ export const receiveErrors = errors => {
 export const signup = (data, user) => {
   return dispatch => {
 
-    return SessionApiUtil.signup(data, user).then(
-      () => {
-
+    return SessionApiUtil.signup(data).then(
+      ({ user }) => {
         return dispatch(receiveCurrentUser(user));
       },
       errors => {

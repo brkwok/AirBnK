@@ -14,6 +14,8 @@ class Api::UsersController < ApplicationController
       @reviews = Review.where(user_id: params[:id])
       @spots = @reviews.map { |review| review.spot }
       log_in(@user)
+
+      render :show
     else
       render json: @user.errors.full_messages, status: 422
     end

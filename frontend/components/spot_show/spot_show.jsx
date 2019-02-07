@@ -13,28 +13,29 @@ class SpotShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSpot(this.props.match.params.spotId);
+    this.props.fetchUser(this.props.user.id);
+    this.props.fetchSpot(this.props.spotId);
   }
 
   render() {
     return(
       <section>
         <section className="spot-show-img-container">
-          <img className="spot-show-img" src={this.props.spot.img_url} />
+          <img className="spot-show-img" src={`${this.props.spot.photoUrl}`} />
         </section>
         <section className="spot-booking-show-container">
           <SpotDetail
             reviews={this.props.reviews}
             spot={this.props.spot}
-            user={this.props.user} spotId={this.props.spotId}
+            spotId={this.props.spotId}
             users={this.props.users}/>
           <section className="booking-show">
-            <SpotBookingFormContainer
-              spot={this.props.spot}
-            />
-          </section>
+          <SpotBookingFormContainer
+            spot={this.props.spot}
+          />
         </section>
       </section>
+    </section>
     );
   }
 }

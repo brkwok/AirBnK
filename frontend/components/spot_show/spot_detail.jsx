@@ -6,9 +6,9 @@ import ReviewFormContainer from '../reviews/review_form_container';
 export default ({ spot, user, reviews, users }) => {
   let eachSpot = spot || {};
   let link = '';
-  if (typeof user === 'undefined' || user.length === 0) { return; } else { link = (
+  if (!user === 'undefined' || user.length === 0) { return; } else { link = (
       <Link to={`/users/${user.id}`}>
-        <img  className="user-profile-pic" src={user.photoUrl} />
+        <img  className="user-profile-pic" src={`${user.photoUrl}`} />
       </Link>
     );
   }

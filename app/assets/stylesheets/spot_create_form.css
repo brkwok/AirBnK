@@ -65,3 +65,7 @@
 .spot-create-submit:hover {
   cursor: pointer;
 }
+
+.spot-create-shownav {
+  color: #4286f4;
+}

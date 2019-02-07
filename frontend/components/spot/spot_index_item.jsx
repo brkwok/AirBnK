@@ -40,7 +40,7 @@ class SpotIndexItem extends React.Component {
 
     return(
       <Link to={`/spots/${spot.id}`} className="each-spot-container">
-        <img className="localhost-logo" src={spot.img_url}/>
+        <img className="localhost-logo" src={spot.photoUrl}/>
         <div className="spot-details">
           <span className="spot-type-location">{spot.type_of_spot} · {spot.location}</span>
           <span className="spot-title">{spot.title}</span>
